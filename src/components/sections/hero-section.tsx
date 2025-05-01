@@ -6,66 +6,19 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
-const HeroSection = () => {
+export function HeroSection() {
   return (
-    <div className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0" 
-        style={{ 
-          backgroundImage: 'url(https://images.unsplash.com/photo-1598371839696-5c5bb00a5f4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80)',
-          filter: 'brightness(0.4)'
-        }}
+    <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center text-center overflow-hidden">
+      {/* Background Image */}
+      <img
+        src="https://images.unsplash.com/photo-1542727365-19732a80dcfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"
+        alt="Japanese dragon tattoo sleeve"
+        className="absolute inset-0 w-full h-full object-cover object-center -z-10"
       />
-      
-      {/* Animated Ink Splatter Effect */}
-      <div className="absolute inset-0 z-10 opacity-40">
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-primary/30"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: [0, 2, 1.5],
-            opacity: [0, 0.3, 0] 
-          }}
-          transition={{ 
-            duration: 4,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute top-2/3 right-1/3 w-40 h-40 rounded-full bg-primary/20"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: [0, 1.5, 1],
-            opacity: [0, 0.2, 0] 
-          }}
-          transition={{ 
-            duration: 5,
-            delay: 1,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-24 h-24 rounded-full bg-primary/25"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: [0, 2, 1],
-            opacity: [0, 0.25, 0] 
-          }}
-          transition={{ 
-            duration: 6,
-            delay: 2,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-        />
-      </div>
-      
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/80 -z-10"></div>
+
       {/* Content */}
       <div className="container mx-auto px-4 relative z-20 text-white">
         <motion.div
@@ -131,7 +84,7 @@ const HeroSection = () => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

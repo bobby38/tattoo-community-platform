@@ -47,13 +47,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/directory" className="text-muted-foreground hover:text-primary transition-colors">
-                  Directory
-                </Link>
-              </li>
-              <li>
-                <Link href="/gallery" className="text-muted-foreground hover:text-primary transition-colors">
-                  Gallery
+                <Link href="/groups" className="text-muted-foreground hover:text-primary transition-colors">
+                  Groups
                 </Link>
               </li>
               <li>
@@ -64,6 +59,16 @@ const Footer = () => {
               <li>
                 <Link href="/styles" className="text-muted-foreground hover:text-primary transition-colors">
                   Styles
+                </Link>
+              </li>
+              <li>
+                <Link href="/partners" className="text-muted-foreground hover:text-primary transition-colors">
+                  Partners
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -112,6 +117,7 @@ const Footer = () => {
                 type="email"
                 placeholder="Your email"
                 className="flex-1 rounded-l-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                suppressHydrationWarning
               />
               <Button className="rounded-l-none">
                 <Mail size={16} className="mr-2" />

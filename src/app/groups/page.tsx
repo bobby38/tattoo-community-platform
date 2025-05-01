@@ -288,16 +288,17 @@ export default function GroupsPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="mb-8">
+      {/* Modernized Heading Section */}
+      <div className="bg-muted/50 p-6 rounded-lg mb-8">
         <Link href="/">
-          <Button variant="ghost" className="mb-4">
+          <Button variant="ghost" className="mb-4 text-sm">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Button>
         </Link>
         
-        <h1 className="text-4xl font-bold mb-4">Tattoo Groups</h1>
-        <p className="text-muted-foreground max-w-2xl mb-8">
+        <h1 className="text-4xl font-bold mb-3">Tattoo Groups</h1>
+        <p className="text-muted-foreground max-w-2xl mb-0"> {/* Reduced bottom margin */}
           Join and participate in community groups focused on different tattoo styles and interests. Share your work, ask questions, and connect with like-minded artists and enthusiasts.
         </p>
       </div>

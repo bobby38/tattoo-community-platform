@@ -1,73 +1,30 @@
-import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-  console.log('GET /api/posts received');
-  
-  // Get URL parameters
-  const url = new URL(request.url);
-  const limit = parseInt(url.searchParams.get('limit') || '10');
-  const page = parseInt(url.searchParams.get('page') || '1');
-  const postType = url.searchParams.get('type');
-  const styleId = url.searchParams.get('styleId');
-  const tribeId = url.searchParams.get('tribeId');
-  
-  // Calculate offset for pagination
-  const offset = (page - 1) * limit;
-  
   try {
-    // Start building the query
-    let query = supabase
+    const url = new URL(request.url);
+    const limit = parseInt(url.searchParams.get('limit') || '10');
+    const page = parseInt(url.searchParams.get('page') || '1');
+    const sort = url.searchParams.get('sort') || 'created_at';
+    const order = url.searchParams.get('order') || 'desc';
+    const offset = (page - 1) * limit;
+
+    // Fetch posts without trying to join related tables
+    const { data, error, count } = await supabase
       .from('posts')
-      .select(`
-        *,
-        related_style:related_style_id(id, name, slug),
-        related_tribe:related_tribe_id(id, name, slug)
-      `)
-      .order('created_at', { ascending: false })
+      .select('*', { count: 'exact' })
+      .order(sort, { ascending: order === 'asc' })
       .range(offset, offset + limit - 1);
-    
-    // Add filters if provided
-    if (postType) {
-      query = query.eq('post_type', postType);
-    }
-    
-    if (styleId) {
-      query = query.eq('related_style_id', styleId);
-    }
-    
-    if (tribeId) {
-      query = query.eq('related_tribe_id', tribeId);
-    }
-    
-    // Execute the query
-    const { data: posts, error, count } = await query;
-    
+
     if (error) {
-      console.error('Error fetching posts from Supabase:', error);
-      return NextResponse.json(
-        { message: `Error fetching posts: ${error.message}` },
-        { status: 500 }
-      );
+      console.error('Error fetching posts:', error);
+      return NextResponse.json({ message: error.message }, { status: 500 });
     }
-    
-    console.log(`Found ${posts?.length || 0} posts.`);
-    
-    // Return the posts with pagination metadata
-    return NextResponse.json({
-      posts: posts || [],
-      pagination: {
-        total: count || 0,
-        page,
-        limit,
-        pages: count ? Math.ceil(count / limit) : 0
-      }
-    });
-  } catch (error) {
-    console.error('Unexpected error fetching posts:', error);
-    return NextResponse.json(
-      { message: 'Internal Server Error fetching posts' },
-      { status: 500 }
-    );
+
+    return NextResponse.json({ posts: data || [], pagination: { total: count || 0, page, limit, pages: count ? Math.ceil(count / limit) : 0 } });
+  } catch (e: any) {
+    console.error('Unexpected error fetching posts:', e);
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }

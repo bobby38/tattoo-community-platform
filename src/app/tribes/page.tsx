@@ -1,425 +1,409 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Users, MapPin, Instagram, Globe } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { ArrowLeft, Loader2, ServerCrash, Search, Users, Filter, Hash, Clock, ChevronRight } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 
-// Define the ContactInfo type according to the updated structure
-interface ContactInfo {
-  instagram?: string;
-  website?: string;
-  email?: string;
-  phone?: string;
-}
-
-// Define the Member type with nested contact_info
-interface Member {
-  id: string;
-  name: string;
-  slug: string;
-  bio: string;
-  avatar_url: string;
-  location: string;
-  contact_info: ContactInfo | null;
-  role: string;
-}
-
-// Define the Tribe type
+// Define the Tribe type based on your Prisma schema
 interface Tribe {
   id: string;
   name: string;
   slug: string;
-  description: string;
-  image_url: string;
-  cover_image_url: string;
-  founded: string;
-  location: string;
-  member_count: number;
-  focus_areas: string[];
-  members: Member[];
+  iconUrl: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
-// Mock tribes data
-const TRIBES_DATA: Tribe[] = [
-  {
-    id: '1',
-    name: 'Blackwork Collective',
-    slug: 'blackwork-collective',
-    description: 'A community of artists dedicated to the art of blackwork tattooing, exploring patterns, dotwork, and solid black designs.',
-    image_url: 'https://images.unsplash.com/photo-1542727365-19732a80dcfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    cover_image_url: 'https://images.unsplash.com/photo-1590246815117-be18528e6a33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-    founded: '2018',
-    location: 'Berlin, Germany',
-    member_count: 42,
-    focus_areas: ['Blackwork', 'Dotwork', 'Geometric', 'Tribal'],
-    members: [
-      {
-        id: 'm1',
-        name: 'Marcus Black',
-        slug: 'marcus-black',
-        bio: 'Pioneering blackwork artist pushing the boundaries of negative space and pattern work.',
-        avatar_url: 'https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
-        location: 'London, UK',
-        contact_info: {
-          instagram: 'marcus_blackwork',
-          website: 'https://marcusblack.ink'
-        },
-        role: 'Founder'
-      },
-      {
-        id: 'm2',
-        name: 'Lena Schmidt',
-        slug: 'lena-schmidt',
-        bio: 'Specializing in intricate dotwork and geometric blackwork designs.',
-        avatar_url: 'https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
-        location: 'Berlin, Germany',
-        contact_info: {
-          instagram: 'lena_dots',
-          email: 'lena@blackworkcollective.com'
-        },
-        role: 'Lead Artist'
-      }
-    ]
-  },
-  {
-    id: '2',
-    name: 'Neo-Traditional Guild',
-    slug: 'neo-traditional-guild',
-    description: 'A group of artists dedicated to pushing the boundaries of traditional tattooing with bold colors and innovative designs.',
-    image_url: 'https://images.unsplash.com/photo-1550537687-c91072c4792d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
-    cover_image_url: 'https://images.unsplash.com/photo-1562962230-16e4623d36e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-    founded: '2015',
-    location: 'Portland, OR',
-    member_count: 37,
-    focus_areas: ['Neo-Traditional', 'American Traditional', 'Japanese Influence'],
-    members: [
-      {
-        id: 'm3',
-        name: 'Alexandra Davis',
-        slug: 'alexandra-davis',
-        bio: 'Renowned for her colorful neo-traditional designs with a feminine touch.',
-        avatar_url: 'https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
-        location: 'Portland, OR',
-        contact_info: {
-          instagram: 'alex_neotrad',
-          website: 'https://alexandradavis.art'
-        },
-        role: 'Founder'
-      }
-    ]
-  },
-  {
-    id: '3',
-    name: 'Irezumi Masters',
-    slug: 'irezumi-masters',
-    description: 'A collective of artists dedicated to preserving and evolving the traditional Japanese tattoo art form of Irezumi.',
-    image_url: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-    cover_image_url: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-    founded: '2010',
-    location: 'Tokyo, Japan',
-    member_count: 28,
-    focus_areas: ['Japanese Irezumi', 'Tebori', 'Traditional Japanese'],
-    members: [
-      {
-        id: 'm4',
-        name: 'Takeshi Yamada',
-        slug: 'takeshi-yamada',
-        bio: 'Master of traditional Japanese tattooing with 25 years of experience.',
-        avatar_url: 'https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
-        location: 'Tokyo, Japan',
-        contact_info: {
-          instagram: 'takeshi_irezumi',
-          website: 'https://takeshi-tattoo.jp',
-          email: 'contact@takeshi-tattoo.jp',
-          phone: '+81-3-1234-5678'
-        },
-        role: 'Founder'
-      }
-    ]
-  },
-  {
-    id: '4',
-    name: 'Minimalist Ink Society',
-    slug: 'minimalist-ink-society',
-    description: 'A community focused on the beauty of simplicity in tattoo art, celebrating clean lines and negative space.',
-    image_url: 'https://images.unsplash.com/photo-1590246815117-be18528e6a33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80',
-    cover_image_url: 'https://images.unsplash.com/photo-1590246815117-be18528e6a33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-    founded: '2017',
-    location: 'Stockholm, Sweden',
-    member_count: 31,
-    focus_areas: ['Minimalist', 'Fine Line', 'Single Needle'],
-    members: [
-      {
-        id: 'm5',
-        name: 'Nina White',
-        slug: 'nina-white',
-        bio: 'Specializing in delicate, minimal designs that speak volumes with few lines.',
-        avatar_url: 'https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
-        location: 'Stockholm, Sweden',
-        contact_info: {
-          instagram: 'nina_minimal',
-          email: 'nina@minimalink.se'
-        },
-        role: 'Founder'
-      }
-    ]
-  },
-  {
-    id: '5',
-    name: 'Watercolor Collective',
-    slug: 'watercolor-collective',
-    description: 'Artists exploring the fluid, vibrant world of watercolor tattooing, pushing the boundaries of color and technique.',
-    image_url: 'https://images.unsplash.com/photo-1562962230-16e4623d36e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    cover_image_url: 'https://images.unsplash.com/photo-1562962230-16e4623d36e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-    founded: '2014',
-    location: 'Barcelona, Spain',
-    member_count: 35,
-    focus_areas: ['Watercolor', 'Abstract', 'Painterly'],
-    members: [
-      {
-        id: 'm6',
-        name: 'Sofia Martinez',
-        slug: 'sofia-martinez',
-        bio: 'Award-winning watercolor tattoo artist known for vibrant, painterly designs.',
-        avatar_url: 'https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
-        location: 'Barcelona, Spain',
-        contact_info: {
-          instagram: 'sofia_watercolor',
-          email: 'sofia@watercolortattoos.com'
-        },
-        role: 'Founder'
-      }
-    ]
-  },
-  {
-    id: '6',
-    name: 'Geometric Art Collective',
-    slug: 'geometric-art-collective',
-    description: 'A tribe of artists focused on the precision and beauty of geometric tattoo designs and sacred geometry.',
-    image_url: 'https://images.unsplash.com/photo-1597217270402-b5a73eba9d24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80',
-    cover_image_url: 'https://images.unsplash.com/photo-1597217270402-b5a73eba9d24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-    founded: '2016',
-    location: 'Berlin, Germany',
-    member_count: 29,
-    focus_areas: ['Geometric', 'Sacred Geometry', 'Dotwork', 'Mandalas'],
-    members: [
-      {
-        id: 'm7',
-        name: 'Emma Clarke',
-        slug: 'emma-clarke',
-        bio: 'Specializing in intricate geometric designs and sacred geometry.',
-        avatar_url: 'https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
-        location: 'Berlin, Germany',
-        contact_info: {
-          instagram: 'emma_geometric',
-          website: 'https://emmaclarketattoo.com'
-        },
-        role: 'Founder'
-      },
-      {
-        id: 'm8',
-        name: 'David Chen',
-        slug: 'david-chen',
-        bio: 'Mathematician turned tattoo artist, creating complex geometric patterns inspired by mathematical principles.',
-        avatar_url: 'https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
-        location: 'Munich, Germany',
-        contact_info: null,
-        role: 'Lead Artist'
-      }
-    ]
-  }
-];
+// Define the Post type (simplified for now)
+interface Post {
+  id: string;
+  user_id: string;
+  image_url: string;
+  caption: string | null;
+  created_at: string;
+  related_tribe: {
+    id: string;
+    name: string;
+    slug: string;
+  } | null;
+}
+
+// Define the API response type
+interface PostsApiResponse {
+  posts: Post[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    pages: number;
+  };
+}
 
 export default function TribesPage() {
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
-  
-  // Get unique focus areas for filter
-  const allFocusAreas = TRIBES_DATA.flatMap(tribe => tribe.focus_areas);
-  const uniqueFocusAreas = Array.from(new Set(allFocusAreas)).sort();
-  
-  // Filter tribes
-  const filteredTribes = activeFilter 
-    ? TRIBES_DATA.filter(tribe => tribe.focus_areas.includes(activeFilter))
-    : TRIBES_DATA;
-  
-  // Sort tribes by member count (largest first)
-  const sortedTribes = [...filteredTribes].sort((a, b) => b.member_count - a.member_count);
-  
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
+  const [tribes, setTribes] = useState<Tribe[]>([]);
+  const [selectedTribe, setSelectedTribe] = useState<Tribe | null>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [isLoadingTribes, setIsLoadingTribes] = useState(true);
+  const [isLoadingPosts, setIsLoadingPosts] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeFilter, setActiveFilter] = useState<'latest' | 'popular' | null>(null);
+  const [activeHashtag, setActiveHashtag] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  // Set mounted state to true after component mounts to prevent hydration errors
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Fetch Tribes from API
+  useEffect(() => {
+    if (!mounted) return;
+    
+    const fetchTribes = async () => {
+      setIsLoadingTribes(true);
+      setError(null);
+      try {
+        const response = await fetch('/api/tribes');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data: Tribe[] = await response.json();
+        setTribes(data);
+      } catch (err: any) {
+        console.error("Failed to fetch tribes:", err);
+        setError(`Failed to load tribes: ${err.message}`);
+      } finally {
+        setIsLoadingTribes(false);
       }
-    }
-  };
-  
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
+    };
+    fetchTribes();
+  }, [mounted]);
+
+  // Fetch posts for selected tribe
+  useEffect(() => {
+    if (!mounted) return;
+    
+    const fetchPosts = async () => {
+      setIsLoadingPosts(true);
+      setError(null);
+      try {
+        // Build the query parameters
+        const params = new URLSearchParams();
+        if (selectedTribe) {
+          params.append('tribeId', selectedTribe.id);
+        }
+        if (activeFilter === 'latest') {
+          params.append('sort', 'created_at');
+          params.append('order', 'desc');
+        } else if (activeFilter === 'popular') {
+          params.append('sort', 'likes');
+          params.append('order', 'desc');
+        }
+        if (activeHashtag) {
+          params.append('tag', activeHashtag);
+        }
+        params.append('limit', '20');
+        params.append('page', '1');
+        
+        // Make the API call
+        const response = await fetch(`/api/posts?${params.toString()}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data: PostsApiResponse = await response.json();
+        setPosts(data.posts || []);
+      } catch (err: any) {
+        console.error("Failed to fetch posts:", err);
+        setError(`Failed to load posts: ${err.message}`);
+        setPosts([]);
+      } finally {
+        setIsLoadingPosts(false);
       }
-    }
+    };
+    
+    fetchPosts();
+  }, [selectedTribe, activeFilter, activeHashtag, mounted]);
+
+  const handleTribeSelect = (tribe: Tribe | null) => {
+    setSelectedTribe(tribe);
   };
 
+  const handleFilterSelect = (filter: 'latest' | 'popular' | null) => {
+    setActiveFilter(filter);
+  };
+
+  const handleHashtagSelect = (hashtag: string | null) => {
+    setActiveHashtag(hashtag);
+  };
+
+  // Filter tribes based on search
+  const filteredTribes = tribes.filter(tribe => 
+    tribe.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Sample hashtags (to be replaced with real data later)
+  const popularHashtags = ['blackwork', 'traditional', 'japanese', 'minimalist', 'watercolor', 'geometric'];
+
+  // If not mounted yet, return null to prevent hydration errors
+  if (!mounted) return null;
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mb-8">
-        <Link href="/">
-          <Button variant="ghost" className="mb-4">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Button>
-        </Link>
-        
-        <h1 className="text-4xl font-bold mb-4">Tattoo Tribes</h1>
-        <p className="text-muted-foreground max-w-2xl mb-8">
-          Discover communities of tattoo artists and enthusiasts united by shared styles, techniques, and philosophies.
-        </p>
-      </div>
-      
-      {/* Filters */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">Filter by Focus Area</h2>
-        
-        <div className="flex flex-wrap gap-2">
-          <Button 
-            variant={activeFilter === null ? "default" : "outline"} 
-            onClick={() => setActiveFilter(null)}
-            className="mb-2"
-          >
-            All Tribes
-          </Button>
-          
-          {uniqueFocusAreas.map(area => (
-            <Button 
-              key={area} 
-              variant={activeFilter === area ? "default" : "outline"}
-              onClick={() => setActiveFilter(area)}
-              className="mb-2"
-            >
-              {area}
-            </Button>
-          ))}
+    <div className="min-h-screen bg-black text-white">
+      {/* Top Navigation Bar */}
+      <div className="bg-black border-b border-zinc-800">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center h-16">
+            <Link href="/" className="mr-6">
+              <Button variant="ghost" className="text-white hover:text-orange-500 p-0">
+                <ArrowLeft className="h-5 w-5 mr-2" />
+                BACK
+              </Button>
+            </Link>
+            <div className="flex-1 flex justify-center">
+              <h1 className="text-xl font-bold tracking-wider">TATTOO TRIBES</h1>
+            </div>
+            <div className="w-[80px]"></div> {/* Spacer for alignment */}
+          </div>
         </div>
       </div>
-      
-      {/* Tribes List */}
-      <motion.div 
-        className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {sortedTribes.map((tribe) => (
-          <motion.div key={tribe.id} variants={itemVariants}>
-            <Link href={`/tribes/${tribe.slug}`}>
-              <Card className="overflow-hidden h-full hover:shadow-lg transition-all duration-300">
-                <div className="relative h-48">
-                  <img 
-                    src={tribe.cover_image_url} 
-                    alt={tribe.name}
-                    className="w-full h-full object-cover"
+
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-6">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Left Sidebar - Navigation */}
+          <div className="lg:col-span-3">
+            {/* Tribes Navigation */}
+            <div className="bg-zinc-900 rounded mb-6">
+              <div className="bg-zinc-800 py-3 px-4 border-l-4 border-orange-500">
+                <h2 className="font-bold text-lg uppercase">TRIBES</h2>
+              </div>
+              
+              {/* Search */}
+              <div className="p-4 border-b border-zinc-800">
+                <div className="relative">
+                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-zinc-500" />
+                  <Input 
+                    placeholder="SEARCH TRIBES..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-8 bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus-visible:ring-orange-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                    <div className="p-6">
-                      <h3 className="text-white text-2xl font-bold">{tribe.name}</h3>
-                      <div className="flex items-center text-white/80 mt-1">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        <span>{tribe.location}</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                
-                <CardContent className="p-6">
-                  <div className="flex items-center text-sm text-muted-foreground mb-4">
-                    <Users className="h-4 w-4 mr-1" />
-                    <span>{tribe.member_count} members</span>
-                    <span className="mx-2">•</span>
-                    <span>Founded {tribe.founded}</span>
-                  </div>
-                  
-                  <p className="text-muted-foreground mb-4 line-clamp-2">{tribe.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {tribe.focus_areas.map(area => (
-                      <Badge key={area} variant="secondary">{area}</Badge>
+              </div>
+              
+              {/* Tribes List */}
+              <div className="max-h-[40vh] overflow-y-auto">
+                {isLoadingTribes ? (
+                  <div className="p-4 space-y-2">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Skeleton key={i} className="h-10 w-full bg-zinc-800" />
                     ))}
                   </div>
-                  
-                  {tribe.members.length > 0 && (
-                    <div>
-                      <h4 className="text-sm font-semibold mb-3">Key Members</h4>
-                      
-                      <div className="space-y-3">
-                        {tribe.members.slice(0, 2).map((member) => (
-                          <div key={member.id} className="flex items-center">
-                            <Avatar className="h-10 w-10 mr-3">
-                              <AvatarImage src={member.avatar_url} alt={member.name} />
-                              <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                            </Avatar>
-                            
-                            <div>
-                              <div className="flex items-center">
-                                <p className="font-medium">{member.name}</p>
-                                <span className="ml-2 text-xs bg-muted px-2 py-0.5 rounded-full">
-                                  {member.role}
-                                </span>
-                              </div>
-                              
-                              {/* Social links using the updated contact_info structure */}
-                              <div className="flex mt-1 space-x-2">
-                                {member.contact_info?.instagram && (
-                                  <a 
-                                    href={`https://instagram.com/${member.contact_info.instagram}`} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="text-muted-foreground hover:text-primary"
-                                    onClick={(e) => e.stopPropagation()}
-                                  >
-                                    <Instagram className="h-3 w-3" />
-                                  </a>
-                                )}
-                                
-                                {member.contact_info?.website && (
-                                  <a 
-                                    href={member.contact_info.website} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="text-muted-foreground hover:text-primary"
-                                    onClick={(e) => e.stopPropagation()}
-                                  >
-                                    <Globe className="h-3 w-3" />
-                                  </a>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                ) : error ? (
+                  <div className="p-4">
+                    <div className="text-red-400 text-sm p-4 bg-red-900/30 rounded flex items-center">
+                      <ServerCrash className="h-4 w-4 mr-2" /> {error}
                     </div>
-                  )}
-                </CardContent>
+                  </div>
+                ) : (
+                  <div className="py-2">
+                    {/* All Tribes Option */}
+                    <button 
+                      className={`w-full text-left px-4 py-3 flex items-center justify-between ${
+                        !selectedTribe ? 'bg-orange-500 text-black' : 'text-white hover:bg-zinc-800'
+                      }`}
+                      onClick={() => handleTribeSelect(null)}
+                    >
+                      <div className="flex items-center">
+                        <Users className="h-4 w-4 mr-2" />
+                        <span className="font-medium">ALL TRIBES</span>
+                      </div>
+                      {!selectedTribe && <ChevronRight className="h-4 w-4" />}
+                    </button>
+                    
+                    {/* Individual Tribes */}
+                    {filteredTribes.map((tribe) => (
+                      <button 
+                        key={tribe.id} 
+                        className={`w-full text-left px-4 py-3 flex items-center justify-between ${
+                          selectedTribe?.id === tribe.id ? 'bg-orange-500 text-black' : 'text-white hover:bg-zinc-800'
+                        }`}
+                        onClick={() => handleTribeSelect(tribe)}
+                      >
+                        <span className="font-medium">{tribe.name.toUpperCase()}</span>
+                        {selectedTribe?.id === tribe.id && <ChevronRight className="h-4 w-4" />}
+                      </button>
+                    ))}
+                    
+                    {filteredTribes.length === 0 && !isLoadingTribes && (
+                      <div className="text-sm text-zinc-400 text-center py-6">
+                        NO TRIBES FOUND
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Hashtags Section */}
+            <div className="bg-zinc-900 rounded">
+              <div className="bg-zinc-800 py-3 px-4 border-l-4 border-orange-500">
+                <h2 className="font-bold text-lg uppercase">HASHTAGS</h2>
+              </div>
+              <div className="p-4 flex flex-wrap gap-2">
+                {popularHashtags.map(tag => (
+                  <Badge 
+                    key={tag}
+                    variant="outline" 
+                    className={`cursor-pointer py-1.5 px-3 uppercase ${
+                      activeHashtag === tag 
+                        ? 'bg-orange-500 text-black border-orange-500 hover:bg-orange-600' 
+                        : 'bg-zinc-800 hover:bg-zinc-700 border-zinc-700'
+                    }`}
+                    onClick={() => handleHashtagSelect(activeHashtag === tag ? null : tag)}
+                  >
+                    #{tag}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content - Post Feed */}
+          <div className="lg:col-span-9">
+            {/* Feed Header */}
+            <div className="bg-zinc-900 rounded mb-6">
+              <div className="bg-zinc-800 py-3 px-4 border-l-4 border-orange-500 flex justify-between items-center">
+                <h2 className="font-bold text-lg uppercase">
+                  {selectedTribe ? selectedTribe.name : "ALL TRIBES"} FEED
+                  {activeHashtag && <span className="ml-2 text-orange-500">#{activeHashtag}</span>}
+                </h2>
                 
-                <CardFooter className="px-6 py-4 border-t">
-                  <Button className="w-full">View Tribe</Button>
-                </CardFooter>
-              </Card>
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+                {/* Filter Buttons */}
+                <div className="flex space-x-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className={`border-zinc-700 ${activeFilter === 'latest' ? 'bg-orange-500 text-black border-orange-500' : 'bg-zinc-800 hover:bg-zinc-700'}`}
+                    onClick={() => handleFilterSelect(activeFilter === 'latest' ? null : 'latest')}
+                  >
+                    <Clock className="h-4 w-4 mr-2" /> LATEST
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className={`border-zinc-700 ${activeFilter === 'popular' ? 'bg-orange-500 text-black border-orange-500' : 'bg-zinc-800 hover:bg-zinc-700'}`}
+                    onClick={() => handleFilterSelect(activeFilter === 'popular' ? null : 'popular')}
+                  >
+                    <Filter className="h-4 w-4 mr-2" /> POPULAR
+                  </Button>
+                </div>
+              </div>
+              
+              {/* Active Filters Display */}
+              {(activeFilter || activeHashtag) && (
+                <div className="px-4 py-3 flex items-center">
+                  <span className="text-sm text-zinc-400 mr-2 uppercase">Active filters:</span>
+                  <div className="flex gap-2">
+                    {activeFilter && (
+                      <Badge variant="secondary" className="bg-zinc-800 uppercase">
+                        {activeFilter}
+                        <button 
+                          className="ml-1 text-zinc-400 hover:text-white" 
+                          onClick={() => handleFilterSelect(null)}
+                        >
+                          ×
+                        </button>
+                      </Badge>
+                    )}
+                    {activeHashtag && (
+                      <Badge variant="secondary" className="bg-zinc-800 uppercase">
+                        #{activeHashtag}
+                        <button 
+                          className="ml-1 text-zinc-400 hover:text-white" 
+                          onClick={() => handleHashtagSelect(null)}
+                        >
+                          ×
+                        </button>
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {/* Post Feed */}
+            <div className="space-y-6">
+              {isLoadingPosts ? (
+                <div className="flex justify-center items-center py-20">
+                  <Loader2 className="h-12 w-12 animate-spin text-orange-500" />
+                </div>
+              ) : error ? (
+                <div className="bg-zinc-900 border border-red-700 rounded p-6 text-center">
+                  <div className="flex items-center justify-center text-red-500 mb-4">
+                    <ServerCrash className="h-8 w-8 mr-2" />
+                  </div>
+                  <p className="text-red-400">{error}</p>
+                  <Button 
+                    onClick={() => {
+                      // Trigger a refetch by updating one of the dependencies
+                      setActiveFilter(activeFilter === 'latest' ? null : 'latest');
+                    }}
+                    className="mt-4 bg-red-700 hover:bg-red-800 text-white"
+                  >
+                    Try Again
+                  </Button>
+                </div>
+              ) : posts.length > 0 ? (
+                posts.map(post => (
+                  <Card key={post.id} className="bg-zinc-900 border-zinc-800 overflow-hidden">
+                    <CardContent className="p-0">
+                      {post.image_url && (
+                        <img 
+                          src={post.image_url} 
+                          alt={post.caption || 'Post image'} 
+                          className="w-full h-auto max-h-[500px] object-cover"
+                        />
+                      )}
+                      <div className="p-4">
+                        <p className="text-white">{post.caption}</p>
+                        <p className="text-xs text-zinc-400 mt-2 uppercase">
+                          {new Date(post.created_at).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              ) : (
+                <div className="bg-zinc-900 border border-dashed border-zinc-700 rounded p-12 text-center">
+                  <div className="inline-block bg-orange-500 text-black px-4 py-2 mb-4 uppercase font-bold">
+                    No Posts Found
+                  </div>
+                  <p className="text-zinc-400 max-w-md mx-auto">
+                    {selectedTribe 
+                      ? `Be the first to post in the ${selectedTribe.name} tribe!` 
+                      : activeHashtag 
+                        ? `No posts found with #${activeHashtag}.` 
+                        : 'No posts found with the current filters.'}
+                  </p>
+                  <Button className="mt-6 bg-orange-500 text-black hover:bg-orange-600 uppercase">
+                    Create Post
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

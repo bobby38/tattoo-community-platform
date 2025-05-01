@@ -53,16 +53,16 @@ export default function ContactPage() {
       
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
+      // Clear status after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
+      // Clear status after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } finally {
       setIsSubmitting(false);
-      
-      // Reset status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
+      // The setTimeout to clear status is now handled within try/catch
     }
   };
   

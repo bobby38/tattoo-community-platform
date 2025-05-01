@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -20,12 +19,11 @@ import {
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
   const { isAuthenticated, user } = useStore();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -39,17 +37,24 @@ const Header = () => {
     { name: 'Events', path: '/events' },
     { name: 'Styles', path: '/styles' },
     { name: 'Tribes', path: '/tribes' },
+    { name: 'Groups', path: '/groups' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Partners', path: '/partners' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', stiffness: 50, damping: 15 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out h-20 ${
         isScrolled
-          ? 'bg-background/90 backdrop-blur-md shadow-md py-2'
-          : 'bg-transparent py-4'
+          ? 'bg-black/80 backdrop-blur-sm shadow-md'
+          : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto flex items-center justify-between h-full px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <motion.div
@@ -71,7 +76,7 @@ const Header = () => {
                 <Link href={link.path} passHref legacyBehavior>
                   <NavigationMenuLink
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                      pathname === link.path
+                      link.path === '/'
                         ? 'text-primary font-bold'
                         : 'text-foreground hover:text-primary'
                     }`}
@@ -92,7 +97,7 @@ const Header = () => {
             <Link href="/profile" className="flex items-center">
               <Button variant="ghost" size="icon" className="rounded-full">
                 <img
-                  src={user?.avatarUrl}
+                  src={user?.avatar_url}
                   alt={user?.name}
                   className="w-8 h-8 rounded-full object-cover"
                 />
@@ -133,7 +138,7 @@ const Header = () => {
                 key={link.path}
                 href={link.path}
                 className={`px-4 py-3 rounded-md text-base font-medium transition-colors ${
-                  pathname === link.path
+                  link.path === '/'
                     ? 'bg-primary/10 text-primary font-bold'
                     : 'text-foreground hover:bg-accent hover:text-accent-foreground'
                 }`}
@@ -145,7 +150,7 @@ const Header = () => {
           </nav>
         </motion.div>
       )}
-    </header>
+    </motion.header>
   );
 };
 

@@ -151,15 +151,22 @@ const SocialFeed = () => {
         const response = await fetch('/api/posts?limit=6');
         
         if (!response.ok) {
-          throw new Error(`Error fetching posts: ${response.status}`);
+          console.log('Using mock data due to API error');
+          setPosts(MOCK_POSTS);
+          setPagination({
+            total: MOCK_POSTS.length,
+            page: 1,
+            limit: 6,
+            pages: 1
+          });
+          return;
         }
         
         const data: PostsResponse = await response.json();
         setPosts(data.posts);
         setPagination(data.pagination);
       } catch (err) {
-        console.error('Failed to fetch posts:', err);
-        // Use mock data instead of showing an error
+        console.log('Using mock data due to fetch error');
         setPosts(MOCK_POSTS);
         setPagination({
           total: MOCK_POSTS.length,
@@ -167,7 +174,6 @@ const SocialFeed = () => {
           limit: 6,
           pages: 1
         });
-        // Don't set error state so we don't show the error UI
       } finally {
         setIsLoading(false);
       }
@@ -239,19 +245,6 @@ const SocialFeed = () => {
               <div key={index} className="h-64 bg-gray-200 animate-pulse rounded-lg"></div>
             ))}
           </div>
-        </div>
-      </section>
-    );
-  }
-
-  // Error state
-  if (error) {
-    return (
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Oops!</h2>
-          <p className="text-muted-foreground mb-6">{error}</p>
-          <Button onClick={() => window.location.reload()}>Try Again</Button>
         </div>
       </section>
     );
