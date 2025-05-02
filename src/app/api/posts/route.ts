@@ -1,6 +1,9 @@
 import { supabase } from '@/lib/supabase';
 import { NextResponse } from 'next/server';
 
+// Add this to make the route dynamic and not try to statically generate it
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);

@@ -8,7 +8,7 @@ import { MapPin, Star, Globe, ArrowLeft, Share2, Phone, Clock, MessageCircle } f
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import useStore from '@/store/useStore';
-import { Studio, Artist, TattooStyle } from '@/store/useStore';
+import { Studio, Artist, TattooStyle } from '@/types';
 import { motion } from 'framer-motion';
 
 const StudioDetailPage = () => {
@@ -20,25 +20,20 @@ const StudioDetailPage = () => {
   const [studioStyles, setStudioStyles] = useState<TattooStyle[]>([]);
 
   useEffect(() => {
-    if (params.id) {
-      const studioId = parseInt(params.id as string);
-      const foundStudio = studios.find(s => s.id === studioId);
-      
+    if (params.id && studios.length > 0) {
+      const foundStudio = studios.find(s => s.id === Number(params.id));
       if (foundStudio) {
         setStudio(foundStudio);
         
-        // Find artists working at this studio
-        const foundArtists = artists.filter(a => a.studioId === studioId);
-        setStudioArtists(foundArtists);
+        // Find artists who work at this studio
+        const relatedArtists = artists.filter(artist => artist.studio_id === foundStudio.id);
+        setStudioArtists(relatedArtists);
         
-        // Find all unique styles offered by the studio's artists
-        const styleIds = new Set<number>();
-        foundArtists.forEach(artist => {
-          artist.styles.forEach(styleId => styleIds.add(styleId));
-        });
-        
-        const foundStyles = styles.filter(s => Array.from(styleIds).includes(s.id));
-        setStudioStyles(foundStyles);
+        // Find styles associated with this studio
+        const stylesInStudio = styles.filter(style => 
+          foundStudio.styles.includes(style.id)
+        );
+        setStudioStyles(stylesInStudio);
       }
     }
   }, [params.id, studios, artists, styles]);
@@ -71,13 +66,12 @@ const StudioDetailPage = () => {
 
       {/* Studio Header */}
       <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden mb-8">
-        <Image
-          src={studio.imageUrl}
+        <Image 
+          src={studio.profile_image_url || '/images/placeholder-studio.jpg'} 
           alt={studio.name}
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
+          width={800}
+          height={400}
+          className="w-full h-[400px] object-cover rounded-lg"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="absolute bottom-0 left-0 p-6 w-full">
@@ -135,14 +129,14 @@ const StudioDetailPage = () => {
           </div>
           <div>
             <h3 className="font-medium">Online</h3>
-            <a 
-              href={studio.website} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
-            >
-              Visit Website
-            </a>
+            {studio.contact_info?.website && (
+              <Link href={studio.contact_info.website} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" className="flex items-center gap-2">
+                  <Globe size={16} />
+                  Website
+                </Button>
+              </Link>
+            )}
             <p className="text-sm text-muted-foreground">@{studio.name.toLowerCase().replace(/\s+/g, '')}</p>
           </div>
         </div>
@@ -194,12 +188,12 @@ const StudioDetailPage = () => {
                   >
                     <div className="bg-card rounded-lg overflow-hidden border shadow-sm group-hover:shadow-md transition-all duration-300">
                       <div className="relative h-64 overflow-hidden">
-                        <Image
-                          src={artist.avatarUrl}
+                        <Image 
+                          src={artist.avatar_url || '/images/placeholder-artist.jpg'} 
                           alt={artist.name}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          width={60}
+                          height={60}
+                          className="w-12 h-12 rounded-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                         <div className="absolute bottom-0 left-0 p-4 w-full">
@@ -266,12 +260,12 @@ const StudioDetailPage = () => {
                 return (
                   <div key={style.id} className="bg-card rounded-lg overflow-hidden border shadow-sm hover:shadow-md transition-all duration-300">
                     <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={style.imageUrl}
+                      <Image 
+                        src={style.imageUrl || '/images/placeholder-style.jpg'} 
                         alt={style.name}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        width={300}
+                        height={200}
+                        className="w-full h-48 object-cover rounded-t-lg"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                       <div className="absolute bottom-0 left-0 p-4 w-full">
@@ -291,12 +285,12 @@ const StudioDetailPage = () => {
                             className="flex items-center bg-muted/30 hover:bg-muted/50 px-2 py-1 rounded-full text-xs transition-colors"
                           >
                             <div className="relative w-4 h-4 rounded-full overflow-hidden mr-1">
-                              <Image
-                                src={artist.avatarUrl}
+                              <Image 
+                                src={artist.avatar_url || '/images/placeholder-artist.jpg'} 
                                 alt={artist.name}
-                                fill
-                                className="object-cover"
-                                sizes="16px"
+                                width={60}
+                                height={60}
+                                className="w-12 h-12 rounded-full object-cover"
                               />
                             </div>
                             {artist.name}

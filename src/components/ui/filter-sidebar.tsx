@@ -154,8 +154,8 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ type, className = '' }) =
                     <input
                       type="checkbox"
                       id={`style-${style.id}`}
-                      checked={selectedStyles.includes(style.id)}
-                      onChange={() => toggleStyleFilter(style.id)}
+                      checked={selectedStyles.includes(Number(style.id))}
+                      onChange={() => toggleStyleFilter(Number(style.id))}
                       className="mr-2 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                     />
                     <label
@@ -200,19 +200,23 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ type, className = '' }) =
                     <input
                       type="checkbox"
                       id={`tribe-${tribe.id}`}
-                      checked={selectedTribes.includes(tribe.id)}
-                      onChange={() => toggleTribeFilter(tribe.id)}
+                      checked={selectedTribes.includes(Number(tribe.id))}
+                      onChange={() => toggleTribeFilter(Number(tribe.id))}
                       className="mr-2 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                     />
                     <label
                       htmlFor={`tribe-${tribe.id}`}
                       className="text-sm cursor-pointer flex items-center"
                     >
-                      <img
-                        src={tribe.iconUrl}
-                        alt={tribe.name}
-                        className="w-4 h-4 mr-1"
-                      />
+                      <div className="w-6 h-6 mr-2 flex-shrink-0 rounded-full overflow-hidden bg-gray-100">
+                        {tribe.icon_url && (
+                          <img 
+                            src={tribe.icon_url} 
+                            alt={tribe.name} 
+                            className="w-full h-full object-cover"
+                          />
+                        )}
+                      </div>
                       {tribe.name}
                     </label>
                   </div>
@@ -225,11 +229,11 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ type, className = '' }) =
 
       {/* Active Filters */}
       {(selectedStyles.length > 0 || selectedTribes.length > 0 || locationFilter) && (
-        <div className="mt-6 pt-4 border-t">
-          <h4 className="font-medium mb-2">Active Filters</h4>
+        <div className="mt-4">
+          <div className="text-sm font-medium mb-2">Active Filters:</div>
           <div className="flex flex-wrap gap-2">
             {selectedStyles.map((styleId) => {
-              const style = styles.find((s) => s.id === styleId);
+              const style = styles.find((s) => Number(s.id) === styleId);
               return (
                 <div
                   key={`active-style-${styleId}`}
@@ -237,14 +241,14 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ type, className = '' }) =
                 >
                   {style?.name}
                   <X
-                    className="h-3 w-3 ml-1 cursor-pointer"
+                    className="ml-1 h-3 w-3 cursor-pointer"
                     onClick={() => toggleStyleFilter(styleId)}
                   />
                 </div>
               );
             })}
             {selectedTribes.map((tribeId) => {
-              const tribe = tribes.find((t) => t.id === tribeId);
+              const tribe = tribes.find((t) => Number(t.id) === tribeId);
               return (
                 <div
                   key={`active-tribe-${tribeId}`}
@@ -252,7 +256,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ type, className = '' }) =
                 >
                   {tribe?.name}
                   <X
-                    className="h-3 w-3 ml-1 cursor-pointer"
+                    className="ml-1 h-3 w-3 cursor-pointer"
                     onClick={() => toggleTribeFilter(tribeId)}
                   />
                 </div>

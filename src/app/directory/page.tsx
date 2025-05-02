@@ -27,13 +27,13 @@ const DirectoryPage = () => {
   // Filter artists based on selected filters
   const filteredArtists = artists.filter(artist => {
     // Filter by style
-    if (selectedStyles.length > 0 && !artist.styles.some(styleId => selectedStyles.includes(styleId))) {
+    if (selectedStyles.length > 0 && !artist.styles.some(styleId => selectedStyles.includes(Number(styleId)))) {
       return false;
     }
     
     // Filter by location (studio's city)
     if (locationFilter) {
-      const artistStudio = studios.find(studio => studio.id === artist.studioId);
+      const artistStudio = studios.find(studio => studio.id === artist.studio_id);
       if (!artistStudio || !artistStudio.city.toLowerCase().includes(locationFilter.toLowerCase())) {
         return false;
       }
@@ -51,9 +51,9 @@ const DirectoryPage = () => {
     
     // Filter by style (if any artist in the studio has the selected style)
     if (selectedStyles.length > 0) {
-      const studioArtists = artists.filter(artist => artist.studioId === studio.id);
+      const studioArtists = artists.filter(artist => artist.studio_id === studio.id);
       const hasMatchingStyle = studioArtists.some(artist => 
-        artist.styles.some(styleId => selectedStyles.includes(styleId))
+        artist.styles.some(styleId => selectedStyles.includes(Number(styleId)))
       );
       
       if (!hasMatchingStyle) {
@@ -174,14 +174,17 @@ const DirectoryPage = () => {
                 </div>
               ) : (
                 <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-                  {filteredArtists.map((artist) => (
-                    <ArtistCard
-                      key={artist.id}
-                      artist={artist}
-                      studio={studios.find((studio) => studio.id === artist.studioId)}
-                      styles={styles}
-                    />
-                  ))}
+                  {filteredArtists.map(artist => {
+                    const artistStudio = studios.find(studio => studio.id === artist.studio_id);
+                    return (
+                      <ArtistCard
+                        key={artist.id}
+                        artist={artist}
+                        studio={artistStudio}
+                        styles={styles}
+                      />
+                    );
+                  })}
                 </div>
               )}
             </TabsContent>
@@ -197,12 +200,12 @@ const DirectoryPage = () => {
                 </div>
               ) : (
                 <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
-                  {filteredStudios.map((studio) => (
+                  {filteredStudios.map(studio => (
                     <StudioCard
                       key={studio.id}
                       studio={studio}
                       artists={artists.filter(
-                        (artist) => artist.studioId === studio.id
+                        artist => artist.studio_id === studio.id
                       )}
                     />
                   ))}

@@ -130,7 +130,7 @@ export default function ArtistsSection() {
   const [newArtist, setNewArtist] = useState({
     name: "",
     role: "",
-    specialties: [],
+    specialties: [] as string[],
     bio: "",
     contact_info: {
       email: "",
@@ -171,7 +171,7 @@ export default function ArtistsSection() {
     setNewArtist({
       name: "",
       role: "",
-      specialties: [],
+      specialties: [] as string[],
       bio: "",
       contact_info: {
         email: "",

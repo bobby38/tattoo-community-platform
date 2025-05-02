@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { MapPin, Star, Globe, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Studio, Artist } from '@/store/useStore';
+import { Studio, Artist } from '@/types';
 
 interface StudioCardProps {
   studio: Studio;
@@ -15,7 +15,7 @@ interface StudioCardProps {
 
 const StudioCard: React.FC<StudioCardProps> = ({ studio, artists }) => {
   // Find artists working at this studio
-  const studioArtists = artists.filter(artist => artist.studioId === studio.id);
+  const studioArtists = artists.filter(artist => artist.studio_id === studio.id);
 
   return (
     <motion.div
@@ -23,13 +23,13 @@ const StudioCard: React.FC<StudioCardProps> = ({ studio, artists }) => {
       className="bg-card rounded-lg overflow-hidden border shadow-sm hover:shadow-md transition-all duration-300"
     >
       <Link href={`/directory/studios/${studio.id}`}>
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-48 overflow-hidden rounded-t-lg">
           <Image
-            src={studio.imageUrl}
+            src={studio.profile_image_url || '/images/placeholder-studio.jpg'}
             alt={studio.name}
-            fill
-            className="object-cover transition-transform duration-500 hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            width={400}
+            height={200}
+            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
           <div className="absolute bottom-0 left-0 p-4 w-full">
@@ -65,18 +65,18 @@ const StudioCard: React.FC<StudioCardProps> = ({ studio, artists }) => {
             <h4 className="text-sm font-medium mb-2">Featured Artists:</h4>
             <div className="flex -space-x-2">
               {studioArtists.slice(0, 4).map(artist => (
-                <div key={artist.id} className="relative h-8 w-8 rounded-full overflow-hidden border-2 border-background">
+                <div key={artist.id} className="relative w-6 h-6 rounded-full overflow-hidden mr-1 border-2 border-background">
                   <Image
-                    src={artist.avatarUrl}
+                    src={artist.avatar_url || '/images/placeholder-artist.jpg'}
                     alt={artist.name}
-                    fill
-                    className="object-cover"
-                    sizes="32px"
+                    width={24}
+                    height={24}
+                    className="w-full h-full object-cover"
                   />
                 </div>
               ))}
               {studioArtists.length > 4 && (
-                <div className="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-medium border-2 border-background">
+                <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-medium border-2 border-background">
                   +{studioArtists.length - 4}
                 </div>
               )}
@@ -86,15 +86,17 @@ const StudioCard: React.FC<StudioCardProps> = ({ studio, artists }) => {
         
         <div className="flex items-center justify-between">
           <div className="flex items-center text-sm text-muted-foreground">
-            <Globe className="h-4 w-4 mr-1" />
-            <a 
-              href={studio.website} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-            >
-              Visit Website
-            </a>
+            {studio.contact_info?.website && (
+              <a 
+                href={studio.contact_info.website} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-sm text-primary hover:underline flex items-center"
+              >
+                <Globe className="h-3 w-3 mr-1" />
+                Website
+              </a>
+            )}
           </div>
         </div>
       </div>

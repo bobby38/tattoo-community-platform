@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+// Add this to make the route dynamic and not try to statically generate it
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
   console.log('GET /api/styles received'); 
   try {

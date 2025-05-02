@@ -2,73 +2,97 @@ import { TattooStyle, Tribe, Artist, Studio, User, Review, RatingInfo, Post, Eve
 
 export const mockStyles: TattooStyle[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Traditional',
     slug: 'traditional',
     description: 'Bold lines, vibrant colors, and iconic imagery like roses, anchors, and eagles.',
-    imageUrl: 'https://cdn.pixabay.com/photo/2017/08/03/13/30/people-2576336_1280.jpg'
+    imageUrl: 'https://cdn.pixabay.com/photo/2017/08/03/13/30/people-2576336_1280.jpg',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
-    id: 2,
+    id: '2',
     name: 'Neo-Traditional',
     slug: 'neo-traditional',
     description: 'An evolution of traditional style with a broader color palette and more detailed designs.',
-    imageUrl: 'https://cdn.pixabay.com/photo/2019/06/08/11/30/people-4259948_1280.jpg'
+    imageUrl: 'https://cdn.pixabay.com/photo/2019/06/08/11/30/people-4259948_1280.jpg',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
-    id: 3,
+    id: '3',
     name: 'Realism',
     slug: 'realism',
     description: 'Photorealistic images that look like photographs on skin.',
-    imageUrl: 'https://cdn.pixabay.com/photo/2018/05/11/08/11/tattoo-3389690_1280.jpg'
+    imageUrl: 'https://cdn.pixabay.com/photo/2017/11/14/13/06/tattoo-2948258_1280.jpg',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
-    id: 4,
+    id: '4',
     name: 'Watercolor',
     slug: 'watercolor',
     description: 'Vibrant, fluid designs that mimic watercolor painting techniques.',
-    imageUrl: 'https://cdn.pixabay.com/photo/2019/06/12/15/07/cat-4269479_1280.jpg'
+    imageUrl: 'https://cdn.pixabay.com/photo/2019/06/12/15/07/cat-4269479_1280.jpg',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
-    id: 5,
+    id: '5',
     name: 'Blackwork',
     slug: 'blackwork',
     description: 'Bold designs using only black ink, often featuring geometric patterns.',
-    imageUrl: 'https://cdn.pixabay.com/photo/2016/03/27/17/42/man-1283235_1280.jpg'
+    imageUrl: 'https://cdn.pixabay.com/photo/2016/03/27/17/42/man-1283235_1280.jpg',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
-    id: 6,
+    id: '6',
     name: 'Japanese',
     slug: 'japanese',
     description: 'Traditional Japanese motifs like koi fish, dragons, and cherry blossoms.',
-    imageUrl: 'https://cdn.pixabay.com/photo/2020/03/28/16/05/japanese-4977442_1280.jpg'
+    imageUrl: 'https://cdn.pixabay.com/photo/2020/03/28/16/05/japanese-4977442_1280.jpg',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   }
 ];
 
 export const mockTribes: Tribe[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Traditional Enthusiasts',
     slug: 'traditional-enthusiasts',
-    description: 'For lovers of bold lines and timeless designs that never go out of style.'
+    description: 'For lovers of bold lines and timeless designs that never go out of style.',
+    icon_url: '/images/tribes/traditional-enthusiasts.png',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
-    id: 2,
+    id: '2',
     name: 'Polynesian Collective',
     slug: 'polynesian-collective',
-    description: 'Celebrating the rich heritage of Polynesian tattoo traditions and patterns.'
+    description: 'Celebrating the rich heritage of Polynesian tattoo traditions and patterns.',
+    icon_url: '/images/tribes/polynesian-collective.png',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
-    id: 3,
+    id: '3',
     name: 'Minimalist Ink',
     slug: 'minimalist-ink',
-    description: 'Less is more - simple, clean designs with powerful impact.'
+    description: 'Less is more - simple, clean designs with powerful impact.',
+    icon_url: '/images/tribes/minimalist-ink.png',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
-    id: 4,
+    id: '4',
     name: 'Color Explosion',
     slug: 'color-explosion',
-    description: 'Vibrant, colorful tattoos that make a bold statement.'
+    description: 'Vibrant, colorful tattoos that make a bold statement.',
+    icon_url: '/images/tribes/color-explosion.png',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   }
 ];
 

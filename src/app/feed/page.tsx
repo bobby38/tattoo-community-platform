@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { 
@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Skeleton } from '@/components/ui/skeleton';
 import { supabase } from '@/lib/supabase';
 
 // Define types for our post data
@@ -73,7 +74,23 @@ interface Tribe {
   slug: string;
 }
 
-export default function FeedPage() {
+// Loading component for Suspense
+const FeedLoading = () => (
+  <div className="container mx-auto py-8">
+    <div className="flex justify-between items-center mb-6">
+      <Skeleton className="h-8 w-48" />
+      <Skeleton className="h-10 w-32" />
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[1, 2, 3, 4, 5, 6].map((i) => (
+        <Skeleton key={i} className="h-80 w-full rounded-lg" />
+      ))}
+    </div>
+  </div>
+);
+
+// Main feed component
+const FeedContent = () => {
   const searchParams = useSearchParams();
   const [posts, setPosts] = useState<Post[]>([]);
   const [pagination, setPagination] = useState<PaginationData | null>(null);
@@ -479,5 +496,13 @@ export default function FeedPage() {
         </div>
       )}
     </div>
+  );
+};
+
+export default function FeedPage() {
+  return (
+    <Suspense fallback={<FeedLoading />}>
+      <FeedContent />
+    </Suspense>
   );
 }
