@@ -25,10 +25,10 @@ A modern tattoo community platform built with Next.js, Tailwind CSS, and TypeScr
 
 1. Clone the repository
 2. Install dependencies: `npm install`
-3. Set up environment variables:
+3. Set up environment variables in a `.env.local` file:
    ```
-   NEXT_PUBLIC_SUPABASE_URL=https://nwopjuetkrnzcgrcdxvb.supabase.co
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53b3BqdWV0a3JuemNncmNkeHZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYxMDkzNDYsImV4cCI6MjA2MTY4NTM0Nn0.8RBs-SMdydrb3WN7B1oXHT9nlLDHGnF5jeDWMAO3n-0
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
 4. Run the development server: `npm run dev`
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
