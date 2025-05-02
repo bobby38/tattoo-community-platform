@@ -103,6 +103,16 @@ const Footer = () => {
                   Terms & Conditions
                 </Link>
               </li>
+              <li>
+                <Link href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">
+                  User Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link href="/studio-admin" className="text-muted-foreground hover:text-primary transition-colors">
+                  Studio Admin
+                </Link>
+              </li>
             </ul>
           </div>
 

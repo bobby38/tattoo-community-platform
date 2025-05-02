@@ -94,7 +94,7 @@ const Header = () => {
           <ThemeToggle />
 
           {isAuthenticated ? (
-            <Link href="/profile" className="flex items-center">
+            <Link href="/dashboard" className="flex items-center">
               <Button variant="ghost" size="icon" className="rounded-full">
                 <img
                   src={user?.avatar_url}
