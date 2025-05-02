@@ -1,5 +1,6 @@
 [phases.setup]
 nixPkgs = ["nodejs_18"]
+aptPkgs = ["openssl"]
 
 [phases.install]
 cmds = ["npm ci"]
@@ -9,6 +10,7 @@ cmds = ["npm run build"]
 
 [start]
 cmd = "node server.js"
+onlyIncludeFiles = [".next/**", "node_modules/**", "public/**", "package.json", "next.config.mjs", "server.js"]
 
 [variables]
 NODE_ENV = "production"

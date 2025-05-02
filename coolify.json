@@ -1,7 +1,7 @@
 {
   "name": "ink2tattoo",
   "type": "nextjs",
-  "buildPack": "nodejs",
+  "buildPack": "nixpacks",
   "nodeVersion": "18",
   "port": 3000,
   "startCommand": "node server.js",
