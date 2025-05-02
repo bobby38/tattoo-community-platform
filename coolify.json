@@ -1,0 +1,25 @@
+{
+  "name": "ink2tattoo",
+  "type": "nextjs",
+  "buildPack": "nodejs",
+  "nodeVersion": "18",
+  "port": 3000,
+  "startCommand": "node server.js",
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "healthCheckPath": "/",
+  "envVars": [
+    {
+      "name": "DATABASE_URL",
+      "description": "PostgreSQL connection string"
+    },
+    {
+      "name": "NODE_ENV",
+      "value": "production"
+    },
+    {
+      "name": "NEXT_TELEMETRY_DISABLED",
+      "value": "1"
+    }
+  ]
+}
