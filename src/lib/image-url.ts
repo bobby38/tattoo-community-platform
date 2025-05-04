@@ -8,9 +8,6 @@ const OLD_R2_DOMAIN = 'pub-7de639d71ac205cf86c59c89880753fa.r2.dev';
 // Custom domain to use instead
 const CUSTOM_DOMAIN = 'imagetat.getrezult.com';
 
-// Check if we're in production environment
-const isProduction = process.env.NODE_ENV === 'production';
-
 /**
  * Convert any R2 URL to use the custom domain
  * @param url The image URL to transform
@@ -34,8 +31,8 @@ export function getProperImageUrl(url: string | null): string {
     return `https://${CUSTOM_DOMAIN}/${pathAndFilename}`;
   }
   
-  // Handle local paths in production
-  if (isProduction && url.startsWith('/uploads/')) {
+  // Handle local paths - ALWAYS convert to custom domain for consistency
+  if (url.startsWith('/uploads/')) {
     // Extract the path and filename
     const pathParts = url.split('/uploads/');
     if (pathParts.length > 1) {

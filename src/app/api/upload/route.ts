@@ -47,48 +47,35 @@ export async function POST(request: Request) {
   try {
     console.log('Upload request received');
     
-    // Get the form data from the request
+    // Parse the multipart form data
     const formData = await request.formData();
-    console.log('FormData received, entries:', Array.from(formData.entries()).map(([key]) => key));
     
-    const file = formData.get('file') as File | null;
-    const folder = (formData.get('folder') as string) || '';
-
-    // Validate the file
+    // Get the file from the form data
+    const file = formData.get('file') as File;
     if (!file) {
-      console.error('No file provided in form data');
-      return NextResponse.json(
-        { error: 'No file provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
-
-    console.log('File details:', { 
-      name: file.name, 
-      type: file.type, 
-      size: file.size,
-      folder
-    });
-
+    
     // Check file size
     if (file.size > MAX_FILE_SIZE) {
-      console.error('File size exceeds limit', { size: file.size, limit: MAX_FILE_SIZE });
-      return NextResponse.json(
-        { error: 'File size exceeds the 5MB limit' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'File size exceeds the maximum limit (5MB)' }, { status: 400 });
     }
-
-    // Check file type (optional - adjust as needed)
+    
+    // Check file type
+    const fileType = file.type;
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    if (!allowedTypes.includes(file.type)) {
-      console.error('File type not allowed', { type: file.type, allowed: allowedTypes });
-      return NextResponse.json(
-        { error: 'File type not allowed. Only JPEG, PNG, and WEBP are supported.' },
-        { status: 400 }
-      );
+    if (!allowedTypes.includes(fileType)) {
+      return NextResponse.json({ error: 'File type not supported' }, { status: 400 });
     }
-
+    
+    // Get other form data
+    const title = formData.get('title') as string;
+    const description = formData.get('description') as string || '';
+    const folder = formData.get('folder') as string || '';
+    const style = formData.get('style') as string || '';
+    const tagsString = formData.get('tags') as string || '';
+    const tags = tagsString ? tagsString.split(',') : [];
+    
     // Generate a unique filename
     const fileExtension = file.name.split('.').pop() || 'jpg';
     const uniqueFilename = `${uuidv4()}.${fileExtension}`;
@@ -110,40 +97,59 @@ export async function POST(request: Request) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     
+    // File URL to be saved in the database
+    let fileUrl = '';
+    let r2Error = null;
+    
+    // In production, always try R2 first and don't fall back to local storage
+    // In development, try R2 first but fall back to local storage if R2 fails
+    const isProd = process.env.NODE_ENV === 'production';
+    
     try {
-      // Upload to R2 storage
-      const fileUrl = await uploadToR2(buffer, storagePath, file.type);
-      console.log('File uploaded successfully, URL:', fileUrl);
+      // Always try to upload to R2 first
+      const r2Result = await uploadToR2(buffer, storagePath, fileType);
+      // The uploadToR2 function returns a string, not an object with url property
+      fileUrl = r2Result;
+      console.log('Successfully uploaded to R2:', fileUrl);
+    } catch (err) {
+      r2Error = err;
+      console.error('Failed to upload to R2:', err);
       
-      // Extract additional metadata from the form
-      const title = formData.get('title') as string || 'Untitled';
-      const artist = formData.get('artist') as string || '';
-      const style = formData.get('style') as string || '';
-      const tags = formData.get('tags') as string || '';
-      
-      console.log('Metadata received:', { title, artist, style, tags });
-      
-      // Save metadata to database if needed
-      // This is where you would save the file metadata to your database
-      
-      return NextResponse.json({
-        success: true,
-        url: fileUrl,
-        filename: uniqueFilename,
-        metadata: {
-          title,
-          artist,
-          style,
-          tags: tags.split(',').map(tag => tag.trim()).filter(Boolean)
-        }
-      });
-    } catch (saveError: any) {
-      console.error('Error uploading file:', saveError);
-      return NextResponse.json(
-        { error: `Failed to upload file: ${saveError.message}` },
-        { status: 500 }
-      );
+      // Only fall back to local storage in development
+      if (!isProd) {
+        // Save to local storage as fallback in development only
+        const localFilePath = path.join(uploadDir, uniqueFilename);
+        fs.writeFileSync(localFilePath, buffer);
+        fileUrl = `${PUBLIC_URL}/${cleanFolder ? cleanFolder + '/' : ''}${uniqueFilename}`;
+        console.log('Saved to local storage:', localFilePath);
+      } else {
+        // In production, if R2 fails, return an error
+        return NextResponse.json({ 
+          error: 'Failed to upload to R2 storage',
+          details: r2Error
+        }, { status: 500 });
+      }
     }
+    
+    // Extract additional metadata from the form
+    const artist = formData.get('artist') as string || '';
+    
+    console.log('Metadata received:', { title, artist, style, tags });
+    
+    // Save metadata to database if needed
+    // This is where you would save the file metadata to your database
+    
+    return NextResponse.json({
+      success: true,
+      url: fileUrl,
+      filename: uniqueFilename,
+      metadata: {
+        title,
+        artist,
+        style,
+        tags: tags.map(tag => tag.trim()).filter(Boolean)
+      }
+    });
   } catch (error: any) {
     console.error('Upload error:', error);
     return NextResponse.json(
