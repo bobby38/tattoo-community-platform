@@ -5,8 +5,8 @@
   "nodeVersion": "18",
   "port": 3000,
   "startCommand": "node server.js",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
+  "buildCommand": "npm ci && npm run build",
+  "installCommand": "npm ci",
   "healthCheckPath": "/",
   "envVars": [
     {
@@ -40,6 +40,10 @@
     {
       "name": "R2_PUBLIC_URL",
       "value": "https://imagetat.getrezult.com"
+    },
+    {
+      "name": "NPM_CONFIG_PRODUCTION",
+      "value": "false"
     }
   ],
   "persistentStorage": [
