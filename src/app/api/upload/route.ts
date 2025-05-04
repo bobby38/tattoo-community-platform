@@ -14,6 +14,9 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const UPLOADS_DIR = path.join(process.cwd(), 'public', 'uploads');
 const PUBLIC_URL = '/uploads';
 
+// Allowed file types
+const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+
 // Helper function to ensure a directory exists
 function ensureDirExists(dirPath: string): string {
   if (!fs.existsSync(dirPath)) {
@@ -26,6 +29,28 @@ function ensureDirExists(dirPath: string): string {
     }
   }
   return dirPath;
+}
+
+// Helper function to sanitize a string
+function sanitizeString(input: string | null | undefined): string {
+  if (!input) return '';
+  
+  // Remove any HTML tags
+  const withoutTags = input.replace(/<[^>]*>/g, '');
+  
+  // Trim whitespace
+  return withoutTags.trim();
+}
+
+// Helper function to validate and sanitize tags
+function sanitizeTags(tagsInput: string): string[] {
+  if (!tagsInput) return [];
+  
+  // Split by comma, trim whitespace, remove empty tags
+  return tagsInput
+    .split(',')
+    .map(tag => sanitizeString(tag))
+    .filter(Boolean);
 }
 
 // Ensure uploads directory exists for fallback
@@ -66,6 +91,13 @@ export async function POST(request: Request) {
       size: file.size 
     });
     
+    // Validate file name
+    const fileName = file.name;
+    if (!/^[a-zA-Z0-9_\-. ]+\.(jpg|jpeg|png|webp)$/i.test(fileName)) {
+      console.error(' [API] Invalid file name:', fileName);
+      return NextResponse.json({ error: 'Invalid file name' }, { status: 400 });
+    }
+    
     // Check file size
     if (file.size > MAX_FILE_SIZE) {
       console.error(' [API] File size exceeds limit', { size: file.size, limit: MAX_FILE_SIZE });
@@ -74,21 +106,34 @@ export async function POST(request: Request) {
     
     // Check file type
     const fileType = file.type;
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    if (!allowedTypes.includes(fileType)) {
-      console.error(' [API] File type not allowed', { type: fileType, allowed: allowedTypes });
+    if (!ALLOWED_FILE_TYPES.includes(fileType)) {
+      console.error(' [API] File type not allowed', { type: fileType, allowed: ALLOWED_FILE_TYPES });
       return NextResponse.json({ error: 'File type not supported' }, { status: 400 });
     }
     
-    // Get other form data
-    const title = formData.get('title') as string;
-    const description = formData.get('description') as string || '';
-    const folder = formData.get('folder') as string || '';
-    const style = formData.get('style') as string || '';
-    const tagsString = formData.get('tags') as string || '';
-    const tags = tagsString ? tagsString.split(',') : [];
+    // Get and sanitize other form data
+    const title = sanitizeString(formData.get('title') as string);
+    if (!title) {
+      console.error(' [API] Title is required');
+      return NextResponse.json({ error: 'Title is required' }, { status: 400 });
+    }
     
-    console.log(' [API] Metadata:', { title, description, folder, style, tags });
+    const description = sanitizeString(formData.get('description') as string) || '';
+    const folder = sanitizeString(formData.get('folder') as string) || '';
+    const style = sanitizeString(formData.get('style') as string) || '';
+    const artist = sanitizeString(formData.get('artist') as string) || '';
+    
+    // Validate folder (only allow certain folders)
+    if (folder && !['gallery', 'profile', 'posts'].includes(folder)) {
+      console.error(' [API] Invalid folder:', folder);
+      return NextResponse.json({ error: 'Invalid folder' }, { status: 400 });
+    }
+    
+    // Sanitize and validate tags
+    const tagsString = formData.get('tags') as string || '';
+    const tags = sanitizeTags(tagsString);
+    
+    console.log(' [API] Sanitized metadata:', { title, description, folder, style, tags, artist });
     
     // Generate a unique filename
     const fileExtension = file.name.split('.').pop() || 'jpg';
@@ -159,14 +204,7 @@ export async function POST(request: Request) {
       }
     }
     
-    // Extract additional metadata from the form
-    const artist = formData.get('artist') as string || '';
-    
-    console.log(' [API] Preparing response with file URL:', fileUrl);
-    
-    // Save metadata to database if needed
-    // This is where you would save the file metadata to your database
-    
+    // Return the response with sanitized data
     return NextResponse.json({
       success: true,
       url: fileUrl,
@@ -175,7 +213,7 @@ export async function POST(request: Request) {
         title,
         artist,
         style,
-        tags: tags.map(tag => tag.trim()).filter(Boolean)
+        tags
       }
     });
   } catch (error: any) {
