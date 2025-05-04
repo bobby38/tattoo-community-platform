@@ -97,11 +97,17 @@ export async function GET() {
       
       // Transform the data to match the expected format in the gallery component
       const galleryItems = result.rows.map((post: any) => {
-        // Handle R2 URLs that might not be publicly accessible
+        // Use the image URL as is - we're now using the custom domain
         let imageUrl = post.image_url;
         
-        // If it's an R2 URL and not accessible, fall back to local URL if available
-        if (imageUrl && imageUrl.includes('r2.dev') && !imageUrl.startsWith('/')) {
+        // Only fall back to local URL if the image URL is from the old R2 domain
+        // and not from our custom domain or local path
+        if (
+          imageUrl && 
+          imageUrl.includes('r2.dev') && 
+          !imageUrl.includes('imagetat.getrezult.com') && 
+          !imageUrl.startsWith('/')
+        ) {
           // Extract the filename from the R2 URL
           const parts = imageUrl.split('/');
           const filename = parts[parts.length - 1];
