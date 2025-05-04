@@ -97,25 +97,28 @@ export async function GET() {
       
       // Transform the data to match the expected format in the gallery component
       const galleryItems = result.rows.map((post: any) => {
-        // Use the image URL as is - we're now using the custom domain
+        // Get the image URL from the post
         let imageUrl = post.image_url;
         
-        // Only fall back to local URL if the image URL is from the old R2 domain
-        // and not from our custom domain or local path
-        if (
-          imageUrl && 
-          imageUrl.includes('r2.dev') && 
-          !imageUrl.includes('imagetat.getrezult.com') && 
-          !imageUrl.startsWith('/')
-        ) {
-          // Extract the filename from the R2 URL
-          const parts = imageUrl.split('/');
-          const filename = parts[parts.length - 1];
+        // Convert old R2 URLs to the new custom domain format
+        if (imageUrl && imageUrl.includes('r2.dev')) {
+          // Extract the path and filename from the R2 URL
+          const urlParts = imageUrl.split('/');
+          // The path is everything after the domain part (which is at index 2)
+          const pathAndFilename = urlParts.slice(3).join('/');
           
-          // Create a fallback local URL
-          const localUrl = `/uploads/gallery/${filename}`;
-          console.log(`Falling back from R2 URL ${imageUrl} to local URL ${localUrl}`);
-          imageUrl = localUrl;
+          // Create the new URL with the custom domain
+          const customDomain = process.env.R2_PUBLIC_URL || 'https://imagetat.getrezult.com';
+          const formattedDomain = customDomain.endsWith('/') ? customDomain.slice(0, -1) : customDomain;
+          imageUrl = `${formattedDomain}/${pathAndFilename}`;
+          
+          console.log(`Converted R2 URL: ${post.image_url} -> ${imageUrl}`);
+        }
+        // Fall back to local URL if image URL is not accessible
+        else if (!imageUrl || (!imageUrl.startsWith('/') && !imageUrl.startsWith('http'))) {
+          const filename = imageUrl ? imageUrl.split('/').pop() : 'unknown.jpg';
+          imageUrl = `/uploads/gallery/${filename}`;
+          console.log(`Using local fallback URL: ${imageUrl}`);
         }
         
         return {

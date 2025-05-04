@@ -222,7 +222,9 @@ export function UploadDialog({ open, onOpenChange, onUpload }: UploadDialogProps
     }
   };
 
-  const handleDropZoneClick = () => {
+  const handleDropZoneClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
@@ -264,6 +266,7 @@ export function UploadDialog({ open, onOpenChange, onUpload }: UploadDialogProps
                 className="hidden"
                 accept="image/jpeg,image/png,image/webp"
                 onChange={handleFileChange}
+                id="file-upload"
               />
               
               {previewUrl ? (
