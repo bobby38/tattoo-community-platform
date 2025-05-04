@@ -101,21 +101,26 @@ export async function uploadToR2(file: Buffer, fileName: string, contentType: st
  * Delete a file from Cloudflare R2
  */
 export async function deleteFromR2(fileName: string): Promise<void> {
+  if (!process.env.R2_ACCESS_KEY_ID || !process.env.R2_SECRET_ACCESS_KEY || !process.env.R2_ACCOUNT_ID || !process.env.R2_BUCKET) {
+    console.log('R2 credentials not found, falling back to local storage deletion');
+    return deleteFromLocalStorage(fileName);
+  }
+
+  const s3Client = new S3Client({
+    region: 'auto',
+    endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId: process.env.R2_ACCESS_KEY_ID,
+      secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
+    },
+  });
+
   try {
-    // Normalize the file name to prevent double slashes
-    const normalizedFileName = fileName.replace(/\/+/g, '/');
-    
-    // First check if R2 configuration is complete
-    if (!r2Config.accessKeyId || !r2Config.secretAccessKey || !r2Config.accountId || !r2Config.bucket) {
-      console.log('Missing R2 configuration, using local storage instead');
-      return deleteFromLocalStorage(normalizedFileName);
-    }
-    
-    console.log(`Deleting from R2: ${normalizedFileName}`);
-    
-    // Create the delete command
+    // Normalize the file name to ensure consistent path handling
+    const normalizedFileName = fileName.replace(/^\/+/, '');
+
     const command = new DeleteObjectCommand({
-      Bucket: r2Config.bucket,
+      Bucket: process.env.R2_BUCKET,
       Key: normalizedFileName,
     });
 
@@ -133,7 +138,7 @@ export async function deleteFromR2(fileName: string): Promise<void> {
       console.error('Error stack:', error.stack);
     }
     console.log('Falling back to local storage deletion');
-    return deleteFromLocalStorage(normalizedFileName);
+    return deleteFromLocalStorage(fileName);
   }
 }
 
