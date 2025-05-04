@@ -15,6 +15,7 @@ import {
   Bookmark
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
+import { getProperImageUrl } from '@/lib/image-url';
 
 // Mock data for fallback
 const MOCK_POSTS: Post[] = [
@@ -293,7 +294,7 @@ const SocialFeed = () => {
                 {post.image_url && (
                   <div className="relative h-48 overflow-hidden">
                     <img 
-                      src={post.image_url} 
+                      src={getProperImageUrl(post.image_url)} 
                       alt={post.title}
                       className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                     />
