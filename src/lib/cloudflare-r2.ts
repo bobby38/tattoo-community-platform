@@ -42,8 +42,11 @@ try {
  */
 export async function uploadToR2(file: Buffer, fileName: string, contentType: string): Promise<string> {
   try {
+    // Normalize the file name to prevent double slashes
+    const normalizedFileName = fileName.replace(/\/+/g, '/');
+    
     // Always save to local storage first as a fallback
-    const localUrl = await uploadToLocalStorage(file, fileName);
+    const localUrl = await uploadToLocalStorage(file, normalizedFileName);
     console.log('File saved to local storage as fallback:', localUrl);
     
     // Check if R2 configuration is complete
@@ -52,13 +55,13 @@ export async function uploadToR2(file: Buffer, fileName: string, contentType: st
       return localUrl;
     }
     
-    console.log(`Uploading to R2: ${fileName}, type: ${contentType}, size: ${file.length} bytes`);
+    console.log(`Uploading to R2: ${normalizedFileName}, type: ${contentType}, size: ${file.length} bytes`);
     console.log(`Using bucket: ${r2Config.bucket}`);
     
     // Create the upload command
     const command = new PutObjectCommand({
       Bucket: r2Config.bucket,
-      Key: fileName,
+      Key: normalizedFileName,
       Body: file,
       ContentType: contentType,
     });
@@ -69,7 +72,10 @@ export async function uploadToR2(file: Buffer, fileName: string, contentType: st
     console.log('S3 upload result:', result);
     
     // Return the public URL
-    const fileUrl = `${r2Config.publicUrl}/${fileName}`;
+    const publicUrl = r2Config.publicUrl.endsWith('/') 
+      ? r2Config.publicUrl.slice(0, -1) 
+      : r2Config.publicUrl;
+    const fileUrl = `${publicUrl}/${normalizedFileName}`;
     console.log('R2 file URL:', fileUrl);
     console.log('Local file URL:', localUrl);
     
@@ -86,7 +92,7 @@ export async function uploadToR2(file: Buffer, fileName: string, contentType: st
     console.log('Using local storage URL instead');
     
     // Return the local URL that we already saved
-    const localUrl = `${LOCAL_PUBLIC_URL}/${fileName}`;
+    const localUrl = `${LOCAL_PUBLIC_URL}/${normalizedFileName}`;
     return localUrl;
   }
 }
@@ -96,18 +102,21 @@ export async function uploadToR2(file: Buffer, fileName: string, contentType: st
  */
 export async function deleteFromR2(fileName: string): Promise<void> {
   try {
+    // Normalize the file name to prevent double slashes
+    const normalizedFileName = fileName.replace(/\/+/g, '/');
+    
     // First check if R2 configuration is complete
     if (!r2Config.accessKeyId || !r2Config.secretAccessKey || !r2Config.accountId || !r2Config.bucket) {
       console.log('Missing R2 configuration, using local storage instead');
-      return deleteFromLocalStorage(fileName);
+      return deleteFromLocalStorage(normalizedFileName);
     }
     
-    console.log(`Deleting from R2: ${fileName}`);
+    console.log(`Deleting from R2: ${normalizedFileName}`);
     
     // Create the delete command
     const command = new DeleteObjectCommand({
       Bucket: r2Config.bucket,
-      Key: fileName,
+      Key: normalizedFileName,
     });
 
     // Attempt to delete the file
@@ -118,7 +127,7 @@ export async function deleteFromR2(fileName: string): Promise<void> {
     console.log('File deleted successfully from R2');
     
     // Also delete from local storage
-    await deleteFromLocalStorage(fileName);
+    await deleteFromLocalStorage(normalizedFileName);
   } catch (error) {
     console.error('Error deleting from R2:', error);
     if (error instanceof Error) {
@@ -126,7 +135,7 @@ export async function deleteFromR2(fileName: string): Promise<void> {
       console.error('Error stack:', error.stack);
     }
     console.log('Falling back to local storage deletion');
-    return deleteFromLocalStorage(fileName);
+    return deleteFromLocalStorage(normalizedFileName);
   }
 }
 
@@ -169,8 +178,11 @@ async function uploadToLocalStorage(file: Buffer, fileName: string): Promise<str
 
 async function deleteFromLocalStorage(fileName: string): Promise<void> {
   try {
+    // Normalize the file name to prevent double slashes
+    const normalizedFileName = fileName.replace(/\/+/g, '/');
+    
     // Remove the leading slash if present
-    const normalizedPath = fileName.startsWith('/') ? fileName.substring(1) : fileName;
+    const normalizedPath = normalizedFileName.startsWith('/') ? normalizedFileName.substring(1) : normalizedFileName;
     
     // Remove the /uploads prefix if present
     const cleanPath = normalizedPath.startsWith('uploads/') 
