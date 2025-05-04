@@ -36,7 +36,6 @@ export function UploadDialog({ open, onOpenChange, onUpload }: UploadDialogProps
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -59,63 +58,56 @@ export function UploadDialog({ open, onOpenChange, onUpload }: UploadDialogProps
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      
-      // Validate file size (5MB max)
-      if (file.size > 5 * 1024 * 1024) {
-        setError('File size exceeds 5MB limit');
-        return;
-      }
-      
-      // Validate file type
-      if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
-        setError('Only JPEG, PNG, and WEBP files are allowed');
-        return;
-      }
-      
-      setSelectedFile(file);
-      setError(null);
-      
-      // Create preview URL
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
-      }
-      const newPreviewUrl = URL.createObjectURL(file);
-      setPreviewUrl(newPreviewUrl);
-      
-      console.log('File selected:', file.name, file.type, file.size);
+    console.log('File input change event triggered');
+    const files = e.target.files;
+    
+    if (!files || files.length === 0) {
+      console.log('No files selected');
+      return;
+    }
+
+    const file = files[0];
+    console.log('File selected:', file.name, file.type, file.size);
+    
+    // Validate file size (5MB max)
+    if (file.size > 5 * 1024 * 1024) {
+      setError('File size exceeds 5MB limit');
+      return;
+    }
+    
+    // Validate file type
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      setError('Only JPEG, PNG, and WEBP files are allowed');
+      return;
+    }
+    
+    setSelectedFile(file);
+    setError(null);
+    
+    // Create preview URL
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+    const newPreviewUrl = URL.createObjectURL(file);
+    setPreviewUrl(newPreviewUrl);
+  };
+
+  const handleSelectFile = () => {
+    console.log('Select file button clicked');
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
     }
   };
 
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-  
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDragging(false);
-    
-    const files = e.dataTransfer.files;
-    if (files && files.length > 0) {
-      // Manually set the file to the input
-      if (fileInputRef.current) {
-        // Create a new FileList-like object
-        const dataTransfer = new DataTransfer();
-        dataTransfer.items.add(files[0]);
-        
-        // Set the files property
-        fileInputRef.current.files = dataTransfer.files;
-        
-        // Trigger change event manually
-        const event = new Event('change', { bubbles: true });
-        fileInputRef.current.dispatchEvent(event);
-      }
+  const handleClearFile = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+    setPreviewUrl(null);
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
     }
   };
 
@@ -220,18 +212,6 @@ export function UploadDialog({ open, onOpenChange, onUpload }: UploadDialogProps
     }
   };
 
-  const handleClearFile = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (previewUrl) {
-      URL.revokeObjectURL(previewUrl);
-    }
-    setSelectedFile(null);
-    setPreviewUrl(null);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-  };
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md">
@@ -243,139 +223,124 @@ export function UploadDialog({ open, onOpenChange, onUpload }: UploadDialogProps
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="space-y-4 mt-4">
-            <div
-              className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
-                isDragging ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/50'
-              }`}
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-            >
-              {previewUrl ? (
-                <div className="relative w-full h-48 mx-auto">
-                  <img
-                    src={previewUrl}
-                    alt="Preview"
-                    className="w-full h-full object-contain"
-                  />
-                  <button
-                    type="button"
-                    className="absolute top-2 right-2 bg-background/80 p-1 rounded-full"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setPreviewUrl('');
-                      setSelectedFile(null);
-                      if (fileInputRef.current) {
-                        fileInputRef.current.value = '';
-                      }
-                    }}
-                  >
-                    <X className="h-5 w-5" />
-                  </button>
-                </div>
-              ) : (
-                <div className="flex flex-col items-center justify-center">
-                  <Upload className="h-10 w-10 text-muted-foreground mb-2" />
-                  <p className="text-sm font-medium mb-1">
-                    Drag & drop your image here
-                  </p>
-                  <p className="text-xs text-muted-foreground mb-4">
-                    JPEG, PNG or WebP (max. 5MB)
-                  </p>
-                  
-                  {/* Always show a visible button for file selection */}
-                  <Button 
-                    type="button"
-                    variant="secondary"
-                    className="mt-2"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      if (fileInputRef.current) {
-                        fileInputRef.current.click();
-                      }
-                    }}
-                  >
-                    Select File
-                  </Button>
-                </div>
-              )}
+            <div className="grid gap-2">
+              <Label htmlFor="file-upload">Image</Label>
+              <div className="border-2 border-dashed rounded-md p-6 text-center transition-colors hover:border-primary">
+                {previewUrl ? (
+                  <div className="relative w-full h-40">
+                    <img 
+                      src={previewUrl} 
+                      alt="Preview" 
+                      className="w-full h-full object-cover rounded-md"
+                    />
+                    <Button 
+                      variant="destructive" 
+                      size="icon" 
+                      className="absolute top-2 right-2 h-6 w-6"
+                      onClick={handleClearFile}
+                      type="button"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div>
+                    <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                    <p className="text-sm text-muted-foreground">
+                      Click to upload or drag and drop
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      PNG, JPG or WEBP (max. 5MB)
+                    </p>
+                    
+                    {/* Always visible button for file selection */}
+                    <Button 
+                      type="button" 
+                      variant="secondary" 
+                      size="sm"
+                      className="mt-4"
+                      onClick={handleSelectFile}
+                    >
+                      Select File
+                    </Button>
+                    
+                    {/* Hidden file input */}
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      id="file-upload"
+                      name="file-upload"
+                      className="hidden"
+                      accept="image/jpeg,image/png,image/webp"
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                )}
+              </div>
               
-              {/* File Input - Hidden but accessible */}
-              <input
-                ref={fileInputRef}
-                type="file"
-                id="fileInput"
-                name="fileInput"
-                accept="image/jpeg,image/png,image/webp"
-                onChange={handleFileChange}
-                className="hidden"
-                aria-label="Upload image"
+              {error && (
+                <p className="text-sm text-destructive mt-1">{error}</p>
+              )}
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="title">Title</Label>
+              <Input 
+                id="title" 
+                value={title} 
+                onChange={(e) => setTitle(e.target.value)} 
               />
             </div>
-
-            {error && (
-              <div className="text-destructive text-sm mt-2">{error}</div>
-            )}
+            <div className="grid gap-2">
+              <Label htmlFor="artist">Artist</Label>
+              <Select value={artist} onValueChange={setArtist}>
+                <SelectTrigger id="artist">
+                  <SelectValue placeholder="Select artist" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Akira Tanaka">Akira Tanaka</SelectItem>
+                  <SelectItem value="Sarah Chen">Sarah Chen</SelectItem>
+                  <SelectItem value="Miguel Rodriguez">Miguel Rodriguez</SelectItem>
+                  <SelectItem value="Jade Kim">Jade Kim</SelectItem>
+                  <SelectItem value="David Wilson">David Wilson</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="style">Style</Label>
+              <Select value={style} onValueChange={setStyle}>
+                <SelectTrigger id="style">
+                  <SelectValue placeholder="Select style" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Japanese">Japanese</SelectItem>
+                  <SelectItem value="Traditional">Traditional</SelectItem>
+                  <SelectItem value="Neo-Traditional">Neo-Traditional</SelectItem>
+                  <SelectItem value="Blackwork">Blackwork</SelectItem>
+                  <SelectItem value="Watercolor">Watercolor</SelectItem>
+                  <SelectItem value="Fine Line">Fine Line</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="tags">Tags (comma separated)</Label>
+              <Input 
+                id="tags" 
+                value={tags} 
+                onChange={(e) => setTags(e.target.value)} 
+                placeholder="e.g. dragon, sleeve, color"
+              />
+            </div>
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="title">Title</Label>
-            <Input 
-              id="title" 
-              value={title} 
-              onChange={(e) => setTitle(e.target.value)} 
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="artist">Artist</Label>
-            <Select value={artist} onValueChange={setArtist}>
-              <SelectTrigger id="artist">
-                <SelectValue placeholder="Select artist" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Akira Tanaka">Akira Tanaka</SelectItem>
-                <SelectItem value="Sarah Chen">Sarah Chen</SelectItem>
-                <SelectItem value="Miguel Rodriguez">Miguel Rodriguez</SelectItem>
-                <SelectItem value="Jade Kim">Jade Kim</SelectItem>
-                <SelectItem value="David Wilson">David Wilson</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="style">Style</Label>
-            <Select value={style} onValueChange={setStyle}>
-              <SelectTrigger id="style">
-                <SelectValue placeholder="Select style" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Japanese">Japanese</SelectItem>
-                <SelectItem value="Traditional">Traditional</SelectItem>
-                <SelectItem value="Neo-Traditional">Neo-Traditional</SelectItem>
-                <SelectItem value="Blackwork">Blackwork</SelectItem>
-                <SelectItem value="Watercolor">Watercolor</SelectItem>
-                <SelectItem value="Fine Line">Fine Line</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="tags">Tags (comma separated)</Label>
-            <Input 
-              id="tags" 
-              value={tags} 
-              onChange={(e) => setTags(e.target.value)} 
-              placeholder="e.g. dragon, sleeve, color"
-            />
-          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={handleClose}>Cancel</Button>
+            <Button 
+              onClick={handleUpload}
+              disabled={uploading || !title || !artist || !style}
+            >
+              {uploading ? 'Uploading...' : 'Upload'}
+            </Button>
+          </DialogFooter>
         </div>
-        <DialogFooter>
-          <Button variant="outline" onClick={handleClose}>Cancel</Button>
-          <Button 
-            onClick={handleUpload}
-            disabled={uploading || !title || !artist || !style}
-          >
-            {uploading ? 'Uploading...' : 'Upload'}
-          </Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
