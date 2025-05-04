@@ -92,7 +92,7 @@ export async function uploadToR2(file: Buffer, fileName: string, contentType: st
     console.log('Using local storage URL instead');
     
     // Return the local URL that we already saved
-    const localUrl = `${LOCAL_PUBLIC_URL}/${normalizedFileName}`;
+    const localUrl = `${LOCAL_PUBLIC_URL}/${fileName}`;
     return localUrl;
   }
 }
@@ -122,8 +122,6 @@ export async function deleteFromR2(fileName: string): Promise<void> {
     // Attempt to delete the file
     console.log('Sending S3 delete command...');
     const result = await s3Client.send(command);
-    console.log('S3 delete result:', result);
-    
     console.log('File deleted successfully from R2');
     
     // Also delete from local storage
