@@ -17,6 +17,8 @@ services:
       - tattoo-network
     env_file:
       - .env.docker
+    volumes:
+      - uploads-data:/app/public/uploads
 
   db:
     image: postgres:15-alpine
@@ -40,3 +42,4 @@ networks:
 
 volumes:
   postgres-data:
+  uploads-data:

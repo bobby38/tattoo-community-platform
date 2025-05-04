@@ -80,6 +80,8 @@ export async function POST(request: Request) {
     const storagePath = cleanFolder ? `${cleanFolder}/${uniqueFilename}` : uniqueFilename;
     
     console.log('Preparing to upload file:', storagePath);
+    console.log('File type:', file.type);
+    console.log('File size:', file.size);
 
     // Get file buffer
     const arrayBuffer = await file.arrayBuffer();
@@ -90,12 +92,27 @@ export async function POST(request: Request) {
       const fileUrl = await uploadToR2(buffer, storagePath, file.type);
       console.log('File uploaded successfully, URL:', fileUrl);
       
+      // Extract additional metadata from the form
+      const title = formData.get('title') as string || 'Untitled';
+      const artist = formData.get('artist') as string || '';
+      const style = formData.get('style') as string || '';
+      const tags = formData.get('tags') as string || '';
+      
+      console.log('Metadata received:', { title, artist, style, tags });
+      
+      // Save metadata to database if needed
+      // This is where you would save the file metadata to your database
+      
       return NextResponse.json({
+        success: true,
         url: fileUrl,
         filename: uniqueFilename,
-        originalName: file.name,
-        size: file.size,
-        type: file.type
+        metadata: {
+          title,
+          artist,
+          style,
+          tags: tags.split(',').map(tag => tag.trim()).filter(Boolean)
+        }
       });
     } catch (saveError: any) {
       console.error('Error uploading file:', saveError);

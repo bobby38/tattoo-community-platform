@@ -39,6 +39,7 @@ COPY --from=builder /app/public ./public
 # Create uploads directory and set permissions
 RUN mkdir -p ./public/uploads/gallery
 RUN chown -R nextjs:nodejs ./public/uploads
+RUN chmod -R 755 ./public/uploads
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
