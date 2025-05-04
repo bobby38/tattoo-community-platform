@@ -44,20 +44,31 @@ try {
 }
 
 export async function POST(request: Request) {
+  console.log(' [API] Upload endpoint called');
+  
   try {
-    console.log('Upload request received');
+    console.log(' [API] Parsing form data...');
     
     // Parse the multipart form data
     const formData = await request.formData();
+    console.log(' [API] Form data received:', Array.from(formData.entries()).map(([key]) => key));
     
     // Get the file from the form data
     const file = formData.get('file') as File;
     if (!file) {
+      console.error(' [API] No file provided in form data');
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
     
+    console.log(' [API] File details:', { 
+      name: file.name, 
+      type: file.type, 
+      size: file.size 
+    });
+    
     // Check file size
     if (file.size > MAX_FILE_SIZE) {
+      console.error(' [API] File size exceeds limit', { size: file.size, limit: MAX_FILE_SIZE });
       return NextResponse.json({ error: 'File size exceeds the maximum limit (5MB)' }, { status: 400 });
     }
     
@@ -65,6 +76,7 @@ export async function POST(request: Request) {
     const fileType = file.type;
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowedTypes.includes(fileType)) {
+      console.error(' [API] File type not allowed', { type: fileType, allowed: allowedTypes });
       return NextResponse.json({ error: 'File type not supported' }, { status: 400 });
     }
     
@@ -76,6 +88,8 @@ export async function POST(request: Request) {
     const tagsString = formData.get('tags') as string || '';
     const tags = tagsString ? tagsString.split(',') : [];
     
+    console.log(' [API] Metadata:', { title, description, folder, style, tags });
+    
     // Generate a unique filename
     const fileExtension = file.name.split('.').pop() || 'jpg';
     const uniqueFilename = `${uuidv4()}.${fileExtension}`;
@@ -85,17 +99,18 @@ export async function POST(request: Request) {
     const cleanFolder = folder ? folder.replace(/\/+$/, '') : '';
     const storagePath = cleanFolder ? `${cleanFolder}/${uniqueFilename}` : uniqueFilename;
     
-    console.log('Preparing to upload file:', storagePath);
-    console.log('File type:', file.type);
-    console.log('File size:', file.size);
+    console.log(' [API] Storage path:', storagePath);
 
     // Ensure the upload directory exists
     const uploadDir = path.join(UPLOADS_DIR, cleanFolder);
+    console.log(' [API] Ensuring upload directory exists:', uploadDir);
     ensureDirExists(uploadDir);
     
     // Get file buffer
+    console.log(' [API] Converting file to buffer...');
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
+    console.log(' [API] Buffer created, size:', buffer.length);
     
     // File URL to be saved in the database
     let fileUrl = '';
@@ -104,26 +119,39 @@ export async function POST(request: Request) {
     // In production, always try R2 first and don't fall back to local storage
     // In development, try R2 first but fall back to local storage if R2 fails
     const isProd = process.env.NODE_ENV === 'production';
+    console.log(' [API] Environment:', isProd ? 'production' : 'development');
     
     try {
       // Always try to upload to R2 first
+      console.log(' [API] Attempting to upload to R2...');
+      console.log(' [API] R2 config:', { 
+        accountId: process.env.R2_ACCOUNT_ID ? ' Set' : ' Not set',
+        accessKeyId: process.env.R2_ACCESS_KEY_ID ? ' Set' : ' Not set',
+        secretAccessKey: process.env.R2_SECRET_ACCESS_KEY ? ' Set' : ' Not set',
+        bucket: process.env.R2_BUCKET ? ' Set' : ' Not set',
+        publicUrl: process.env.R2_PUBLIC_URL ? ' Set' : ' Not set'
+      });
+      
       const r2Result = await uploadToR2(buffer, storagePath, fileType);
       // The uploadToR2 function returns a string, not an object with url property
       fileUrl = r2Result;
-      console.log('Successfully uploaded to R2:', fileUrl);
+      console.log(' [API] Successfully uploaded to R2:', fileUrl);
     } catch (err) {
       r2Error = err;
-      console.error('Failed to upload to R2:', err);
+      console.error(' [API] Failed to upload to R2:', err);
       
       // Only fall back to local storage in development
       if (!isProd) {
+        console.log(' [API] Falling back to local storage in development environment');
         // Save to local storage as fallback in development only
         const localFilePath = path.join(uploadDir, uniqueFilename);
+        console.log(' [API] Saving to local path:', localFilePath);
         fs.writeFileSync(localFilePath, buffer);
         fileUrl = `${PUBLIC_URL}/${cleanFolder ? cleanFolder + '/' : ''}${uniqueFilename}`;
-        console.log('Saved to local storage:', localFilePath);
+        console.log(' [API] Saved to local storage:', fileUrl);
       } else {
         // In production, if R2 fails, return an error
+        console.error(' [API] R2 upload failed in production, returning error');
         return NextResponse.json({ 
           error: 'Failed to upload to R2 storage',
           details: r2Error
@@ -134,7 +162,7 @@ export async function POST(request: Request) {
     // Extract additional metadata from the form
     const artist = formData.get('artist') as string || '';
     
-    console.log('Metadata received:', { title, artist, style, tags });
+    console.log(' [API] Preparing response with file URL:', fileUrl);
     
     // Save metadata to database if needed
     // This is where you would save the file metadata to your database
@@ -151,9 +179,9 @@ export async function POST(request: Request) {
       }
     });
   } catch (error: any) {
-    console.error('Upload error:', error);
+    console.error(' [API] Upload error:', error);
     return NextResponse.json(
-      { error: `Internal server error: ${error.message}` },
+      { error: `Failed to upload file: ${error.message}` },
       { status: 500 }
     );
   }

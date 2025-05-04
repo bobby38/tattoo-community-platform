@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
+import { UploadDialog } from './upload-dialog';
 import { 
   Upload, 
   Plus, 
@@ -25,95 +24,125 @@ import {
   Download
 } from 'lucide-react';
 
-// Mock data for gallery images
-const mockGalleryItems = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1542727365-19732a80dcfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    title: "Japanese Dragon Sleeve",
-    artist: "Akira Tanaka",
-    style: "Japanese",
-    tags: ["dragon", "sleeve", "color"],
-    likes: 128,
-    comments: 24,
-    featured: true,
-    uploadDate: "2023-10-15"
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1543059080-f9b1272213d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    title: "Geometric Wolf",
-    artist: "Miguel Rodriguez",
-    style: "Neo-Traditional",
-    tags: ["wolf", "geometric", "blackwork"],
-    likes: 95,
-    comments: 12,
-    featured: false,
-    uploadDate: "2023-09-22"
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1562962230-16e4623d36e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    title: "Floral Shoulder Piece",
-    artist: "Sarah Chen",
-    style: "Watercolor",
-    tags: ["flowers", "shoulder", "color"],
-    likes: 156,
-    comments: 18,
-    featured: true,
-    uploadDate: "2023-08-05"
-  },
-  {
-    id: 4,
-    image: "https://images.unsplash.com/photo-1571805341302-f857308690e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    title: "Traditional Rose",
-    artist: "Akira Tanaka",
-    style: "Traditional",
-    tags: ["rose", "hand", "color"],
-    likes: 87,
-    comments: 9,
-    featured: false,
-    uploadDate: "2023-07-12"
-  },
-  {
-    id: 5,
-    image: "https://images.unsplash.com/photo-1611501355759-dda0909820bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    title: "Blackwork Mandala",
-    artist: "Miguel Rodriguez",
-    style: "Blackwork",
-    tags: ["mandala", "back", "blackwork"],
-    likes: 210,
-    comments: 32,
-    featured: true,
-    uploadDate: "2023-06-30"
-  },
-  {
-    id: 6,
-    image: "https://images.unsplash.com/photo-1560707854-fb9a10ced4e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    title: "Watercolor Abstract",
-    artist: "Sarah Chen",
-    style: "Watercolor",
-    tags: ["abstract", "color", "thigh"],
-    likes: 175,
-    comments: 21,
-    featured: false,
-    uploadDate: "2023-05-18"
+// Define the GalleryItem type
+interface GalleryItem {
+  id: string;
+  image: string;
+  title: string;
+  artist: string;
+  style: string;
+  tags: string[];
+  likes: number;
+  comments: number;
+  featured: boolean;
+  uploadDate: string;
+}
+
+// Helper function to ensure image URLs use the custom domain
+const getProperImageUrl = (url: string) => {
+  if (!url) return '/placeholder-image.jpg';
+  
+  // If it's already using the custom domain or is a local URL, return as is
+  if (url.includes('imagetat.getrezult.com') || url.startsWith('/')) {
+    return url;
   }
-];
+  
+  // If it's using the old R2 domain, convert it to the custom domain
+  if (url.includes('r2.dev')) {
+    const urlParts = url.split('/');
+    // The path is everything after the domain part (which is at index 2)
+    const pathAndFilename = urlParts.slice(3).join('/');
+    
+    // Use the custom domain
+    const customDomain = 'https://imagetat.getrezult.com';
+    return `${customDomain}/${pathAndFilename}`;
+  }
+  
+  // Otherwise, return the URL as is
+  return url;
+};
 
 export default function GallerySection() {
-  const [gallery, setGallery] = useState(mockGalleryItems);
+  const [gallery, setGallery] = useState<GalleryItem[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("all");
   const [selectedStyle, setSelectedStyle] = useState("all");
   const [isAddImageOpen, setIsAddImageOpen] = useState(false);
-  const [newImage, setNewImage] = useState({
-    title: "",
-    artist: "",
-    style: "",
-    tags: ""
-  });
-  
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch gallery items from the database
+  const fetchGalleryItems = useCallback(async () => {
+    console.log('🔍 [Gallery] Fetching gallery items...');
+    setIsLoading(true);
+    
+    try {
+      const response = await fetch('/api/gallery');
+      if (!response.ok) {
+        throw new Error('Failed to fetch gallery items');
+      }
+      
+      const data = await response.json();
+      console.log('✅ [Gallery] Fetched gallery items:', data.length);
+      
+      // Process the gallery items
+      const processedItems = data.map((item: any) => ({
+        ...item,
+        image: getProperImageUrl(item.image)
+      }));
+      
+      setGallery(processedItems);
+    } catch (error) {
+      console.error('❌ [Gallery] Error fetching gallery items:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  // Load gallery items on component mount
+  useEffect(() => {
+    fetchGalleryItems();
+  }, [fetchGalleryItems]);
+
+  // Handle new upload
+  const handleAddImage = (imageData: {
+    title: string;
+    artist: string;
+    style: string;
+    tags: string[];
+    image: string;
+  }) => {
+    // Refresh the gallery
+    fetchGalleryItems();
+  };
+
+  const handleDeleteImage = (id: number | string) => {
+    // Delete the image from the database
+    const deleteImage = async () => {
+      try {
+        const response = await fetch(`/api/gallery?id=${id}`, {
+          method: 'DELETE',
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to delete gallery item');
+        }
+        
+        // Remove from local state
+        setGallery(gallery.filter(item => item.id !== id));
+      } catch (error) {
+        console.error('Error deleting gallery item:', error);
+      }
+    };
+    
+    deleteImage();
+  };
+
+  const handleToggleFeatured = (id: string) => {
+    setGallery(gallery.map(item => 
+      item.id === id ? { ...item, featured: !item.featured } : item
+    ));
+  };
+
   // Filter gallery items based on search query, active tab, and selected style
   const filteredGallery = gallery.filter(item => {
     const matchesSearch = 
@@ -131,42 +160,6 @@ export default function GallerySection() {
     
     return matchesSearch && matchesTab && matchesStyle;
   });
-
-  const handleAddImage = () => {
-    // In a real app, you would save to the database here
-    const newId = Math.max(...gallery.map(item => item.id)) + 1;
-    const imageToAdd = {
-      id: newId,
-      image: "https://placehold.co/600x400/333/white?text=New+Image",
-      title: newImage.title,
-      artist: newImage.artist,
-      style: newImage.style,
-      tags: newImage.tags.split(',').map(tag => tag.trim()),
-      likes: 0,
-      comments: 0,
-      featured: false,
-      uploadDate: new Date().toISOString().split('T')[0]
-    };
-    
-    setGallery([...gallery, imageToAdd]);
-    setIsAddImageOpen(false);
-    setNewImage({
-      title: "",
-      artist: "",
-      style: "",
-      tags: ""
-    });
-  };
-
-  const handleDeleteImage = (id: number) => {
-    setGallery(gallery.filter(item => item.id !== id));
-  };
-
-  const handleToggleFeatured = (id: number) => {
-    setGallery(gallery.map(item => 
-      item.id === id ? { ...item, featured: !item.featured } : item
-    ));
-  };
 
   return (
     <motion.div
@@ -201,88 +194,18 @@ export default function GallerySection() {
               <SelectItem value="Fine Line">Fine Line</SelectItem>
             </SelectContent>
           </Select>
-          <Dialog open={isAddImageOpen} onOpenChange={setIsAddImageOpen}>
-            <DialogTrigger asChild>
-              <Button>
-                <Upload className="mr-2 h-4 w-4" />
-                Upload Image
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-md">
-              <DialogHeader>
-                <DialogTitle>Upload New Image</DialogTitle>
-                <DialogDescription>
-                  Add a new tattoo image to your studio gallery.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="grid gap-4 py-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="image">Image</Label>
-                  <div className="border-2 border-dashed rounded-md p-6 text-center cursor-pointer hover:bg-muted/50 transition-colors">
-                    <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground">
-                      Click to upload or drag and drop
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      PNG, JPG or WEBP (max. 5MB)
-                    </p>
-                  </div>
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="title">Title</Label>
-                  <Input 
-                    id="title" 
-                    value={newImage.title} 
-                    onChange={(e) => setNewImage({...newImage, title: e.target.value})} 
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="artist">Artist</Label>
-                  <Select onValueChange={(value) => setNewImage({...newImage, artist: value})}>
-                    <SelectTrigger id="artist">
-                      <SelectValue placeholder="Select artist" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Akira Tanaka">Akira Tanaka</SelectItem>
-                      <SelectItem value="Sarah Chen">Sarah Chen</SelectItem>
-                      <SelectItem value="Miguel Rodriguez">Miguel Rodriguez</SelectItem>
-                      <SelectItem value="Jade Kim">Jade Kim</SelectItem>
-                      <SelectItem value="David Wilson">David Wilson</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="style">Style</Label>
-                  <Select onValueChange={(value) => setNewImage({...newImage, style: value})}>
-                    <SelectTrigger id="style">
-                      <SelectValue placeholder="Select style" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Japanese">Japanese</SelectItem>
-                      <SelectItem value="Traditional">Traditional</SelectItem>
-                      <SelectItem value="Neo-Traditional">Neo-Traditional</SelectItem>
-                      <SelectItem value="Blackwork">Blackwork</SelectItem>
-                      <SelectItem value="Watercolor">Watercolor</SelectItem>
-                      <SelectItem value="Fine Line">Fine Line</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="tags">Tags (comma separated)</Label>
-                  <Input 
-                    id="tags" 
-                    value={newImage.tags} 
-                    onChange={(e) => setNewImage({...newImage, tags: e.target.value})} 
-                    placeholder="e.g. dragon, sleeve, color"
-                  />
-                </div>
-              </div>
-              <DialogFooter>
-                <Button variant="outline" onClick={() => setIsAddImageOpen(false)}>Cancel</Button>
-                <Button onClick={handleAddImage}>Upload</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+          <Button onClick={() => setIsAddImageOpen(true)}>
+            <Upload className="mr-2 h-4 w-4" />
+            Upload Image
+          </Button>
+          
+          {/* Replace the old Dialog with our new UploadDialog component */}
+          <UploadDialog 
+            open={isAddImageOpen}
+            onOpenChange={setIsAddImageOpen}
+            onUpload={handleAddImage}
+            onUploadComplete={fetchGalleryItems}
+          />
         </div>
       </div>
 
@@ -293,13 +216,28 @@ export default function GallerySection() {
         </TabsList>
         
         <TabsContent value={activeTab} className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredGallery.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            {isLoading ? (
+              // Loading skeleton
+              Array.from({ length: 6 }).map((_, index) => (
+                <Card key={`skeleton-${index}`} className="overflow-hidden">
+                  <div className="h-48 bg-muted animate-pulse"></div>
+                  <CardContent className="p-4">
+                    <div className="h-4 w-3/4 bg-muted animate-pulse mb-2"></div>
+                    <div className="h-3 w-1/2 bg-muted animate-pulse"></div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : filteredGallery.length === 0 ? (
+              <div className="col-span-3 text-center py-12">
+                <p className="text-muted-foreground">No gallery items found. Try adjusting your filters or add a new image.</p>
+              </div>
+            ) : (
               filteredGallery.map((item) => (
                 <Card key={item.id} className="overflow-hidden">
                   <div className="relative h-64 overflow-hidden">
                     <img 
-                      src={item.image} 
+                      src={getProperImageUrl(item.image)} 
                       alt={item.title} 
                       className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
                     />
@@ -356,12 +294,12 @@ export default function GallerySection() {
                   </CardHeader>
                   <CardContent className="p-4 pt-0">
                     <div className="flex flex-wrap gap-1 mb-3">
-                      <Badge variant="outline">{item.style}</Badge>
-                      {item.tags.map((tag, index) => (
+                      <Badge variant="outline">{item.style || 'No Style'}</Badge>
+                      {item.tags && Array.isArray(item.tags) ? item.tags.map((tag, index) => (
                         <Badge key={index} variant="secondary" className="text-xs">
                           {tag}
                         </Badge>
-                      ))}
+                      )) : null}
                     </div>
                     <div className="flex justify-between text-sm text-muted-foreground">
                       <div className="flex space-x-3">
@@ -381,19 +319,6 @@ export default function GallerySection() {
                   </CardContent>
                 </Card>
               ))
-            ) : (
-              <div className="col-span-3 text-center py-12">
-                <h3 className="text-lg font-medium mb-2">No images found</h3>
-                <p className="text-muted-foreground mb-6">
-                  {searchQuery 
-                    ? `No images matching "${searchQuery}" found.` 
-                    : "No images in this category yet."}
-                </p>
-                <Button onClick={() => setIsAddImageOpen(true)}>
-                  <Upload className="mr-2 h-4 w-4" />
-                  Upload Image
-                </Button>
-              </div>
             )}
           </div>
         </TabsContent>

@@ -25,9 +25,10 @@ interface UploadDialogProps {
     tags: string[];
     image: string;
   }) => void;
+  onUploadComplete?: () => void;
 }
 
-export function UploadDialog({ open, onOpenChange, onUpload }: UploadDialogProps) {
+export function UploadDialog({ open, onOpenChange, onUpload, onUploadComplete }: UploadDialogProps) {
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
   const [style, setStyle] = useState('');
@@ -112,101 +113,80 @@ export function UploadDialog({ open, onOpenChange, onUpload }: UploadDialogProps
   };
 
   const handleUpload = async () => {
-    if (!title || !artist || !style) {
-      setError('Please fill in all required fields');
-      return;
-    }
+    console.log('🔍 [Upload] Upload button clicked');
     
     if (!selectedFile) {
-      setError('Please select an image to upload');
+      console.error('❌ [Upload] No file selected');
+      setError('Please select a file to upload');
       return;
     }
-    
+
+    if (!title) {
+      console.error('❌ [Upload] No title provided');
+      setError('Please enter a title');
+      return;
+    }
+
+    console.log('🔍 [Upload] Starting upload process', {
+      file: selectedFile.name,
+      title,
+      artist,
+      style,
+      tags
+    });
+
     setUploading(true);
     setError(null);
-    
+
     try {
-      // Upload the file to storage via our API
+      // Create form data
       const formData = new FormData();
       formData.append('file', selectedFile);
-      formData.append('folder', 'gallery');
-      
-      // Add metadata to the upload request
       formData.append('title', title);
-      formData.append('artist', artist);
+      formData.append('description', '');
+      formData.append('folder', 'gallery');
       formData.append('style', style);
+      formData.append('artist', artist);
       formData.append('tags', tags);
 
-      console.log('Uploading file:', selectedFile.name);
-      console.log('Form data:', {
-        title,
-        artist,
-        style,
-        tags,
-        folder: 'gallery'
-      });
-
+      console.log('🔍 [Upload] Form data created, sending to API...');
+      
+      // Upload the file
       const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
 
+      console.log('🔍 [Upload] Response status:', response.status);
+      
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || 'Upload failed');
+        console.error('❌ [Upload] API error response:', errorData);
+        throw new Error(errorData.error || 'Failed to upload file');
       }
 
       const data = await response.json();
-      console.log('Upload successful:', data);
+      console.log('✅ [Upload] Upload successful:', data);
+
+      // Reset form
+      setTitle('');
+      setArtist('');
+      setStyle('');
+      setTags('');
+      setSelectedFile(null);
+      setPreviewUrl(null);
       
-      // Save the image data to the database
-      try {
-        // Ensure title is not empty
-        const safeTitle = title.trim() || 'Untitled';
-        console.log('Sending title to API:', safeTitle);
-        
-        const galleryResponse = await fetch('/api/gallery', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            imageUrl: data.url,
-            title: safeTitle,
-            description: `Uploaded by ${artist}`,
-            artistId: 'system', // This would ideally be the actual user ID
-            styleId: style,
-            tags: tags.split(',').map(tag => tag.trim()),
-          }),
-        });
-        
-        if (!galleryResponse.ok) {
-          const errorText = await galleryResponse.text();
-          console.error('Gallery API error response:', errorText);
-          throw new Error(errorText || 'Failed to save to database');
-        }
-        
-        const galleryData = await galleryResponse.json();
-        console.log('Saved to database:', galleryData);
-        
-        // Call the onUpload callback with the image data including the URL from storage
-        onUpload({
-          title: safeTitle,
-          artist,
-          style,
-          tags: tags.split(',').map(tag => tag.trim()),
-          image: data.url
-        });
-        
-        // Close the dialog and reset the form
-        handleClose();
-      } catch (err: any) {
-        console.error('Error saving to database:', err);
-        setError(err.message || 'Failed to save to database. Please try again.');
+      // Close the dialog
+      handleClose();
+      
+      // Refresh the gallery
+      if (onUploadComplete) {
+        console.log('🔍 [Upload] Triggering gallery refresh');
+        onUploadComplete();
       }
     } catch (err: any) {
-      console.error('Error uploading image:', err);
-      setError(err.message || 'Failed to upload image. Please try again.');
+      console.error('❌ [Upload] Error during upload:', err);
+      setError(err.message || 'Failed to upload file');
     } finally {
       setUploading(false);
     }
