@@ -7,7 +7,8 @@ const nextConfig = {
     domains: [
       'cdn.pixabay.com',
       process.env.R2_PUBLIC_URL ? new URL(process.env.R2_PUBLIC_URL).hostname : 'imagetat.getrezult.com',
-      'localhost'
+      'localhost',
+      'tattoo.getrezult.com'
     ],
     remotePatterns: [
       {
@@ -20,6 +21,20 @@ const nextConfig = {
       }
     ],
   },
+  // Ensure uploads directory is properly served in production
+  async headers() {
+    return [
+      {
+        source: '/uploads/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400',
+          }
+        ],
+      },
+    ]
+  }
 };
 
 module.exports = nextConfig;

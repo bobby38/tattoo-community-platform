@@ -20,6 +20,32 @@
     {
       "name": "NEXT_TELEMETRY_DISABLED",
       "value": "1"
+    },
+    {
+      "name": "R2_ACCOUNT_ID",
+      "description": "Cloudflare R2 account ID"
+    },
+    {
+      "name": "R2_ACCESS_KEY_ID",
+      "description": "Cloudflare R2 access key ID"
+    },
+    {
+      "name": "R2_SECRET_ACCESS_KEY",
+      "description": "Cloudflare R2 secret access key"
+    },
+    {
+      "name": "R2_BUCKET",
+      "value": "tattoo"
+    },
+    {
+      "name": "R2_PUBLIC_URL",
+      "value": "https://imagetat.getrezult.com"
+    }
+  ],
+  "persistentStorage": [
+    {
+      "path": "/app/public/uploads",
+      "name": "uploads-data"
     }
   ]
 }
