@@ -160,7 +160,7 @@ export function UploadDialog({ open, onOpenChange, onUpload, onUploadComplete }:
       console.log('🔍 [Upload] Response status:', response.status);
       
       if (!response.ok) {
-        const errorData = await response.json();
+        const errorData = await response.json().catch(() => ({ error: 'Failed to parse error response' }));
         console.error('❌ [Upload] API error response:', errorData);
         throw new Error(errorData.error || 'Failed to upload file');
       }
@@ -168,13 +168,17 @@ export function UploadDialog({ open, onOpenChange, onUpload, onUploadComplete }:
       const data = await response.json();
       console.log('✅ [Upload] Upload successful:', data);
 
+      // Call onUpload with the image data
+      onUpload({
+        title,
+        artist,
+        style,
+        tags: tags.split(',').map(tag => tag.trim()).filter(Boolean),
+        image: data.url || ''
+      });
+
       // Reset form
-      setTitle('');
-      setArtist('');
-      setStyle('');
-      setTags('');
-      setSelectedFile(null);
-      setPreviewUrl(null);
+      resetForm();
       
       // Close the dialog
       handleClose();
@@ -182,7 +186,9 @@ export function UploadDialog({ open, onOpenChange, onUpload, onUploadComplete }:
       // Refresh the gallery
       if (onUploadComplete) {
         console.log('🔍 [Upload] Triggering gallery refresh');
-        onUploadComplete();
+        setTimeout(() => {
+          onUploadComplete();
+        }, 500); // Add a small delay to ensure the server has processed the upload
       }
     } catch (err: any) {
       console.error('❌ [Upload] Error during upload:', err);

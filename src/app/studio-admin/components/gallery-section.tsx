@@ -54,12 +54,36 @@ const getProperImageUrl = (url: string) => {
     const pathAndFilename = urlParts.slice(3).join('/');
     
     // Use the custom domain
-    const customDomain = 'https://imagetat.getrezult.com';
-    return `${customDomain}/${pathAndFilename}`;
+    return `https://imagetat.getrezult.com/${pathAndFilename}`;
+  }
+  
+  // Handle local paths
+  if (url.startsWith('/uploads/')) {
+    // Extract the path and filename
+    const pathParts = url.split('/uploads/');
+    if (pathParts.length > 1) {
+      const pathAndFilename = pathParts[1].replace(/^\/+/, ''); // Remove leading slashes
+      return `https://imagetat.getrezult.com/${pathAndFilename}`;
+    }
   }
   
   // Otherwise, return the URL as is
   return url;
+};
+
+// Image component with error handling
+const GalleryImage = ({ src, alt }: { src: string; alt: string }) => {
+  const [error, setError] = useState(false);
+  const imgSrc = error ? '/placeholder-image.jpg' : getProperImageUrl(src);
+  
+  return (
+    <img 
+      src={imgSrc} 
+      alt={alt} 
+      onError={() => setError(true)}
+      className="w-full h-48 object-cover rounded-t-lg"
+    />
+  );
 };
 
 export default function GallerySection() {
@@ -69,6 +93,7 @@ export default function GallerySection() {
   const [selectedStyle, setSelectedStyle] = useState("all");
   const [isAddImageOpen, setIsAddImageOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [refreshKey, setRefreshKey] = useState(0); // Add a refresh key to force re-fetch
 
   // Fetch gallery items from the database
   const fetchGalleryItems = useCallback(async () => {
@@ -76,20 +101,33 @@ export default function GallerySection() {
     setIsLoading(true);
     
     try {
-      const response = await fetch('/api/gallery');
+      // Add a cache-busting parameter to prevent caching
+      const timestamp = new Date().getTime();
+      const response = await fetch(`/api/gallery?t=${timestamp}`);
       if (!response.ok) {
-        throw new Error('Failed to fetch gallery items');
+        const errorData = await response.json().catch(() => ({ error: 'Failed to parse error response' }));
+        console.error('❌ [Gallery] API error:', errorData);
+        throw new Error(errorData.error || 'Failed to fetch gallery items');
       }
       
       const data = await response.json();
       console.log('✅ [Gallery] Fetched gallery items:', data.length);
       
-      // Process the gallery items
+      // Map the API response to the expected gallery item format
       const processedItems = data.map((item: any) => ({
-        ...item,
-        image: getProperImageUrl(item.image)
+        id: item.id,
+        title: item.title || 'Untitled',
+        artist: item.artist || 'Unknown Artist',
+        style: item.style || 'Other',
+        tags: Array.isArray(item.tags) ? item.tags : [],
+        image: item.imageUrl, // Use imageUrl from the API response
+        featured: false,
+        uploadDate: item.createdAt ? new Date(item.createdAt).toISOString().split('T')[0] : '',
+        likes: 0,
+        comments: 0
       }));
       
+      console.log('✅ [Gallery] Processed gallery items:', processedItems.length);
       setGallery(processedItems);
     } catch (error) {
       console.error('❌ [Gallery] Error fetching gallery items:', error);
@@ -98,10 +136,16 @@ export default function GallerySection() {
     }
   }, []);
 
-  // Load gallery items on component mount
+  // Load gallery items on component mount and when refreshKey changes
   useEffect(() => {
     fetchGalleryItems();
-  }, [fetchGalleryItems]);
+  }, [fetchGalleryItems, refreshKey]);
+
+  // Refresh gallery function to be called after successful upload
+  const refreshGallery = useCallback(() => {
+    console.log('🔄 [Gallery] Refreshing gallery...');
+    setRefreshKey(prevKey => prevKey + 1); // Increment refresh key to trigger re-fetch
+  }, []);
 
   // Handle new upload
   const handleAddImage = (imageData: {
@@ -112,7 +156,7 @@ export default function GallerySection() {
     image: string;
   }) => {
     // Refresh the gallery
-    fetchGalleryItems();
+    refreshGallery();
   };
 
   const handleDeleteImage = (id: number | string) => {
@@ -204,7 +248,7 @@ export default function GallerySection() {
             open={isAddImageOpen}
             onOpenChange={setIsAddImageOpen}
             onUpload={handleAddImage}
-            onUploadComplete={fetchGalleryItems}
+            onUploadComplete={refreshGallery}
           />
         </div>
       </div>
@@ -216,7 +260,7 @@ export default function GallerySection() {
         </TabsList>
         
         <TabsContent value={activeTab} className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
             {isLoading ? (
               // Loading skeleton
               Array.from({ length: 6 }).map((_, index) => (
@@ -235,16 +279,10 @@ export default function GallerySection() {
             ) : (
               filteredGallery.map((item) => (
                 <Card key={item.id} className="overflow-hidden">
-                  <div className="relative h-64 overflow-hidden">
-                    <img 
-                      src={getProperImageUrl(item.image)} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
-                    />
+                  <div className="relative">
+                    <GalleryImage src={item.image} alt={item.title} />
                     {item.featured && (
-                      <Badge className="absolute top-2 left-2 bg-primary">
-                        Featured
-                      </Badge>
+                      <Badge className="absolute top-2 right-2 bg-yellow-500">Featured</Badge>
                     )}
                   </div>
                   <CardHeader className="p-4 pb-2">
