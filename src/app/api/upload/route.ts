@@ -14,10 +14,29 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const UPLOADS_DIR = path.join(process.cwd(), 'public', 'uploads');
 const PUBLIC_URL = '/uploads';
 
+// Helper function to ensure a directory exists
+function ensureDirExists(dirPath: string): string {
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+    try {
+      // Try to set permissions, but don't fail if it doesn't work
+      fs.chmodSync(dirPath, 0o777);
+    } catch (error) {
+      console.warn(`Warning: Could not set permissions for ${dirPath}`);
+    }
+  }
+  return dirPath;
+}
+
 // Ensure uploads directory exists for fallback
 try {
-  if (!fs.existsSync(UPLOADS_DIR)) {
-    fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  // Check if we're in a production environment
+  if (process.env.NODE_ENV === 'production') {
+    // In production, the directory should be created by the ensure-uploads-dir.js script
+    console.log('Production environment detected, uploads directory should be created by startup script');
+  } else {
+    // In development, create the directory if it doesn't exist
+    ensureDirExists(UPLOADS_DIR);
     console.log('Created uploads directory:', UPLOADS_DIR);
   }
 } catch (err) {
@@ -83,6 +102,10 @@ export async function POST(request: Request) {
     console.log('File type:', file.type);
     console.log('File size:', file.size);
 
+    // Ensure the upload directory exists
+    const uploadDir = path.join(UPLOADS_DIR, cleanFolder);
+    ensureDirExists(uploadDir);
+    
     // Get file buffer
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);

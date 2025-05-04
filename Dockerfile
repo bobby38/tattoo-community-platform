@@ -36,10 +36,10 @@ RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
 
-# Create uploads directory and set permissions
+# Create uploads directory and set permissions - make this more robust for Coolify
 RUN mkdir -p ./public/uploads/gallery
+RUN chmod -R 777 ./public/uploads  # Use 777 to ensure any user can write to this directory
 RUN chown -R nextjs:nodejs ./public/uploads
-RUN chmod -R 755 ./public/uploads
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
@@ -56,4 +56,6 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
+# Use our custom entrypoint script
+ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["node", "server.js"]

@@ -1,10 +1,25 @@
 const { createServer } = require('http');
 const { parse } = require('url');
 const next = require('next');
+const path = require('path');
+const fs = require('fs');
 
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = '0.0.0.0';
 const port = process.env.PORT || 3000;
+
+// In production, ensure the uploads directory exists and has proper permissions
+if (!dev) {
+  console.log('Running in production mode, ensuring uploads directory exists...');
+  try {
+    // Run the script to ensure uploads directory exists
+    require('./scripts/ensure-uploads-dir');
+    console.log('Uploads directory check completed');
+  } catch (error) {
+    console.error('Error checking uploads directory:', error);
+    // Continue anyway, as this is not critical for the application to run
+  }
+}
 
 // Create the Next.js app
 const app = next({ dev, hostname, port });
