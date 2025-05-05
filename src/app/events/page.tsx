@@ -1,243 +1,488 @@
-"use client";
+'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { 
-  ArrowLeft, 
-  Calendar, 
-  MapPin, 
-  Clock, 
-  Users,
-  Filter,
-  Search
-} from 'lucide-react';
-import { format } from 'date-fns';
+import dynamic from 'next/dynamic';
 
-// Mock events data
-const EVENTS_DATA = [
-  {
-    id: '1',
-    title: 'San Francisco Tattoo Expo 2025',
-    description: 'The annual SF Tattoo Expo brings together top artists from around the world for a weekend of tattoo art, workshops, and competitions.',
-    imageUrl: 'https://images.unsplash.com/photo-1607461194891-3b208b8f47ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    startDate: new Date(2025, 5, 15).toISOString(), // June 15, 2025
-    endDate: new Date(2025, 5, 17).toISOString(), // June 17, 2025
-    location: 'Moscone Center, San Francisco, CA',
-    organizer: 'SF Tattoo Association',
-    attendees: 1250,
-    category: 'Convention'
-  },
-  {
-    id: '2',
-    title: 'Japanese Irezumi Workshop',
-    description: 'Learn the traditional techniques and cultural significance of Japanese Irezumi tattooing in this hands-on workshop led by master artist Takeshi Yamada.',
-    imageUrl: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    startDate: new Date(2025, 6, 8).toISOString(), // July 8, 2025
-    endDate: new Date(2025, 6, 9).toISOString(), // July 9, 2025
-    location: 'Tokyo Tattoo Academy, Online',
-    organizer: 'Japanese Tattoo Preservation Society',
-    attendees: 75,
-    category: 'Workshop'
-  },
-  {
-    id: '3',
-    title: 'Blackwork Tribe Meetup',
-    description: 'Connect with fellow blackwork enthusiasts to share ideas, techniques, and inspiration. Open to artists and collectors alike.',
-    imageUrl: 'https://images.unsplash.com/photo-1542727365-19732a80dcfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    startDate: new Date(2025, 7, 22).toISOString(), // August 22, 2025
-    endDate: new Date(2025, 7, 22).toISOString(), // August 22, 2025
-    location: 'Dark Arts Gallery, Portland, OR',
-    organizer: 'Blackwork Enthusiasts Tribe',
-    attendees: 45,
-    category: 'Meetup'
-  },
-  {
-    id: '4',
-    title: 'Tattoo History Lecture Series',
-    description: 'A four-part lecture series exploring the global history of tattooing from ancient civilizations to modern practices.',
-    imageUrl: 'https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    startDate: new Date(2025, 8, 5).toISOString(), // September 5, 2025
-    endDate: new Date(2025, 8, 26).toISOString(), // September 26, 2025
-    location: 'Museum of Anthropology, Virtual Event',
-    organizer: 'Tattoo Cultural Heritage Foundation',
-    attendees: 320,
-    category: 'Educational'
-  },
-  {
-    id: '5',
-    title: 'Geometric Tattoo Design Contest',
-    description: 'Submit your best geometric tattoo designs for a chance to win prizes and recognition from industry leaders.',
-    imageUrl: 'https://images.unsplash.com/photo-1597217270402-b5a73eba9d24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    startDate: new Date(2025, 9, 10).toISOString(), // October 10, 2025
-    endDate: new Date(2025, 9, 30).toISOString(), // October 30, 2025
-    location: 'Online Submission',
-    organizer: 'Geometric Art Collective',
-    attendees: 180,
-    category: 'Contest'
-  },
-  {
-    id: '6',
-    title: 'Tattoo Artist Showcase Night',
-    description: 'An evening showcasing the work of emerging tattoo artists, with live demonstrations, portfolio reviews, and networking opportunities.',
-    imageUrl: 'https://images.unsplash.com/photo-1590246815117-be18528e6a33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-    startDate: new Date(2025, 10, 15).toISOString(), // November 15, 2025
-    endDate: new Date(2025, 10, 15).toISOString(), // November 15, 2025
-    location: 'Ink Gallery, New York, NY',
-    organizer: 'NYC Tattoo Guild',
-    attendees: 95,
-    category: 'Showcase'
+// Dynamically import the map component with no SSR
+const MapView = dynamic(() => import('@/components/map/map-view'), { 
+  ssr: false,
+  loading: () => <div className="w-full h-[500px] bg-gray-800 rounded-lg flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+  </div>
+});
+
+// Define interfaces
+export interface Event {
+  id: string;
+  name: string;
+  description: string;
+  start_date: string;
+  end_date: string;
+  location: string;
+  city: string;
+  country: string;
+  venue: string;
+  address: string;
+  lat: number;
+  lng: number;
+  image_url: string;
+  website_url: string;
+  ticket_url: string;
+  organizer: string;
+  artists: Artist[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Artist {
+  id: string;
+  name: string;
+  slug: string;
+  avatar_url: string;
+}
+
+export interface LocationData {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  type: 'studio' | 'artist' | 'event';
+  address: string;
+  city: string;
+  country: string;
+  imageUrl?: string;
+  slug?: string;
+}
+
+// Function to convert events to location data for the map
+function convertEventsToLocationData(events: Event[]): LocationData[] {
+  return events.map(event => ({
+    id: event.id,
+    name: event.name,
+    lat: event.lat,
+    lng: event.lng,
+    type: 'event',
+    address: event.address,
+    city: event.city,
+    country: event.country,
+    imageUrl: event.image_url,
+  }));
+}
+
+// Function to format date range
+function formatDateRange(event: Event): string {
+  const startDate = new Date(event.start_date);
+  const endDate = new Date(event.end_date);
+  
+  const startDay = startDate.getDate();
+  const startMonth = startDate.toLocaleString('default', { month: 'short' });
+  const startYear = startDate.getFullYear();
+  
+  // If same day event
+  if (startDate.toDateString() === endDate.toDateString()) {
+    return `${startDay} ${startMonth} ${startYear}`;
   }
-];
+  
+  const endDay = endDate.getDate();
+  const endMonth = endDate.toLocaleString('default', { month: 'short' });
+  const endYear = endDate.getFullYear();
+  
+  // If same month and year
+  if (startMonth === endMonth && startYear === endYear) {
+    return `${startDay}-${endDay} ${startMonth} ${startYear}`;
+  }
+  
+  // If same year but different month
+  if (startYear === endYear) {
+    return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${startYear}`;
+  }
+  
+  // Different years
+  return `${startDay} ${startMonth} ${startYear} - ${endDay} ${endMonth} ${endYear}`;
+}
 
+// Main component
 export default function EventsPage() {
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
   
-  // Get unique categories for filter
-  const categories = Array.from(new Set(EVENTS_DATA.map(event => event.category)));
+  // Set mounted state to force client-side rendering
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
-  // Filter events
-  const filteredEvents = activeFilter 
-    ? EVENTS_DATA.filter(event => event.category === activeFilter)
-    : EVENTS_DATA;
+  // Fetch events data
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        setIsLoading(true);
+        const response = await fetch('/api/events');
+        const data = await response.json();
+        
+        if (data.events) {
+          // Filter events from today (May 5, 2025) onward
+          const today = new Date(2025, 4, 5); // May 5, 2025
+          const futureEvents = data.events.filter((event: Event) => {
+            const eventDate = new Date(event.start_date);
+            return eventDate >= today;
+          });
+          
+          setEvents(futureEvents);
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    
+    fetchEvents();
+  }, []);
   
-  // Sort events by date (soonest first)
-  const sortedEvents = [...filteredEvents].sort((a, b) => 
-    new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+  // Filter events by country
+  const filteredEvents = selectedCountry
+    ? events.filter(event => event.country === selectedCountry)
+    : events;
+  
+  // Get unique countries for the filter
+  const countries = Array.from(new Set(events.map(event => event.country))).sort();
+  
+  // Convert events to location data for the map
+  const locations = convertEventsToLocationData(filteredEvents);
+  
+  // Group events by month for the list view
+  const eventsByMonth: Record<string, Event[]> = {};
+  
+  filteredEvents.forEach(event => {
+    const date = new Date(event.start_date);
+    const monthYear = `${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
+    
+    if (!eventsByMonth[monthYear]) {
+      eventsByMonth[monthYear] = [];
+    }
+    
+    eventsByMonth[monthYear].push(event);
+  });
+  
+  // Sort events within each month by start date
+  Object.keys(eventsByMonth).forEach(month => {
+    eventsByMonth[month].sort((a, b) => 
+      new Date(a.start_date).getTime() - new Date(b.start_date).getTime()
+    );
+  });
+  
+  // Sort months chronologically
+  const sortedMonths = Object.keys(eventsByMonth).sort((a, b) => {
+    const dateA = new Date(eventsByMonth[a][0].start_date);
+    const dateB = new Date(eventsByMonth[b][0].start_date);
+    return dateA.getTime() - dateB.getTime();
+  });
+  
+  // Render artists for an event
+  const renderArtists = (artists: Artist[]) => {
+    if (!artists || artists.length === 0) return null;
+    
+    return (
+      <div className="flex flex-wrap gap-1 mt-2">
+        {artists.map(artist => (
+          <Link 
+            key={artist.id} 
+            href={`/artists/${artist.slug}`}
+            className="inline-flex items-center px-2 py-1 bg-gray-700 rounded-full text-xs hover:bg-gray-600 transition-colors"
+          >
+            {artist.avatar_url && (
+              <img 
+                src={artist.avatar_url} 
+                alt={artist.name} 
+                className="w-4 h-4 rounded-full mr-1 object-cover"
+              />
+            )}
+            {artist.name}
+          </Link>
+        ))}
+      </div>
+    );
+  };
+  
+  // Render event card
+  const renderEventCard = (event: Event) => (
+    <div 
+      key={event.id}
+      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+    >
+      <div className="relative">
+        <img 
+          src={event.image_url || '/images/event-placeholder.jpg'} 
+          alt={event.name}
+          className="w-full h-48 object-cover"
+        />
+        <div className="absolute top-2 right-2">
+          <div className="bg-black/70 text-white px-3 py-1 rounded-full text-xs">
+            {formatDateRange(event)}
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4">
+        <h3 className="text-xl font-bold mb-2 text-white">{event.name}</h3>
+        
+        <div className="flex items-start mb-2">
+          <div className="text-gray-300 text-sm flex-1">
+            <div className="mb-1">
+              <span className="font-medium">{event.venue}</span>
+            </div>
+            <div>
+              {event.city}, {event.country}
+            </div>
+          </div>
+        </div>
+        
+        {renderArtists(event.artists)}
+        
+        <div className="mt-4 flex justify-between items-center">
+          <button
+            onClick={() => setSelectedEvent(event)}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm transition-colors"
+          >
+            View Details
+          </button>
+          
+          {event.ticket_url && (
+            <a
+              href={event.ticket_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm transition-colors"
+            >
+              Tickets
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
   );
   
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+  // Don't render anything on the server to avoid hydration issues
+  if (!isMounted) {
+    return null;
+  }
   
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mb-8">
-        <Link href="/">
-          <Button variant="ghost" className="mb-4">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Button>
-        </Link>
-        
-        <h1 className="text-4xl font-bold mb-4">Tattoo Events</h1>
-        <p className="text-muted-foreground max-w-2xl mb-8">
-          Discover upcoming tattoo conventions, workshops, meetups, and more. Connect with the community and expand your tattoo knowledge.
-        </p>
-      </div>
-      
-      {/* Filters */}
-      <div className="mb-8">
-        <div className="flex items-center mb-4">
-          <Filter className="h-5 w-5 mr-2" />
-          <h2 className="text-xl font-semibold">Filter by Category</h2>
+    <div className="min-h-screen bg-gray-900 text-white pt-24 pb-16">
+      <div className="container mx-auto px-4">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-2">Tattoo Events</h1>
+          <p className="text-gray-400">
+            Discover upcoming tattoo conventions, exhibitions, and gatherings around the world
+          </p>
         </div>
         
-        <div className="flex flex-wrap gap-2">
-          <Button 
-            variant={activeFilter === null ? "default" : "outline"} 
-            onClick={() => setActiveFilter(null)}
-            className="mb-2"
-          >
-            All Events
-          </Button>
-          
-          {categories.map(category => (
-            <Button 
-              key={category} 
-              variant={activeFilter === category ? "default" : "outline"}
-              onClick={() => setActiveFilter(category)}
-              className="mb-2"
+        {/* Filters and View Toggle */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+          {/* Country Filter */}
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setSelectedCountry(null)}
+              className={`px-3 py-1 rounded-full text-sm ${
+                selectedCountry === null
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+              }`}
             >
-              {category}
-            </Button>
-          ))}
+              All Countries
+            </button>
+            
+            {countries.map(country => (
+              <button
+                key={country}
+                onClick={() => setSelectedCountry(country)}
+                className={`px-3 py-1 rounded-full text-sm ${
+                  selectedCountry === country
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                }`}
+              >
+                {country}
+              </button>
+            ))}
+          </div>
+          
+          {/* View Toggle */}
+          <div className="flex rounded-md overflow-hidden">
+            <button
+              onClick={() => setViewMode('list')}
+              className={`px-4 py-2 ${
+                viewMode === 'list'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+              }`}
+            >
+              List View
+            </button>
+            <button
+              onClick={() => setViewMode('map')}
+              className={`px-4 py-2 ${
+                viewMode === 'map'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+              }`}
+            >
+              Map View
+            </button>
+          </div>
         </div>
-      </div>
-      
-      {/* Events List */}
-      <motion.div 
-        className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {sortedEvents.map((event) => (
-          <motion.div key={event.id} variants={itemVariants}>
-            <Card className="overflow-hidden h-full hover:shadow-lg transition-all duration-300">
-              <div className="md:flex">
-                <div className="md:w-1/3 h-48 md:h-auto relative">
-                  <img 
-                    src={event.imageUrl} 
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2 py-1 rounded-full text-xs font-medium bg-primary text-primary-foreground">
-                      {event.category}
-                    </span>
+        
+        {/* Loading State */}
+        {isLoading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+          </div>
+        ) : (
+          <>
+            {/* List View */}
+            {viewMode === 'list' && (
+              <div className="space-y-8">
+                {sortedMonths.length > 0 ? (
+                  sortedMonths.map(month => (
+                    <div key={month}>
+                      <h2 className="text-2xl font-bold mb-4 text-blue-400">{month}</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {eventsByMonth[month].map(event => renderEventCard(event))}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="text-center py-12">
+                    <p className="text-xl text-gray-400">No events found</p>
+                    {selectedCountry && (
+                      <button
+                        onClick={() => setSelectedCountry(null)}
+                        className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
+                      >
+                        Show All Countries
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+            
+            {/* Map View */}
+            {viewMode === 'map' && (
+              <div className="bg-gray-800 rounded-lg overflow-hidden h-[600px]">
+                <MapView 
+                  locations={locations} 
+                  selectedLocation={selectedEvent ? locations.find(loc => loc.id === selectedEvent.id) || null : null}
+                  onMarkerClick={(location: LocationData) => {
+                    const event = events.find(e => e.id === location.id);
+                    if (event) setSelectedEvent(event);
+                  }}
+                />
+              </div>
+            )}
+          </>
+        )}
+        
+        {/* Event Details Modal */}
+        {selectedEvent && (
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <div className="bg-gray-800 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="relative">
+                <img 
+                  src={selectedEvent.image_url || '/images/event-placeholder.jpg'} 
+                  alt={selectedEvent.name}
+                  className="w-full h-64 object-cover"
+                />
+                <button
+                  onClick={() => setSelectedEvent(null)}
+                  className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              <div className="p-6">
+                <h2 className="text-2xl font-bold mb-2">{selectedEvent.name}</h2>
+                
+                <div className="flex flex-wrap gap-4 mb-4">
+                  <div className="bg-gray-700 px-3 py-1 rounded-full text-sm">
+                    {formatDateRange(selectedEvent)}
+                  </div>
+                  <div className="bg-gray-700 px-3 py-1 rounded-full text-sm">
+                    {selectedEvent.city}, {selectedEvent.country}
                   </div>
                 </div>
                 
-                <div className="md:w-2/3">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-                    
-                    <div className="flex items-center text-sm text-muted-foreground mb-2">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      <span>
-                        {format(new Date(event.startDate), 'MMM d, yyyy')}
-                        {event.startDate !== event.endDate && 
-                          ` - ${format(new Date(event.endDate), 'MMM d, yyyy')}`
-                        }
-                      </span>
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold mb-2">Location</h3>
+                  <p className="text-gray-300">{selectedEvent.venue}</p>
+                  <p className="text-gray-300">{selectedEvent.address}</p>
+                </div>
+                
+                {selectedEvent.description && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-2">About</h3>
+                    <p className="text-gray-300 whitespace-pre-line">{selectedEvent.description}</p>
+                  </div>
+                )}
+                
+                {selectedEvent.artists && selectedEvent.artists.length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-2">Featured Artists</h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                      {selectedEvent.artists.map(artist => (
+                        <Link 
+                          key={artist.id} 
+                          href={`/artists/${artist.slug}`}
+                          className="flex flex-col items-center bg-gray-700 p-2 rounded-lg hover:bg-gray-600 transition-colors"
+                        >
+                          <img 
+                            src={artist.avatar_url || '/images/avatar-placeholder.jpg'} 
+                            alt={artist.name} 
+                            className="w-16 h-16 rounded-full object-cover mb-2"
+                          />
+                          <span className="text-sm text-center">{artist.name}</span>
+                        </Link>
+                      ))}
                     </div>
-                    
-                    <div className="flex items-center text-sm text-muted-foreground mb-2">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      <span>{event.location}</span>
-                    </div>
-                    
-                    <div className="flex items-center text-sm text-muted-foreground mb-4">
-                      <Users className="h-4 w-4 mr-1" />
-                      <span>{event.attendees} attendees</span>
-                    </div>
-                    
-                    <p className="text-muted-foreground mb-4 line-clamp-2">{event.description}</p>
-                  </CardContent>
+                  </div>
+                )}
+                
+                <div className="flex flex-wrap gap-3">
+                  {selectedEvent.website_url && (
+                    <a
+                      href={selectedEvent.website_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
+                    >
+                      Official Website
+                    </a>
+                  )}
                   
-                  <CardFooter className="px-6 py-4 border-t flex justify-between">
-                    <div className="text-sm font-medium">
-                      By {event.organizer}
-                    </div>
-                    <Button size="sm">View Details</Button>
-                  </CardFooter>
+                  {selectedEvent.ticket_url && (
+                    <a
+                      href={selectedEvent.ticket_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition-colors"
+                    >
+                      Buy Tickets
+                    </a>
+                  )}
                 </div>
               </div>
-            </Card>
-          </motion.div>
-        ))}
-      </motion.div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

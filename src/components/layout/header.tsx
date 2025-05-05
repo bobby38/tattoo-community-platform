@@ -35,6 +35,7 @@ const Header = () => {
     { name: 'Directory', path: '/directory' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Events', path: '/events' },
+    { name: 'News', path: '/news' },
     { name: 'Styles', path: '/styles' },
     { name: 'Tribes', path: '/tribes' },
     { name: 'Groups', path: '/groups' },
