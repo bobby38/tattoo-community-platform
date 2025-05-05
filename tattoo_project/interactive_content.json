@@ -1,0 +1,212 @@
+{
+  "interactive_content": [
+    {
+      "title": "Tattoo Style Matcher",
+      "format": "quiz",
+      "description": "Find out which tattoo style best matches your personality and preferences through a series of questions about your tastes and lifestyle.",
+      "sample_questions": [
+        "Which of these landscapes appeals to you most? (Traditional Japanese garden, Geometric cityscape, Vintage sailor port, Tribal village)",
+        "How would you describe your personal style? (Bold and colorful, Minimalist, Vintage-inspired, Nature-connected)",
+        "What quality do you value most in art? (Symbolism, Technical precision, Cultural significance, Bold expression)",
+        "If you could travel anywhere, where would you go? (Japan, Polynesia, Europe, South America)",
+        "Do you prefer art that tells a story or art that's purely aesthetic?"
+      ],
+      "implementation_suggestions": "Use a point system for each style category. Show progress bar as users move through questions. End with a detailed explanation of their matched style with example images and famous artists who work in that style."
+    },
+    {
+      "title": "Tribal Art Origins",
+      "format": "interactive map game",
+      "description": "An interactive world map where users can explore different tribal tattoo traditions from around the world, learning about their cultural significance and distinctive patterns.",
+      "sample_content": [
+        "Polynesian (Ta Moko, Pe'a, Tatau): Geometric patterns representing genealogy, status, and natural elements",
+        "Native American: Symbolic designs representing spiritual beliefs, achievements, and tribal affiliation",
+        "Celtic: Intricate knotwork patterns representing eternity and interconnectedness",
+        "Thai Sak Yant: Sacred geometric designs believed to offer protection and blessings",
+        "Berber: Geometric patterns traditionally used for protection and fertility"
+      ],
+      "implementation_suggestions": "Interactive clickable world map with hotspots. Each region reveals images, history, and a mini-quiz about that tradition. Include audio pronunciations of traditional terms."
+    },
+    {
+      "title": "Tattoo History Timeline",
+      "format": "interactive timeline",
+      "description": "Explore the evolution of tattooing from ancient civilizations to modern techniques through an interactive timeline with quizzes at each major era.",
+      "sample_content": [
+        "3000 BCE: Ötzi the Iceman (Quiz: What were his tattoos believed to be for?)",
+        "700 BCE: Scythian mummies with animal tattoos (Quiz: What animals were commonly depicted?)",
+        "18th Century: Captain Cook encounters Polynesian tattooing (Quiz: What term did he introduce to European languages?)",
+        "1891: First electric tattoo machine (Quiz: Who invented it?)",
+        "1970s: Tattoo Renaissance (Quiz: Which Japanese style became popular in Western tattooing?)"
+      ],
+      "implementation_suggestions": "Horizontal scrollable timeline with images, text, and pop-up quizzes. Allow users to collect 'history badges' for completing each era's knowledge check."
+    },
+    {
+      "title": "Ink or Myth?",
+      "format": "true/false quiz",
+      "description": "Test your knowledge about tattoo facts and myths with this quick-fire true/false game that debunks common misconceptions.",
+      "sample_questions": [
+        "Tattoo ink is regulated by the FDA in the United States. (False)",
+        "Ancient Egyptian mummies have been found with tattoos. (True)",
+        "Red ink is more likely to cause allergic reactions than other colors. (True)",
+        "Tattoos were once used as punishment in ancient Rome. (True)",
+        "Getting a tattoo while pregnant is completely safe. (False)"
+      ],
+      "implementation_suggestions": "Swipe right for true, left for false. Immediate feedback with brief explanations. Track user score and share results on social media."
+    },
+    {
+      "title": "Tribal Pattern Creator",
+      "format": "interactive design tool",
+      "description": "Create your own tribal-inspired patterns using authentic elements from different cultural traditions, learning about their meanings as you design.",
+      "sample_content": [
+        "Maori koru (spiral) representing new life and growth",
+        "Samoan pe'a geometric patterns representing courage",
+        "Borneo mandau (headhunter's sword) motifs",
+        "Hawaiian triangular patterns representing shark teeth (protection)",
+        "Filipino tribal sun symbols representing guidance"
+      ],
+      "implementation_suggestions": "Drag-and-drop interface with pattern elements organized by culture. Include information tooltips for each element explaining cultural significance. Allow users to save and share their designs."
+    },
+    {
+      "title": "Tattoo Artist or Not?",
+      "format": "image quiz",
+      "description": "Can you tell which tattoos were done by professional artists versus amateur attempts? Test your eye for quality and technique.",
+      "sample_content": [
+        "Image pair 1: Professional fine line work vs. blowout lines",
+        "Image pair 2: Solid color saturation vs. patchy coloring",
+        "Image pair 3: Clean geometric work vs. wobbly lines",
+        "Image pair 4: Professional black and gray shading vs. amateur attempt",
+        "Image pair 5: Healed professional tattoo vs. healed amateur tattoo"
+      ],
+      "implementation_suggestions": "Side-by-side image comparison with swipe voting. After guessing, highlight the technical differences between the two. Include tips for spotting quality work."
+    },
+    {
+      "title": "Tattoo Pain Map Challenge",
+      "format": "interactive body map",
+      "description": "Test your knowledge of tattoo pain levels across different body parts and compare your guesses with reported pain experiences.",
+      "sample_content": [
+        "Ribs: Pain level 8-10 (Most painful)",
+        "Outer bicep: Pain level 3-4 (Less painful)",
+        "Spine: Pain level 7-8 (Very painful)",
+        "Inner wrist: Pain level 5-6 (Moderately painful)",
+        "Calf: Pain level 4-5 (Moderately painful)"
+      ],
+      "implementation_suggestions": "Interactive body model where users can tap different areas to guess pain levels on a scale of 1-10. Compare user guesses with average reported pain levels. Include factors that affect pain sensitivity."
+    },
+    {
+      "title": "Tattoo Style Spotter",
+      "format": "timed quiz game",
+      "description": "Test how quickly you can identify different tattoo styles from images in this fast-paced game that challenges your knowledge of tattoo aesthetics.",
+      "sample_content": [
+        "Traditional American (Old School): Bold lines, limited color palette, nautical and military themes",
+        "Japanese (Irezumi): Large-scale, water motifs, mythological creatures, cherry blossoms",
+        "Blackwork: Solid black ink, geometric patterns, dotwork",
+        "Watercolor: Painterly effects, splashes, no outlines or minimal outlines",
+        "Neo-traditional: Bold lines with expanded color palette and stylized subjects"
+      ],
+      "implementation_suggestions": "Timed image display with multiple-choice answers. Increasing difficulty levels. Leaderboard for fastest accurate identifications. Include brief style descriptions after each answer."
+    },
+    {
+      "title": "This or That: Tattoo Edition",
+      "format": "preference poll",
+      "description": "A fun way to see how your tattoo preferences compare with other users through a series of either/or choices.",
+      "sample_questions": [
+        "Color or black and gray?",
+        "Arm sleeve or leg sleeve?",
+        "Traditional or realistic?",
+        "Large statement piece or collection of smaller tattoos?",
+        "Visible placement or hidden placement?"
+      ],
+      "implementation_suggestions": "Swipe-based interface with immediate results showing percentage splits among all users. Option to filter results by age group, gender, or location to see demographic trends."
+    },
+    {
+      "title": "Tribal Symbol Meanings",
+      "format": "matching game",
+      "description": "Match tribal symbols with their traditional meanings in this educational game that explores the rich symbolism of tribal tattoo art.",
+      "sample_content": [
+        "Polynesian turtle: Longevity, peace, fertility",
+        "Maori spiral (koru): New beginnings, growth, harmony",
+        "Borneo rosette: Protection from evil spirits",
+        "Samoan spearhead: Courage and fighting spirit",
+        "Hawaiian ocean wave patterns: Life's changes and continuity"
+      ],
+      "implementation_suggestions": "Card-matching memory game with symbols on one set and meanings on another. Include audio pronunciation of traditional names and brief cultural context for each symbol after matches are made."
+    },
+    {
+      "title": "Tattoo Aftercare Simulator",
+      "format": "interactive simulation",
+      "description": "Test your knowledge of proper tattoo aftercare through an interactive simulation where your choices affect the healing outcome of a virtual tattoo.",
+      "sample_scenarios": [
+        "Day 1: Your tattoo is wrapped. Do you: Remove wrap after 2 hours, leave overnight, or remove immediately to 'let it breathe'?",
+        "Day 2: Tattoo is weeping fluid. Do you: Pat dry gently, scrub clean, or cover with thick ointment?",
+        "Day 5: Tattoo is itchy. Do you: Slap gently, scratch it, apply recommended lotion, or leave it alone?",
+        "Day 10: Tattoo is flaking. Do you: Peel the flakes, exfoliate the area, or let them fall off naturally?",
+        "Day 14: Going to the beach. Do you: Apply sunscreen, cover with clothing, or let it tan to 'bring out the colors'?"
+      ],
+      "implementation_suggestions": "Visual representation of tattoo healing process that changes based on user choices. Multiple ending states showing well-healed tattoo vs. problematic healing. Include expert explanations for correct choices."
+    },
+    {
+      "title": "Tattoo Translation Challenge",
+      "format": "language quiz",
+      "description": "Test your knowledge of foreign script tattoos and avoid common translation mistakes in this educational quiz about language-based tattoos.",
+      "sample_questions": [
+        "What does this Chinese character actually mean? (Show commonly mistranslated character)",
+        "Is this Sanskrit text grammatically correct? (Show example with and without errors)",
+        "Match the Arabic calligraphy to its correct meaning (Multiple options)",
+        "Spot the error in this Japanese kanji tattoo (Show example with subtle error)",
+        "What does this Thai script actually translate to in English? (Show example with multiple-choice answers)"
+      ],
+      "implementation_suggestions": "Multiple-choice quiz with images of actual tattoos. Include explanations of common mistakes and cultural considerations when getting script tattoos. Offer basic translation tips."
+    },
+    {
+      "title": "Tattoo Time Machine",
+      "format": "historical simulation",
+      "description": "Travel through time to experience how you might get tattooed in different historical periods, learning about tools, techniques, and cultural contexts.",
+      "sample_scenarios": [
+        "Ancient Egypt (3000 BCE): Hand-poked tattoos using bone needles with soot and breast milk ink",
+        "Polynesia (1700s): Traditional tap method using handmade tools of wood and bone",
+        "Victorian England (1890s): Early electric tattoo machines in a carnival setting",
+        "Japanese Edo Period: Traditional Tebori hand-poking technique by Horishi masters",
+        "Modern Studio (Present): Contemporary machines, sterilization procedures, and techniques"
+      ],
+      "implementation_suggestions": "Immersive storytelling with period-appropriate visuals and sound effects. Include mini-games simulating different tattooing techniques. End with a virtual tattoo created using the historical method of user's choice."
+    },
+    {
+      "title": "Guess the Artist",
+      "format": "recognition quiz",
+      "description": "Test your knowledge of famous tattoo artists by trying to identify their distinctive work from images of their tattoos.",
+      "sample_content": [
+        "Kat Von D: Fine line black and gray portraiture",
+        "Nikko Hurtado: Hyper-realistic color portraiture",
+        "Horiyoshi III: Traditional Japanese full-body suits",
+        "Dr. Woo: Fine line minimalist designs with geometric elements",
+        "Ed Hardy: American traditional with Japanese influences"
+      ],
+      "implementation_suggestions": "Show tattoo images without artist names and have users guess from multiple choices. Include artist bios and signature style descriptions after each question. Advanced level could include lesser-known but influential artists."
+    },
+    {
+      "title": "Tattoo Ethics Dilemmas",
+      "format": "scenario-based quiz",
+      "description": "Explore ethical considerations in tattooing through scenario-based questions that challenge users to think about cultural appropriation, consent, and professional standards.",
+      "sample_scenarios": [
+        "A client wants a traditional Māori moko kauae (chin tattoo) but has no Māori heritage. As an artist, what would be the most ethical response?",
+        "A visibly intoxicated client wants to get their partner's name tattooed. What should the artist do?",
+        "A client wants a tattoo with potentially offensive imagery in a visible location. How should this be handled?",
+        "A parent brings in their 16-year-old who wants a tattoo and gives consent. What considerations should be made?",
+        "A client requests a copy of another artist's custom design they saw online. What's the ethical approach?"
+      ],
+      "implementation_suggestions": "Present scenarios with multiple possible responses. Rather than simple right/wrong answers, provide nuanced feedback explaining different perspectives and best practices. Include input from cultural experts and professional tattoo organizations."
+    },
+    {
+      "title": "Tribal Art Evolution",
+      "format": "before-and-after comparison",
+      "description": "Explore how traditional tribal tattoo designs have evolved and been adapted in contemporary tattooing through interactive comparisons.",
+      "sample_content": [
+        "Traditional Māori moko vs. modern Māori-inspired designs",
+        "Ancient Polynesian patterns vs. contemporary Polynesian fusion",
+        "Historical Thai Sak Yant vs. modern interpretations",
+        "Traditional Berber tattoos vs. contemporary geometric adaptations",
+        "Indigenous Filipino tribal designs vs. modern Filipino tattoo revival"
+      ],
+      "implementation_suggestions": "Interactive slider that transitions between traditional and contemporary versions of similar designs. Include cultural context, interviews with artists working to preserve traditions, and discussions about respectful adaptation vs. appropriation."
+    }
+  ]
+}

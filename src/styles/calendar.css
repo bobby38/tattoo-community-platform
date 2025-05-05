@@ -1,0 +1,120 @@
+/* Calendar styles */
+.tattoo-calendar {
+  /* Override default styles */
+  color: white;
+  font-family: inherit;
+}
+
+.tattoo-calendar .rbc-header {
+  padding: 8px 4px;
+  background-color: rgba(31, 41, 55, 0.7);
+  border-bottom: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-month-view {
+  border: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-day-bg {
+  background-color: rgba(31, 41, 55, 0.3);
+}
+
+.tattoo-calendar .rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-off-range {
+  opacity: 0.5;
+}
+
+.tattoo-calendar .rbc-date-cell {
+  padding: 4px 8px;
+  text-align: right;
+}
+
+.tattoo-calendar .rbc-today {
+  background-color: rgba(79, 70, 229, 0.2);
+}
+
+.tattoo-calendar .rbc-event {
+  background-color: rgb(79, 70, 229);
+  border-radius: 4px;
+  padding: 2px 4px;
+  border: none;
+}
+
+.tattoo-calendar .rbc-event.rbc-selected {
+  background-color: rgb(99, 102, 241);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.tattoo-calendar .rbc-toolbar button {
+  color: white;
+  background-color: rgba(31, 41, 55, 0.7);
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+.tattoo-calendar .rbc-toolbar button:hover {
+  background-color: rgba(55, 65, 81, 0.7);
+}
+
+.tattoo-calendar .rbc-toolbar button.rbc-active {
+  background-color: rgb(79, 70, 229);
+  border-color: rgb(79, 70, 229);
+}
+
+.tattoo-calendar .rbc-agenda-view table.rbc-agenda-table {
+  border: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-agenda-view table.rbc-agenda-table thead > tr > th {
+  background-color: rgba(31, 41, 55, 0.7);
+  border-bottom: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-agenda-view table.rbc-agenda-table tbody > tr > td {
+  border-bottom: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-agenda-view table.rbc-agenda-table tbody > tr > td + td {
+  border-left: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-time-view {
+  border: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-time-header {
+  border-bottom: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-time-header-content {
+  border-left: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-time-content {
+  border-top: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-time-content > * + * > * {
+  border-left: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-time-slot {
+  border-top: 1px solid rgba(75, 85, 99, 0.2);
+}
+
+.tattoo-calendar .rbc-day-slot .rbc-time-slot {
+  border-top: 1px solid rgba(75, 85, 99, 0.2);
+}
+
+.tattoo-calendar .rbc-timeslot-group {
+  border-bottom: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+.tattoo-calendar .rbc-time-gutter,
+.tattoo-calendar .rbc-header-gutter {
+  background-color: rgba(31, 41, 55, 0.7);
+}

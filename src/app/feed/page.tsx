@@ -100,9 +100,9 @@ const FeedContent = () => {
   const [tribes, setTribes] = useState<Tribe[]>([]);
   
   // Filter states
-  const [selectedType, setSelectedType] = useState<string>(searchParams.get('type') || '');
-  const [selectedStyle, setSelectedStyle] = useState<string>(searchParams.get('styleId') || '');
-  const [selectedTribe, setSelectedTribe] = useState<string>(searchParams.get('tribeId') || '');
+  const [selectedType, setSelectedType] = useState<string>(searchParams.get('type') || 'all');
+  const [selectedStyle, setSelectedStyle] = useState<string>(searchParams.get('styleId') || 'all');
+  const [selectedTribe, setSelectedTribe] = useState<string>(searchParams.get('tribeId') || 'all');
   const [currentPage, setCurrentPage] = useState<number>(parseInt(searchParams.get('page') || '1'));
   
   // Fetch posts with filters
@@ -114,15 +114,15 @@ const FeedContent = () => {
         // Build the URL with query parameters
         let url = `/api/posts?page=${currentPage}&limit=9`;
         
-        if (selectedType) {
+        if (selectedType !== 'all') {
           url += `&type=${selectedType}`;
         }
         
-        if (selectedStyle) {
+        if (selectedStyle !== 'all') {
           url += `&styleId=${selectedStyle}`;
         }
         
-        if (selectedTribe) {
+        if (selectedTribe !== 'all') {
           url += `&tribeId=${selectedTribe}`;
         }
         
@@ -235,20 +235,20 @@ const FeedContent = () => {
   
   const handleStyleChange = (value: string) => {
     setSelectedStyle(value);
-    setSelectedTribe(''); // Reset tribe when style changes
+    setSelectedTribe('all'); // Reset tribe when style changes
     setCurrentPage(1);
   };
   
   const handleTribeChange = (value: string) => {
     setSelectedTribe(value);
-    setSelectedStyle(''); // Reset style when tribe changes
+    setSelectedStyle('all'); // Reset style when tribe changes
     setCurrentPage(1);
   };
   
   const handleClearFilters = () => {
-    setSelectedType('');
-    setSelectedStyle('');
-    setSelectedTribe('');
+    setSelectedType('all');
+    setSelectedStyle('all');
+    setSelectedTribe('all');
     setCurrentPage(1);
   };
   
@@ -310,7 +310,7 @@ const FeedContent = () => {
                 <SelectValue placeholder="Post Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Types</SelectItem>
+                <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="news">News</SelectItem>
                 <SelectItem value="gallery">Gallery</SelectItem>
                 <SelectItem value="event">Event</SelectItem>
@@ -326,7 +326,7 @@ const FeedContent = () => {
                 <SelectValue placeholder="Style" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Styles</SelectItem>
+                <SelectItem value="all">All Styles</SelectItem>
                 {styles.map((style) => (
                   <SelectItem key={style.id} value={style.id}>{style.name}</SelectItem>
                 ))}
@@ -340,7 +340,7 @@ const FeedContent = () => {
                 <SelectValue placeholder="Tribe" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Tribes</SelectItem>
+                <SelectItem value="all">All Tribes</SelectItem>
                 {tribes.map((tribe) => (
                   <SelectItem key={tribe.id} value={tribe.id}>{tribe.name}</SelectItem>
                 ))}

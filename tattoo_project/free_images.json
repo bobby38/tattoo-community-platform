@@ -1,0 +1,249 @@
+{
+  "sources": [
+    {
+      "platform": "Unsplash",
+      "url": "https://unsplash.com",
+      "license": "Unsplash License",
+      "attribution_required": false,
+      "attribution_format": "Photo by [Photographer Name] on Unsplash",
+      "notes": "Free for commercial and personal use. No attribution required but appreciated. Cannot compile images to create a competing service."
+    },
+    {
+      "platform": "Pexels",
+      "url": "https://www.pexels.com",
+      "license": "Pexels License",
+      "attribution_required": false,
+      "attribution_format": "Photo by [Photographer Name] on Pexels",
+      "notes": "Free for commercial and personal use. No attribution required but appreciated. Cannot sell unaltered copies."
+    },
+    {
+      "platform": "Pixabay",
+      "url": "https://pixabay.com",
+      "license": "Pixabay Content License",
+      "attribution_required": false,
+      "attribution_format": "Image by [Creator Name] on Pixabay",
+      "notes": "Free for commercial and personal use. No attribution required but appreciated. Cannot sell unaltered copies or use as stock images."
+    },
+    {
+      "platform": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org",
+      "license": "Various (CC BY, CC BY-SA, CC0, Public Domain)",
+      "attribution_required": true,
+      "attribution_format": "Depends on specific license, typically '[Title]' by [Author], licensed under [License]",
+      "notes": "License varies by image. Most require attribution. Check specific image license."
+    },
+    {
+      "platform": "Flickr Creative Commons",
+      "url": "https://www.flickr.com/creativecommons",
+      "license": "Various Creative Commons licenses",
+      "attribution_required": true,
+      "attribution_format": "Photo by [Username] on Flickr, licensed under [License]",
+      "notes": "License varies by image. Most require attribution. Check specific image license."
+    }
+  ],
+  "images": [
+    {
+      "url": "https://i.pinimg.com/originals/56/25/cd/5625cdd64eacd28a05ab7821879d0318.jpg",
+      "description": "American Traditional Head Tattoo featuring bold lines and vibrant colors",
+      "style_or_mod": "Traditional Tattoo",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://www.dubuddha.org/wp-content/uploads/2017/07/Traditional-Sleeve-Tattoo-by-Lewis-Parkin.jpg",
+      "description": "Traditional sleeve tattoo with classic motifs and bold colors",
+      "style_or_mod": "Traditional Tattoo",
+      "source_platform": "DuBuddha",
+      "attribution_text": "Traditional Sleeve Tattoo by Lewis Parkin via DuBuddha.org"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/96/74/83/9674833b983201aa2adc6085dce47897.jpg",
+      "description": "Blackwork tattoo with intricate geometric patterns",
+      "style_or_mod": "Blackwork Tattoo",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://www.dubuddha.org/wp-content/uploads/2018/05/Blackwork-Tattoo-Sleeve-with-Roses-by-Konrad-ibn-Kondrat.jpg",
+      "description": "Blackwork tattoo sleeve featuring roses with detailed shading",
+      "style_or_mod": "Blackwork Tattoo",
+      "source_platform": "DuBuddha",
+      "attribution_text": "Blackwork Tattoo Sleeve with Roses by Konrad ibn Kondrat via DuBuddha.org"
+    },
+    {
+      "url": "https://thai.tattoo/wp-content/uploads/2023/02/2022-09-28-07.43.51-2936900391837507904_6868942738-1280x1600.jpg",
+      "description": "Blackwork tattoo with bold geometric design on arm",
+      "style_or_mod": "Blackwork Tattoo",
+      "source_platform": "Thai Tattoo",
+      "attribution_text": "Image via Thai.tattoo"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/6c/24/c5/6c24c58dc7d4433cc610113de95f5f98.jpg",
+      "description": "Watercolor butterfly tattoo with vibrant colors and soft edges",
+      "style_or_mod": "Watercolor Tattoo",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1184/2886/files/f13d25a1ad2d1a58e1c87ad31f65ae3f_cb46c597-7be7-4bdc-9829-a534823e2930_1024x1024.jpg?v=1481763780",
+      "description": "Watercolor tattoo with splashes of color and minimal linework",
+      "style_or_mod": "Watercolor Tattoo",
+      "source_platform": "MyBodiArt",
+      "attribution_text": "Image via MyBodiArt.com"
+    },
+    {
+      "url": "https://alexie.co/wp-content/uploads/2023/02/Floral-Watercolor-Tattoos.jpg",
+      "description": "Floral watercolor tattoo with soft color transitions",
+      "style_or_mod": "Watercolor Tattoo",
+      "source_platform": "Alexie.co",
+      "attribution_text": "Image via Alexie.co"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/61/c0/c1/61c0c1420f35b6df39b6636dc57e9c2e.jpg",
+      "description": "Minimalist flower line drawing tattoo with simple, elegant design",
+      "style_or_mod": "Minimalist Tattoo",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://assets-global.website-files.com/64e552632c5e18cbf28c973d/64e552642c5e18cbf28cb260_Flowers%20into%20a%20face.webp",
+      "description": "Minimalist tattoo with flowers forming a face silhouette",
+      "style_or_mod": "Minimalist Tattoo",
+      "source_platform": "Minimalgoods",
+      "attribution_text": "Image via Minimalgoods.co"
+    },
+    {
+      "url": "https://alexie.co/wp-content/uploads/2023/02/Sunflower-Tattoo-Minimalist-Style-819x1024.jpg",
+      "description": "Minimalist sunflower tattoo with clean lines",
+      "style_or_mod": "Minimalist Tattoo",
+      "source_platform": "Alexie.co",
+      "attribution_text": "Image via Alexie.co"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/66/7b/8d/667b8d23a31b4cad390a6e9e78c2a151.jpg",
+      "description": "Multiple facial piercings including septum, labret, and eyebrow",
+      "style_or_mod": "Body Piercing",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/eb/2b/e9/eb2be91bf793b9ee8bccf325aa54c354.jpg",
+      "description": "Multiple ear piercings with various jewelry styles",
+      "style_or_mod": "Body Piercing",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image by Body Piercing By Qui Qui via Pinterest"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/57/6b/4b/576b4b00d5baebe9ca82a79b442a80c4.jpg",
+      "description": "Belly button piercing with clear CZ surgical steel jewelry",
+      "style_or_mod": "Body Piercing",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/83/71/6e/83716e2dc05d44379a124795e33e5c1d.jpg",
+      "description": "Scarification body modification with geometric pattern",
+      "style_or_mod": "Scarification",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/4b/be/c2/4bbec2a6099c5e903fef04468eea5e18.jpg",
+      "description": "Fresh scarification by Ryan Ouellette with detailed pattern",
+      "style_or_mod": "Scarification",
+      "source_platform": "Pinterest",
+      "attribution_text": "Scarification by Ryan Ouellette at Precision Body Arts via Pinterest"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/0c/a5/85/0ca585cf0e8e5be36400b529d5e0a7fa.jpg",
+      "description": "Healed scarification showing raised scar tissue in decorative pattern",
+      "style_or_mod": "Scarification",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/fa/d6/86/fad686b468e2c6f7236d6dbb39e12362.jpg",
+      "description": "Intricate henna tattoo design on hand with floral patterns",
+      "style_or_mod": "Henna Tattoo",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image via Zahrah Rose on Pinterest"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/a5/3f/b7/a53fb7ded25570a6c3bb20760ba939cf.jpg",
+      "description": "Traditional henna tattoo with detailed mandala patterns",
+      "style_or_mod": "Henna Tattoo",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://i.pinimg.com/originals/40/aa/a8/40aaa8b540656b12e8c66e1139db22f3.jpg",
+      "description": "Henna-inspired arm tattoo with intricate patterns",
+      "style_or_mod": "Henna Tattoo",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://s-media-cache-ak0.pinimg.com/originals/fe/ba/5a/feba5a2b483fda65aa695a32ab24b2d5.jpg",
+      "description": "Dermal implants on collarbone with decorative tops",
+      "style_or_mod": "Dermal Implants",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "https://i.pinimg.com/736x/60/c3/5a/60c35a2589cdb5d6036da4af9877ce46--opals-gems.jpg",
+      "description": "Two dermal implants with opal gem tops",
+      "style_or_mod": "Dermal Implants",
+      "source_platform": "Pinterest",
+      "attribution_text": "Image sourced from Pinterest, original attribution required"
+    },
+    {
+      "url": "http://www.kalima.co.uk/wp-content/uploads/2015/09/12002876_10154227811453662_4646120942742941699_n.jpg",
+      "description": "Subdermal implant creating raised design under skin",
+      "style_or_mod": "Dermal Implants",
+      "source_platform": "Kalima Emporium",
+      "attribution_text": "Image via Kalima.co.uk"
+    },
+    {
+      "url": "http://www.spiritustattoo.com/wp-content/uploads/2015/11/white-ink-believe-tattoo.jpg",
+      "description": "White ink 'believe' script tattoo with delicate design",
+      "style_or_mod": "White Ink Tattoo",
+      "source_platform": "Spiritus Tattoo",
+      "attribution_text": "Image via SpiritustTattoo.com"
+    },
+    {
+      "url": "https://www.spiritustattoo.com/wp-content/uploads/2015/11/white-ink-tattoos-1.jpg",
+      "description": "White ink mandala tattoo with intricate details",
+      "style_or_mod": "White Ink Tattoo",
+      "source_platform": "Spiritus Tattoo",
+      "attribution_text": "Image via SpiritustTattoo.com"
+    },
+    {
+      "url": "https://www.cuded.com/wp-content/uploads/2014/02/30-White-ink-tattoo.jpg",
+      "description": "White ink feather tattoo with delicate details",
+      "style_or_mod": "White Ink Tattoo",
+      "source_platform": "Cuded",
+      "attribution_text": "Image via Cuded.com"
+    },
+    {
+      "url": "https://www.spiritustattoo.com/wp-content/uploads/2015/11/white-ink-tattoos-3.jpg",
+      "description": "White ink floral tattoo with subtle appearance",
+      "style_or_mod": "White Ink Tattoo",
+      "source_platform": "Spiritus Tattoo",
+      "attribution_text": "Image via SpiritustTattoo.com"
+    },
+    {
+      "url": "https://www.spiritustattoo.com/wp-content/uploads/2015/11/white-ink-tattoos-2.jpg",
+      "description": "White ink geometric pattern tattoo",
+      "style_or_mod": "White Ink Tattoo",
+      "source_platform": "Spiritus Tattoo",
+      "attribution_text": "Image via SpiritustTattoo.com"
+    },
+    {
+      "url": "https://thestyleup.com/wp-content/uploads/2015/02/61-White-Ink-Tattoo.jpg",
+      "description": "White ink wrist tattoo with minimalist design",
+      "style_or_mod": "White Ink Tattoo",
+      "source_platform": "The Style Up",
+      "attribution_text": "Image via TheStyleUp.com"
+    }
+  ]
+}

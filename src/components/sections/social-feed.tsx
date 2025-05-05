@@ -164,7 +164,14 @@ const SocialFeed = () => {
         }
         
         const data: PostsResponse = await response.json();
-        setPosts(data.posts);
+        
+        // Process the posts to ensure image URLs are properly formatted
+        const processedPosts = data.posts.map(post => ({
+          ...post,
+          image_url: post.image_url ? getProperImageUrl(post.image_url) : null
+        }));
+        
+        setPosts(processedPosts);
         setPagination(data.pagination);
       } catch (err) {
         console.log('Using mock data due to fetch error');
@@ -294,9 +301,15 @@ const SocialFeed = () => {
                 {post.image_url && (
                   <div className="relative h-48 overflow-hidden">
                     <img 
-                      src={getProperImageUrl(post.image_url)} 
+                      src={post.image_url} 
                       alt={post.title}
                       className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        // If image fails to load, use a fallback image
+                        const target = e.target as HTMLImageElement;
+                        target.onerror = null; // Prevent infinite loop
+                        target.src = '/images/sample/default.jpg';
+                      }}
                     />
                     <div className="absolute top-3 left-3">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getPostTypeBadgeClass(post.post_type)}`}>

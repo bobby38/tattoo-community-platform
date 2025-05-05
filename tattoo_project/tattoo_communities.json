@@ -1,0 +1,229 @@
+{
+  "tattoo_communities": [
+    {
+      "name": "r/tattoos",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/tattoos/",
+      "member_count": 9045839,
+      "focus_theme": "General tattoo discussions, sharing personal tattoos, and seeking advice",
+      "activity_level": "High",
+      "notable_features": "One of the largest tattoo communities online, created in June 2008, ranks 73rd among all subreddits"
+    },
+    {
+      "name": "r/tattoo",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/tattoo/",
+      "member_count": 923000,
+      "focus_theme": "Sharing tattoos, discussing techniques, and seeking advice",
+      "activity_level": "High",
+      "notable_features": "Verified community for artists and apprentices with strict rules to ensure quality discussions"
+    },
+    {
+      "name": "r/DrawMyTattoo",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/DrawMyTattoo/",
+      "member_count": 662000,
+      "focus_theme": "Sharing rough tattoo designs and ideas for feedback and inspiration",
+      "activity_level": "Medium",
+      "notable_features": "Community focused on conceptual art and planning rather than finalized tattoos"
+    },
+    {
+      "name": "r/tattoodesigns",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/tattoodesigns/",
+      "member_count": 600000,
+      "focus_theme": "Ideas and cover-up suggestions for tattoo designs",
+      "activity_level": "High",
+      "notable_features": "Recently celebrated 600k subscriber milestone, active community engagement"
+    },
+    {
+      "name": "r/TattooArtists",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/TattooArtists/",
+      "member_count": 44526,
+      "focus_theme": "Professional tattoo artists sharing work and techniques",
+      "activity_level": "Medium",
+      "notable_features": "Established in April 2013, growing steadily with approximately 161 new subscribers daily"
+    },
+    {
+      "name": "r/tattooart",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/tattooart/",
+      "member_count": 55592,
+      "focus_theme": "Dedicated to tattoo art and design",
+      "activity_level": "Medium",
+      "notable_features": "Ideal for artists and enthusiasts interested in the creative aspects of tattooing"
+    },
+    {
+      "name": "r/tattooadvice",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/tattooadvice/",
+      "member_count": "N/A",
+      "focus_theme": "Questions about tattoo placement, design, healing, and artist recommendations",
+      "activity_level": "Medium",
+      "notable_features": "Focused on providing advice and guidance for tattoo-related questions"
+    },
+    {
+      "name": "Bang Bang NYC",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/bangbangnyc/",
+      "member_count": 2300000,
+      "focus_theme": "High-end tattoo studio in New York City",
+      "activity_level": "High",
+      "notable_features": "Known as the 'most followed tattoo studio on earth' with high-profile clientele"
+    },
+    {
+      "name": "Ceaser Emanuel",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/ceaserblackink/",
+      "member_count": 2400000,
+      "focus_theme": "Dark, detailed tattoos",
+      "activity_level": "High",
+      "notable_features": "Reality TV star and tattoo artist from Black Ink Crew"
+    },
+    {
+      "name": "Romeo Lacoste",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/romeolacoste/",
+      "member_count": 1900000,
+      "focus_theme": "Black and grey realism, comic books and horror themes",
+      "activity_level": "High",
+      "notable_features": "Self-taught artist with over a decade of experience based in Los Angeles"
+    },
+    {
+      "name": "Nikko Hurtado",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/nikkohurtado/",
+      "member_count": 1700000,
+      "focus_theme": "Realism tattoos",
+      "activity_level": "High",
+      "notable_features": "Renowned for his realistic tattoo style and techniques"
+    },
+    {
+      "name": "Oozy",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/oozy_tattoo/",
+      "member_count": 1600000,
+      "focus_theme": "Intricate, colorful tattoos",
+      "activity_level": "High",
+      "notable_features": "Based in Los Angeles, founder of VISM Studio"
+    },
+    {
+      "name": "Megan Massacre",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/megan_massacre/",
+      "member_count": 1400000,
+      "focus_theme": "Realism, pet portraits, and cover-ups",
+      "activity_level": "High",
+      "notable_features": "NYC-based tattoo artist known for TV appearances"
+    },
+    {
+      "name": "Kozo",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/kozo_tattoo/",
+      "member_count": 1000000,
+      "focus_theme": "Traditional Japanese tattoo techniques",
+      "activity_level": "High",
+      "notable_features": "Specializes in highly detailed and precise traditional Japanese style tattoos"
+    },
+    {
+      "name": "Oleksandra Ianchukova",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/sashaunisex/",
+      "member_count": 720000,
+      "focus_theme": "Watercolor-style tattoos with bold colors",
+      "activity_level": "High",
+      "notable_features": "Russian artist famous for watercolor style and precise line work"
+    },
+    {
+      "name": "Rafinha",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/rafinhadiz/",
+      "member_count": 790000,
+      "focus_theme": "Minimalistic tattoos",
+      "activity_level": "High",
+      "notable_features": "Brazilian tattoo artist with high-profile clientele"
+    },
+    {
+      "name": "Deryk Webb",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/derykwebb/",
+      "member_count": 109000,
+      "focus_theme": "Colorful, detailed tattoos",
+      "activity_level": "Medium",
+      "notable_features": "Talented artist with growing following"
+    },
+    {
+      "name": "Tattoo Observer",
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/groups/tattooobserver/",
+      "member_count": "1,000,000+",
+      "focus_theme": "Sharing tattoo ideas, artist submissions, and discussions",
+      "activity_level": "High",
+      "notable_features": "Well-established community for tattoo enthusiasts, artists, and models"
+    },
+    {
+      "name": "Tattoo Lovers",
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/groups/730015262112799/",
+      "member_count": "Large (exact count not available)",
+      "focus_theme": "Community for people who love tattoos or are tattoo designers",
+      "activity_level": "High",
+      "notable_features": "Members share tattoos, seek advice, and discuss designs"
+    },
+    {
+      "name": "Tattoo Lovers US, UK, CANADA, AUS",
+      "platform": "Facebook",
+      "url": "https://www.facebook.com/groups/tattooloversus/",
+      "member_count": "Large (exact count not available)",
+      "focus_theme": "Regional group for tattoo enthusiasts from US, UK, Canada, and Australia",
+      "activity_level": "Medium",
+      "notable_features": "Localized community for sharing and discussing tattoos in specific regions"
+    },
+    {
+      "name": "The Tattoo Forum",
+      "platform": "Facebook",
+      "url": "https://thehiveindex.com/communities/the-tattoo-forum/",
+      "member_count": "Large (exact count not available)",
+      "focus_theme": "Tattoo help, advice, news, and community engagement",
+      "activity_level": "Medium",
+      "notable_features": "One of the oldest online tattoo discussion forums"
+    },
+    {
+      "name": "VILLAIN⚓ARTS TATTOO",
+      "platform": "Discord",
+      "url": "https://discord.com/invite/VillainArts",
+      "member_count": 5617,
+      "focus_theme": "Professional tattooing and art sharing",
+      "activity_level": "High",
+      "notable_features": "Home to some of the world's best tattoo artists, platform for collaboration"
+    },
+    {
+      "name": "tattoo community",
+      "platform": "Discord",
+      "url": "https://discord.com/invite/9WDkfGUnqe",
+      "member_count": 2027,
+      "focus_theme": "Bringing tattoo enthusiasts together for inspiration and education",
+      "activity_level": "Medium",
+      "notable_features": "Emphasis on sharing tattoo ideas, advice, and experiences"
+    },
+    {
+      "name": "Praise the Ink",
+      "platform": "Discord",
+      "url": "https://discordservers.com/browse/tattoo",
+      "member_count": 3688,
+      "focus_theme": "Tattoo lovers and body modification enthusiasts",
+      "activity_level": "Medium",
+      "notable_features": "Multilingual with significant French-speaking community, advice on tattoos and aftercare"
+    },
+    {
+      "name": "Skin",
+      "platform": "Discord",
+      "url": "https://discordservers.com/browse/tattoo",
+      "member_count": "N/A (growing community)",
+      "focus_theme": "Newcomers to body mods, including tattoos and piercings",
+      "activity_level": "Low to Medium",
+      "notable_features": "Welcoming space for beginners seeking advice on body modifications"
+    }
+  ]
+}

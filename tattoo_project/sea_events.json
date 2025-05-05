@@ -1,0 +1,273 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "The Lion's Gate Singapore Tattoo Convention 2024",
+      "country": "Singapore",
+      "city": "Singapore",
+      "venue": "Singapore Expo, Hall 4B",
+      "address": "1 Expo Drive, Singapore Expo, Singapore 486150",
+      "lat": 1.3333815,
+      "lng": 103.9569064,
+      "start_date": "2024-07-26",
+      "end_date": "2024-07-28",
+      "website": "https://www.facebook.com/events/singapore-expo-hall-4/the-lions-gate-singapore-tattoo-convention-2024/461830999845359/",
+      "ticket_price": null,
+      "currency": "SGD",
+      "featured_artists": [],
+      "description": "The Lion's Gate Singapore Tattoo Convention 2024 is a premier event dedicated to celebrating and showcasing the art of tattooing. The three-day convention aims to bring together a diverse community of tattoo artists, enthusiasts, and industry professionals from around the world. The event will feature tattoo competitions, live demonstrations, workshops, and a vendor marketplace.",
+      "social": {
+        "instagram": null,
+        "facebook": "https://www.facebook.com/events/singapore-expo-hall-4/the-lions-gate-singapore-tattoo-convention-2024/461830999845359/",
+        "tiktok": null
+      }
+    },
+    {
+      "id": 2,
+      "name": "Singapore Ink Show 2025",
+      "country": "Singapore",
+      "city": "Singapore",
+      "venue": "Suntec Convention Centre",
+      "address": "1 Raffles Boulevard, Suntec City, Singapore 039593",
+      "lat": 1.2935198,
+      "lng": 103.8572572,
+      "start_date": "2025-10-10",
+      "end_date": "2025-10-12",
+      "website": "https://www.tattoofilter.com/tattoo-events/singapore",
+      "ticket_price": null,
+      "currency": "SGD",
+      "featured_artists": [],
+      "description": "Asia's largest international tattoo convention, with live art battles, performances, and international artists. The event is expected to feature top tattoo artists, workshops, and exhibitions, continuing the tradition of Singapore as a vibrant tattoo hub.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 3,
+      "name": "Kuching International Tattoo Expo 2024",
+      "country": "Malaysia",
+      "city": "Kuching",
+      "venue": "Dewan Dayak Bidayuh National Association (DBNA)",
+      "address": "Jalan Ong Tiang Swee, Kuching, Sarawak, Malaysia",
+      "lat": 1.5597561,
+      "lng": 110.345397,
+      "start_date": "2024-04-05",
+      "end_date": "2024-04-07",
+      "website": "https://www.facebook.com/kuchingtattooexpo/",
+      "ticket_price": 15,
+      "currency": "MYR",
+      "featured_artists": [
+        "Rachel de Bruijn",
+        "Timo van Rheenen",
+        "Horimyo Bunshinshi",
+        "Cudjuy Patjidres"
+      ],
+      "description": "The Kuching International Tattoo Expo 2024 is a prominent event celebrating tattoo artistry, cultural heritage, and international collaboration. It features 45 booths showcasing global tattoo artists from countries such as Holland, Sweden, India, France, Indonesia, the Philippines, and Japan. The event includes 12 competition categories judged on motif, technique, and creativity.",
+      "social": {
+        "instagram": null,
+        "facebook": "https://www.facebook.com/kuchingtattooexpo/",
+        "tiktok": null
+      }
+    },
+    {
+      "id": 4,
+      "name": "Miri Tattoo Festival 2024",
+      "country": "Malaysia",
+      "city": "Miri",
+      "venue": "Miri, Sarawak",
+      "address": "Miri, Sarawak, Malaysia",
+      "lat": 4.3940102,
+      "lng": 113.9880199,
+      "start_date": "2024-07-26",
+      "end_date": "2024-07-28",
+      "website": null,
+      "ticket_price": null,
+      "currency": "MYR",
+      "featured_artists": [],
+      "description": "The Miri Tattoo Festival 2024 is a celebration of tattoo art and culture in Miri, Sarawak. The event showcases local and international tattoo artists, with a focus on traditional Borneo tattoo designs and techniques.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 5,
+      "name": "Borneo Handtapping Tattoo Weekend",
+      "country": "Malaysia",
+      "city": "Bau",
+      "venue": "Bau, Sarawak",
+      "address": "Bau, Sarawak, Malaysia",
+      "lat": 1.417864,
+      "lng": 110.1553336,
+      "start_date": "2024-10-04",
+      "end_date": "2024-10-06",
+      "website": null,
+      "ticket_price": null,
+      "currency": "MYR",
+      "featured_artists": [],
+      "description": "The Borneo Handtapping Tattoo Weekend is a specialized event focusing on traditional hand-tapping tattoo techniques native to Borneo. The event celebrates the cultural heritage of tattoo art in Sarawak and provides a platform for artists specializing in this traditional technique.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 6,
+      "name": "Bali Tattoo Expo 2024",
+      "country": "Indonesia",
+      "city": "Denpasar",
+      "venue": "Bali Creative Industry Center",
+      "address": "Bali Creative Industry Center, Kesiman Kertalangu, East Denpasar, Bali, Indonesia",
+      "lat": -8.6524973,
+      "lng": 115.2191175,
+      "start_date": "2024-08-23",
+      "end_date": "2024-08-25",
+      "website": "https://www.balitattooexpo.com/",
+      "ticket_price": 70000,
+      "currency": "IDR",
+      "featured_artists": [],
+      "description": "The Bali Tattoo Expo 2024 is the sixth edition of Bali's premier annual tattoo event, featuring over 119 tattoo artists from 73 studios, including representatives from Bali, Indonesia, and abroad. The event includes tattoo competitions, workshops, cultural exhibitions, live demonstrations, and entertainment. The expo aims to elevate the tattoo industry in Bali and Indonesia, promoting it as a cultural and artistic expression.",
+      "social": {
+        "instagram": "https://www.instagram.com/balitattooexpo/",
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 7,
+      "name": "Nakhon Pathom Tattoo Convention 2024",
+      "country": "Thailand",
+      "city": "Nakhon Pathom",
+      "venue": "Nakhon Pathom Province",
+      "address": "Nakhon Pathom Province, Thailand",
+      "lat": 13.8190071,
+      "lng": 100.0639917,
+      "start_date": "2024-06-29",
+      "end_date": "2024-06-30",
+      "website": "https://inkppl.com/en/tattooevents/2024/june-2024/nakhon-pathom-tattoo-convention-2024",
+      "ticket_price": null,
+      "currency": "THB",
+      "featured_artists": [],
+      "description": "This convention celebrates the rich history of Thai tattooing, blending traditional customs with modern tattooing trends. It attracts talented artists from around the world, offering a platform for showcasing Thai tattooing's elegance and cultural significance. Visitors can enjoy a bustling market, meet tattoo enthusiasts, and witness live tattooing demonstrations.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 8,
+      "name": "Chiangmai Tattoo Time 2024",
+      "country": "Thailand",
+      "city": "Chiang Mai",
+      "venue": "Chiang Mai",
+      "address": "Chiang Mai, Thailand",
+      "lat": 18.7882778,
+      "lng": 98.9858802,
+      "start_date": "2024-11-22",
+      "end_date": "2024-11-24",
+      "website": "https://inkppl.com/en/tattooevents/2024/november-2024/chiangmai-tattoo-time-2024",
+      "ticket_price": null,
+      "currency": "THB",
+      "featured_artists": [],
+      "description": "Organized by passionate tattoo artists, this event is one of the most iconic tattoo conventions in northern Thailand. It emphasizes the city's rich cultural backdrop and provides opportunities for artists, collectors, and vendors to connect and share their work.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 9,
+      "name": "Bangkok Tattoo Exhibition 2024",
+      "country": "Thailand",
+      "city": "Bangkok",
+      "venue": "Bangkok",
+      "address": "Bangkok, Thailand",
+      "lat": 13.706561,
+      "lng": 100.5963747,
+      "start_date": "2024-08-16",
+      "end_date": "2024-08-18",
+      "website": "https://inkppl.com/en/tattooevents/2024/august-2024/bangkok-tattoo-exhibition-2024",
+      "ticket_price": null,
+      "currency": "THB",
+      "featured_artists": [],
+      "description": "This exhibition is a major event in Thailand's tattoo scene, featuring international and local tattoo artists, live demonstrations, and competitions. It serves as a platform for innovation and cultural exchange within the tattoo community.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 10,
+      "name": "Saigon International Tattoo Expo 2025",
+      "country": "Vietnam",
+      "city": "Ho Chi Minh City",
+      "venue": "Riverside Palace",
+      "address": "360 B\u1ebfn V\u00e2n \u0110\u1ed3n, Qu\u1eadn 4, Ho Chi Minh City, Vietnam",
+      "lat": 10.7763897,
+      "lng": 106.7011391,
+      "start_date": "2025-02-26",
+      "end_date": "2025-02-28",
+      "website": "https://www.tattooexpo.com.vn/",
+      "ticket_price": null,
+      "currency": "VND",
+      "featured_artists": [],
+      "description": "The 5th anniversary of the event, this expo continues to attract a large number of professional artists and enthusiasts. It features a variety of competition categories, artist showcases, and international participation.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 11,
+      "name": "VietNam Inkfinity Tattoo Convention 2025",
+      "country": "Vietnam",
+      "city": "Ho Chi Minh City",
+      "venue": "Luxury Palace Restaurant",
+      "address": "171 \u0110. Nguy\u1ec5n Th\u00e1i S\u01a1n, G\u00f2 V\u1ea5p, Ho Chi Minh City, Vietnam",
+      "lat": 10.7763897,
+      "lng": 106.7011391,
+      "start_date": "2025-11-26",
+      "end_date": "2025-11-28",
+      "website": "https://inkppl.com/en/tattooevents/2025/november-2025/vietnam-inkfinity-tatttoo-convention/",
+      "ticket_price": null,
+      "currency": "VND",
+      "featured_artists": [],
+      "description": "This event is positioned as a premier tattoo convention with a focus on artistic excellence and competition. It offers 22 categories for tattoo artists to compete in, with no divisions or limits, encouraging maximum creativity. Notable prizes include 50 million VND for the Best of Show and 20 million VND for Best of Day awards.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    },
+    {
+      "id": 12,
+      "name": "CNX Tattoo Festival",
+      "country": "Thailand",
+      "city": "Chiang Mai",
+      "venue": "Chiang Mai",
+      "address": "Chiang Mai, Thailand",
+      "lat": 18.7882778,
+      "lng": 98.9858802,
+      "start_date": "2024-05-04",
+      "end_date": "2024-05-05",
+      "website": null,
+      "ticket_price": null,
+      "currency": "THB",
+      "featured_artists": [],
+      "description": "The CNX Tattoo Festival is a celebration of tattoo art in Chiang Mai, featuring local and international artists. The event showcases various tattoo styles and techniques, with a focus on northern Thai cultural influences.",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      }
+    }
+  ]
+}

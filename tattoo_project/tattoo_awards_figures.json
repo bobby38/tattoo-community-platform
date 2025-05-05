@@ -1,0 +1,154 @@
+{
+  "awards": [
+    {
+      "name": "Global Tattoo Awards",
+      "organizer": "Global Tattoo Magazine",
+      "criteria": "Artistic excellence across 21 categories including Realism, Traditional, Surrealism, Blackwork, Watercolor, etc.",
+      "prestige_level": "High - Internationally renowned",
+      "frequency": "Annual",
+      "past_winners": [
+        "Winners receive cover features on Global Tattoo Magazine, 6-page interviews, and hardcover biographical books"
+      ]
+    },
+    {
+      "name": "Motif Tattoo Awards",
+      "organizer": "Motif Magazine",
+      "criteria": "Excellence in categories like Best Character, Black & Gray, Color, etc.",
+      "prestige_level": "Regional - Influential in Rhode Island and surrounding areas",
+      "frequency": "Annual",
+      "past_winners": [
+        "Various winners in categories like Best Animal, Best Traditional, and Best Portrait"
+      ]
+    },
+    {
+      "name": "Tattoo Pro Ink Awards",
+      "organizer": "Tattoo Pro Ink",
+      "criteria": "High standards across multiple styles including black & gray, realism, traditional, Japanese",
+      "prestige_level": "High - Global competition",
+      "frequency": "Annual",
+      "past_winners": [
+        "Winners gain recognition, career advancement, and opportunities for sponsorships"
+      ]
+    },
+    {
+      "name": "World Tattoo Convention Awards",
+      "organizer": "Various international tattoo conventions",
+      "criteria": "Excellence in tattooing across various categories",
+      "prestige_level": "High - International recognition",
+      "frequency": "Multiple events throughout the year",
+      "past_winners": [
+        "Quang Pham (Berlin Tattoo Convention, 2023): Best of Sunday & Best of Show",
+        "Vladislav Shetikov (Gods Of Ink, 2023): Best of Show",
+        "Yarson Tattoo (Gods Of Ink, 2023): Best Color",
+        "Rich Harris (Gods Of Ink, 2023): Best Color & 3rd in Best of Show",
+        "Sampaguita Jay (Milano Tattoo Convention): Best of Show"
+      ]
+    },
+    {
+      "name": "Inked Magazine Competitions",
+      "organizer": "Inked Magazine",
+      "criteria": "Excellence in tattoo artistry",
+      "prestige_level": "High - Well-known publication",
+      "frequency": "Quarterly and annual",
+      "past_winners": [
+        "Various winners featured in the magazine"
+      ]
+    },
+    {
+      "name": "Hiyas Award for Indigenous Art",
+      "organizer": "Cultural Center of the Philippines (CCP)",
+      "criteria": "Exemplary work in cultural and artistic endeavors, especially in research, preservation, and promotion of arts and culture",
+      "prestige_level": "High - National recognition in the Philippines",
+      "frequency": "Unknown",
+      "past_winners": [
+        "Apo Whang-od (2022) - Philippines' oldest surviving traditional tattoo artist"
+      ]
+    }
+  ],
+  "notable_figures": [
+    {
+      "name": "Apo Whang-od",
+      "region": "Philippines (Kalinga tribe)",
+      "specialty": "Traditional Kalinga hand-tapped tattooing (Batok)",
+      "contributions": "Last mambabatok (traditional Kalinga tattoo artist) preserving ancient Filipino tattoo traditions. Recipient of the 1st Hiyas Award for Indigenous Art in 2022.",
+      "influence": "Symbol of cultural preservation and indigenous artistry, bringing international attention to traditional Filipino tattooing methods."
+    },
+    {
+      "name": "Sailor Jerry (Norman Keith Collins)",
+      "region": "United States",
+      "specialty": "American Traditional style",
+      "contributions": "Popularized the American traditional style characterized by bold outlines and vibrant colors. His Honolulu shop in the 1950s became legendary.",
+      "influence": "His style continues to influence modern tattooing, with his designs still being referenced and adapted by contemporary artists."
+    },
+    {
+      "name": "Horiyoshi III",
+      "region": "Japan",
+      "specialty": "Traditional Japanese Irezumi, tebori (hand-poked) tattooing",
+      "contributions": "Master of full-body suits and traditional Japanese motifs, maintaining and modernizing ancient techniques.",
+      "influence": "Considered one of the greatest living masters of traditional Japanese tattooing, influencing artists worldwide."
+    },
+    {
+      "name": "Don Ed Hardy",
+      "region": "United States",
+      "specialty": "Japanese-influenced American tattooing",
+      "contributions": "Studied Japanese tattooing and incorporated traditional Japanese aesthetics into Western tattooing.",
+      "influence": "Known as the 'Godfather of Modern Tattoo,' significantly influencing contemporary tattoo styles globally."
+    },
+    {
+      "name": "Kat Von D",
+      "region": "United States",
+      "specialty": "Black and gray portraits, floral designs",
+      "contributions": "Gained fame through TV shows Miami Ink and LA Ink, bringing tattoo artistry to mainstream media.",
+      "influence": "Helped popularize tattooing in mainstream culture and expanded into the beauty industry."
+    },
+    {
+      "name": "Bang Bang (Keith McCurdy)",
+      "region": "United States",
+      "specialty": "Fine-line, detailed work",
+      "contributions": "Tattooed high-profile clients like Rihanna, Justin Bieber, and Miley Cyrus.",
+      "influence": "Called 'the most famous tattoo artist in the world' by Vogue, elevating tattoo artistry in celebrity and fashion circles."
+    },
+    {
+      "name": "Maud Wagner",
+      "region": "United States",
+      "specialty": "Traditional American tattooing",
+      "contributions": "First known female tattoo artist in the United States, breaking gender barriers in the early 20th century.",
+      "influence": "Pioneered women's participation in tattooing, paving the way for future female artists."
+    },
+    {
+      "name": "Samuel O'Reilly",
+      "region": "United States",
+      "specialty": "Technical innovation",
+      "contributions": "Patented the first electric tattoo machine in 1891, revolutionizing the craft.",
+      "influence": "His invention enabled more detailed and efficient tattooing, fundamentally changing the industry."
+    },
+    {
+      "name": "Ramon Sokun",
+      "region": "United States (Cambodian heritage)",
+      "specialty": "Realism with Southeast Asian art influences",
+      "contributions": "Specializes in Cambodian and broader Southeast Asian motifs, preserving cultural heritage through tattooing.",
+      "influence": "Dedicated to infusing ancient Southeast Asian art into contemporary tattooing, pushing creative boundaries."
+    },
+    {
+      "name": "Gabrielle Widjaja",
+      "region": "United States (Chinese and Indonesian descent)",
+      "specialty": "Chinese cultural artifacts, porcelain motifs, floral patterns",
+      "contributions": "Reclaiming and celebrating Asian heritage within the tattoo community, especially in queer and diaspora contexts.",
+      "influence": "Significant in promoting cultural authenticity and community connection in tattooing."
+    },
+    {
+      "name": "Jakoh",
+      "region": "Japan (Kurikara Tattoo, Aichi)",
+      "specialty": "Traditional Japanese Irezumi with Southeast Asian influences",
+      "contributions": "Trained under Master Horitatsu, blending authentic Japanese techniques with regional motifs.",
+      "influence": "Gained prominence in the global tattoo scene by blending cultural influences."
+    },
+    {
+      "name": "Hotbirdbath (之) Lu",
+      "region": "China/Hakka descent",
+      "specialty": "Surreal, folkloric designs inspired by Chinese and Southeast Asian folk art",
+      "contributions": "Creates designs incorporating mystical animals and deities, emphasizing body autonomy and cultural roots.",
+      "influence": "Their work serves as therapeutic and cultural expressions, particularly within queer and diasporic communities."
+    }
+  ]
+}

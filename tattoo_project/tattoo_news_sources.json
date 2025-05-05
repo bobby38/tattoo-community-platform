@@ -1,0 +1,124 @@
+{
+  "tattoo_news_sources": [
+    {
+      "name": "Inked Magazine",
+      "url": "https://inkedmag.com/",
+      "rss_url": "https://inkedmag.com/feed",
+      "content_focus": "Tattoo lifestyle, celebrity features, art, culture, music, and industry news",
+      "update_frequency": "Daily",
+      "notable_features": "Celebrity interviews, digital covers, tattoo shop directory, and video content"
+    },
+    {
+      "name": "Tattoo Life",
+      "url": "https://www.tattoolife.com/",
+      "rss_url": null,
+      "content_focus": "Tattoo artists, lifestyle, visual inspirations, and industry news",
+      "update_frequency": "Weekly",
+      "notable_features": "International coverage, multiple language editions, artist spotlights, and industry insights"
+    },
+    {
+      "name": "Tattoo Artist Magazine (TAM)",
+      "url": "https://tattoocloud.com/tattooartistmagazine",
+      "rss_url": "http://tattooartistmagazineblog.com/feed/",
+      "content_focus": "Professional tattoo industry, artist interviews, and educational content",
+      "update_frequency": "Monthly",
+      "notable_features": "Created by tattoo artists for tattoo artists, focuses on high-quality tattoo art and industry standards"
+    },
+    {
+      "name": "NeedleDepth: Tattoo Podcast",
+      "url": "https://needledepth.libsyn.com/",
+      "rss_url": "https://needledepth.libsyn.com/rss",
+      "content_focus": "Behind-the-scenes of the tattoo industry, artist interviews",
+      "update_frequency": "Monthly",
+      "notable_features": "In-depth interviews with prominent tattooers and industry leaders"
+    },
+    {
+      "name": "Lady Liberty Tattoo Podcast",
+      "url": "https://rss.com/podcasts/ladylibertypod/",
+      "rss_url": "https://media.rss.com/ladylibertypod/feed.xml",
+      "content_focus": "Tattoo culture, history, and trends",
+      "update_frequency": "Bi-weekly",
+      "notable_features": "Hosted by CM Rutledge and Dru Moon, explores tattoo culture for both artists and enthusiasts"
+    },
+    {
+      "name": "No Filter Tattoo Podcast",
+      "url": "https://rss.com/podcasts/nofiltertattoo/",
+      "rss_url": "https://media.rss.com/nofiltertattoo/feed.xml",
+      "content_focus": "Candid discussions about tattooing, industry insights, and artist stories",
+      "update_frequency": "Weekly",
+      "notable_features": "Created by tattooers Theo Walker, Tez Reynolds, and Bryson Anderson"
+    },
+    {
+      "name": "The Honest Tattooer Podcast",
+      "url": "https://honesttattooer.buzzsprout.com/",
+      "rss_url": "https://feeds.buzzsprout.com/2153400.rss",
+      "content_focus": "Conversations with tattoo artists and enthusiasts",
+      "update_frequency": "Weekly",
+      "notable_features": "Over 120 episodes covering topics like laser removal, conventions, and marketing"
+    },
+    {
+      "name": "Killer Ink Tattoo Blog",
+      "url": "https://www.killerinktattoo.co.uk/blog",
+      "rss_url": null,
+      "content_focus": "Tattoo ink and equipment reviews, techniques, styles, and industry news",
+      "update_frequency": "Weekly",
+      "notable_features": "Multiple regional blogs in different languages, educational content for artists"
+    },
+    {
+      "name": "Chronic Ink Blog",
+      "url": "https://chronicinktattoo.com/blogs/latest",
+      "rss_url": null,
+      "content_focus": "Tattoo designs, aftercare, and industry insights",
+      "update_frequency": "Monthly",
+      "notable_features": "Articles on tattoo ink ingredients, safety, and various tattoo styles and procedures"
+    },
+    {
+      "name": "iNKPPL Tattoo Magazine",
+      "url": "https://inkppl.com/en/",
+      "rss_url": null,
+      "content_focus": "Tattoo art, artists, cultures, and events worldwide",
+      "update_frequency": "Weekly",
+      "notable_features": "Aims to change perceptions about tattoos by highlighting artistic value and dispelling stereotypes"
+    },
+    {
+      "name": "247 Ink Magazine",
+      "url": "https://247inkmag.com/",
+      "rss_url": null,
+      "content_focus": "Artist interviews, tattoo models, and global tattoo culture",
+      "update_frequency": "Monthly",
+      "notable_features": "Free online publication featuring artists from around the globe"
+    },
+    {
+      "name": "TATTED MAGAZINE",
+      "url": "https://www.thetattedmagazine.com/",
+      "rss_url": null,
+      "content_focus": "News, trends, artist features, and cultural insights",
+      "update_frequency": "Weekly",
+      "notable_features": "Network connecting the tattooed community and highlighting the best tattoo artists worldwide"
+    },
+    {
+      "name": "The Tattoo Industry",
+      "url": "https://thetattooindustry.com/",
+      "rss_url": null,
+      "content_focus": "New products, upcoming sales, and industry news",
+      "update_frequency": "Weekly",
+      "notable_features": "Offers a newsletter subscription for regular updates"
+    },
+    {
+      "name": "Tattooing 101",
+      "url": "https://tattooing101.com/blog/",
+      "rss_url": "https://tattooing101.com/feed/",
+      "content_focus": "Latest news, opinion pieces, and industry insights",
+      "update_frequency": "Weekly",
+      "notable_features": "Topics include tattoo ink issues, industry trends, and technological impacts"
+    },
+    {
+      "name": "Good Marks Tattoo Blog",
+      "url": "https://goodmarkstattoo.com/tattoo-blog-news/",
+      "rss_url": null,
+      "content_focus": "Tattoo trends, ethics, and conventions",
+      "update_frequency": "Monthly",
+      "notable_features": "Discusses modern dilemmas such as AI-generated tattoo designs"
+    }
+  ]
+}

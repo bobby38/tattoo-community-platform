@@ -1,0 +1,628 @@
+{
+  "calendar": [
+    {
+      "week": 1,
+      "dates": "May 6-12, 2025",
+      "blog_posts": [
+        {
+          "title": "The Evolution of Tattoo Styles: From Traditional to Contemporary",
+          "platform": "Website Blog",
+          "post_date": "2025-05-08",
+          "themes": ["tattoo history", "tattoo styles", "art evolution"],
+          "hashtags": ["#TattooHistory", "#TattooStyles", "#TattooEvolution"],
+          "description": "A comprehensive overview of how tattoo styles have evolved over centuries, from traditional tribal markings to modern minimalist designs. Include a visual timeline and artist perspectives."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Style Spotlight: American Traditional",
+          "content_type": "Carousel Post",
+          "platform": "Instagram",
+          "post_date": "2025-05-06",
+          "themes": ["american traditional", "tattoo styles"],
+          "hashtags": ["#AmericanTraditional", "#OldSchoolTattoo", "#TattooTuesday"],
+          "description": "Showcase 5-7 exemplary American Traditional tattoos with brief history and key characteristics of this iconic style."
+        },
+        {
+          "title": "Artist Q&A: Getting Started in Tattooing",
+          "content_type": "Video",
+          "platform": "TikTok",
+          "post_date": "2025-05-07",
+          "themes": ["tattoo career", "artist advice"],
+          "hashtags": ["#TattooArtist", "#CareerAdvice", "#TattooApprentice"],
+          "description": "Short interview clips with established artists sharing advice for newcomers to the industry."
+        },
+        {
+          "title": "Pain Scale: Where Do Tattoos Hurt Most?",
+          "content_type": "Infographic",
+          "platform": "Facebook",
+          "post_date": "2025-05-09",
+          "themes": ["tattoo pain", "body locations", "client education"],
+          "hashtags": ["#TattooPain", "#TattooPlacement", "#KnowBeforeYouGo"],
+          "description": "Shareable body map showing relative pain levels for different tattoo locations with brief explanations."
+        },
+        {
+          "title": "Tattoo Aftercare Myths Debunked",
+          "content_type": "Text Post",
+          "platform": "Twitter",
+          "post_date": "2025-05-11",
+          "themes": ["tattoo aftercare", "myths", "education"],
+          "hashtags": ["#TattooAftercare", "#TattooMyths", "#SkinCare"],
+          "description": "Thread debunking common aftercare myths with evidence-based recommendations."
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "dates": "May 13-19, 2025",
+      "blog_posts": [
+        {
+          "title": "The Psychology Behind Tattoos: Why We Ink Our Stories",
+          "platform": "Website Blog",
+          "post_date": "2025-05-15",
+          "themes": ["tattoo psychology", "personal meaning", "self-expression"],
+          "hashtags": ["#TattooPsychology", "#InkStories", "#SelfExpression"],
+          "description": "Explore the psychological aspects of getting tattoos, including identity expression, commemoration, and the therapeutic benefits of body art."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Tattoo Meaning Monday: Share Your Story",
+          "content_type": "User-Generated Content Campaign",
+          "platform": "Instagram",
+          "post_date": "2025-05-13",
+          "themes": ["personal stories", "community engagement"],
+          "hashtags": ["#TattooMeaningMonday", "#MyInkStory", "#TattooMeaning"],
+          "description": "Invite followers to share the stories behind their meaningful tattoos, repost selections with permission."
+        },
+        {
+          "title": "Tattoo Style Quiz: What's Your Ink Personality?",
+          "content_type": "Interactive Poll",
+          "platform": "Instagram Stories",
+          "post_date": "2025-05-14",
+          "themes": ["tattoo styles", "personality", "engagement"],
+          "hashtags": ["#TattooQuiz", "#InkPersonality", "#FindYourStyle"],
+          "description": "Fun interactive quiz helping followers determine which tattoo style matches their personality."
+        },
+        {
+          "title": "Spotlight: Innovative Blackwork Artists",
+          "content_type": "Image Collection",
+          "platform": "Pinterest",
+          "post_date": "2025-05-16",
+          "themes": ["blackwork", "tattoo artists", "contemporary styles"],
+          "hashtags": ["#BlackworkTattoo", "#TattooArtists", "#ContemporaryTattoo"],
+          "description": "Curated board featuring standout blackwork tattoo artists and their distinctive approaches to the style."
+        },
+        {
+          "title": "Flash Day Etiquette: Do's and Don'ts",
+          "content_type": "Short-form Video",
+          "platform": "TikTok",
+          "post_date": "2025-05-18",
+          "themes": ["flash day", "tattoo etiquette", "client education"],
+          "hashtags": ["#FlashDay", "#TattooEtiquette", "#TattooTips"],
+          "description": "Quick, informative video explaining proper etiquette when attending a tattoo flash day event."
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "dates": "May 20-26, 2025",
+      "blog_posts": [
+        {
+          "title": "Tattoo Regulations Around the World: A Global Perspective",
+          "platform": "Website Blog",
+          "post_date": "2025-05-22",
+          "themes": ["tattoo regulations", "global tattoo culture", "health standards"],
+          "hashtags": ["#TattooLaws", "#GlobalTattoo", "#TattooSafety"],
+          "description": "Comprehensive overview of how different countries regulate tattooing, focusing on health standards, age restrictions, and cultural attitudes."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Tattoo Laws: Did You Know?",
+          "content_type": "Fact Series",
+          "platform": "Instagram",
+          "post_date": "2025-05-20",
+          "themes": ["tattoo regulations", "legal facts", "education"],
+          "hashtags": ["#TattooLaws", "#TattooFacts", "#KnowYourRights"],
+          "description": "Series of surprising facts about tattoo regulations in different countries and states."
+        },
+        {
+          "title": "Tattoo Safety Checklist",
+          "content_type": "Infographic",
+          "platform": "Facebook",
+          "post_date": "2025-05-21",
+          "themes": ["tattoo safety", "studio hygiene", "client education"],
+          "hashtags": ["#TattooSafety", "#CleanTattoo", "#KnowBeforeYouGo"],
+          "description": "Shareable checklist of safety measures clients should look for when choosing a tattoo studio."
+        },
+        {
+          "title": "Ink Innovation: New Tattoo Technologies",
+          "content_type": "News Roundup",
+          "platform": "LinkedIn",
+          "post_date": "2025-05-23",
+          "themes": ["tattoo technology", "industry innovation", "professional development"],
+          "hashtags": ["#TattooTech", "#InkInnovation", "#TattooIndustry"],
+          "description": "Summary of recent technological innovations in tattooing, including new machines, inks, and techniques."
+        },
+        {
+          "title": "Weekend Tattoo Inspiration",
+          "content_type": "Image Collection",
+          "platform": "Instagram",
+          "post_date": "2025-05-25",
+          "themes": ["tattoo inspiration", "weekend vibes", "visual showcase"],
+          "hashtags": ["#WeekendInk", "#TattooInspiration", "#InkedLife"],
+          "description": "Curated collection of stunning tattoos to inspire weekend tattoo appointments."
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "dates": "May 27 - June 2, 2025",
+      "blog_posts": [
+        {
+          "title": "Cultural Appropriation in Tattooing: Respecting Sacred Symbols",
+          "platform": "Website Blog",
+          "post_date": "2025-05-29",
+          "themes": ["cultural appropriation", "tattoo ethics", "sacred symbols"],
+          "hashtags": ["#TattooEthics", "#CulturalRespect", "#ResponsibleTattooing"],
+          "description": "Thoughtful exploration of cultural appropriation issues in tattooing, with guidelines for both artists and clients on approaching culturally significant designs respectfully."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Cultural Symbols: Origins and Meanings",
+          "content_type": "Educational Series",
+          "platform": "Instagram",
+          "post_date": "2025-05-27",
+          "themes": ["cultural symbols", "tattoo history", "education"],
+          "hashtags": ["#TattooSymbols", "#CulturalTattoos", "#SymbolMeanings"],
+          "description": "Series explaining the origins and traditional meanings of commonly tattooed cultural symbols."
+        },
+        {
+          "title": "Artist Spotlight: Indigenous Tattoo Revivalists",
+          "content_type": "Video Interview",
+          "platform": "YouTube",
+          "post_date": "2025-05-28",
+          "themes": ["indigenous tattoo", "cultural revival", "traditional techniques"],
+          "hashtags": ["#IndigenousTattoo", "#TattooRevival", "#TraditionalTattoo"],
+          "description": "Interview with artists working to revive traditional indigenous tattooing practices and their cultural significance."
+        },
+        {
+          "title": "Respectful Tattooing Poll",
+          "content_type": "Interactive Poll",
+          "platform": "Twitter",
+          "post_date": "2025-05-30",
+          "themes": ["tattoo ethics", "community discussion", "education"],
+          "hashtags": ["#TattooEthics", "#TattooDiscussion", "#ResponsibleInk"],
+          "description": "Poll asking followers about their experiences with cultural symbols in tattooing, sparking thoughtful discussion."
+        },
+        {
+          "title": "Memorial Day Tattoo Tributes",
+          "content_type": "User-Generated Content",
+          "platform": "Facebook",
+          "post_date": "2025-05-31",
+          "themes": ["memorial tattoos", "tribute art", "patriotic designs"],
+          "hashtags": ["#MemorialTattoo", "#TributeInk", "#RememberingHeroes"],
+          "description": "Collection of memorial and patriotic tattoos shared by community members, with their stories of remembrance."
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "dates": "June 3-9, 2025",
+      "blog_posts": [
+        {
+          "title": "Pride Month Special: LGBTQ+ Representation in Tattoo Art",
+          "platform": "Website Blog",
+          "post_date": "2025-06-05",
+          "themes": ["pride month", "LGBTQ+ tattoos", "inclusive art"],
+          "hashtags": ["#PrideTattoos", "#LGBTQInk", "#InclusiveTattoo"],
+          "description": "Celebration of LGBTQ+ themes in tattoo art, featuring queer artists, pride-themed designs, and the importance of inclusive tattoo spaces."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Pride Flag Meanings in Tattoo Art",
+          "content_type": "Educational Carousel",
+          "platform": "Instagram",
+          "post_date": "2025-06-03",
+          "themes": ["pride flags", "LGBTQ+ education", "pride month"],
+          "hashtags": ["#PrideFlagTattoos", "#PrideMonth", "#LGBTQInk"],
+          "description": "Carousel explaining various pride flags and how they're incorporated into tattoo designs."
+        },
+        {
+          "title": "Spotlight: LGBTQ+ Tattoo Artists",
+          "content_type": "Artist Feature Series",
+          "platform": "Instagram",
+          "post_date": "2025-06-04",
+          "themes": ["LGBTQ+ artists", "artist spotlight", "pride month"],
+          "hashtags": ["#QueerTattooArtists", "#PrideMonth", "#RepresentationMatters"],
+          "description": "Daily features highlighting talented LGBTQ+ tattoo artists throughout Pride Month."
+        },
+        {
+          "title": "Creating Safe Spaces in Tattoo Studios",
+          "content_type": "Discussion Thread",
+          "platform": "Twitter",
+          "post_date": "2025-06-06",
+          "themes": ["inclusive studios", "safe spaces", "client comfort"],
+          "hashtags": ["#InclusiveTattoo", "#SafeSpaces", "#TattooForAll"],
+          "description": "Thread discussing how tattoo studios can create welcoming environments for all clients, especially marginalized communities."
+        },
+        {
+          "title": "Pride Tattoo Ideas",
+          "content_type": "Inspiration Board",
+          "platform": "Pinterest",
+          "post_date": "2025-06-08",
+          "themes": ["pride tattoos", "LGBTQ+ symbols", "colorful designs"],
+          "hashtags": ["#PrideTattoos", "#QueerInk", "#PrideInspiration"],
+          "description": "Curated board of pride-themed tattoo ideas, from subtle symbols to bold, colorful celebrations."
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "dates": "June 10-16, 2025",
+      "blog_posts": [
+        {
+          "title": "The Science of Tattoo Removal: Options, Effectiveness, and Expectations",
+          "platform": "Website Blog",
+          "post_date": "2025-06-12",
+          "themes": ["tattoo removal", "laser technology", "skin science"],
+          "hashtags": ["#TattooRemoval", "#LaserRemoval", "#TattooRegret"],
+          "description": "Comprehensive guide to modern tattoo removal methods, explaining the science behind different techniques, factors affecting success, and realistic expectations for results."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Tattoo Removal Myths Debunked",
+          "content_type": "Myth-busting Series",
+          "platform": "Instagram Stories",
+          "post_date": "2025-06-10",
+          "themes": ["tattoo removal", "myth busting", "education"],
+          "hashtags": ["#TattooRemovalMyths", "#TattooFacts", "#RemovalReality"],
+          "description": "Series debunking common myths about tattoo removal with factual information and expert insights."
+        },
+        {
+          "title": "Before & After: Tattoo Cover-ups",
+          "content_type": "Transformation Post",
+          "platform": "Instagram",
+          "post_date": "2025-06-11",
+          "themes": ["cover-up tattoos", "transformations", "tattoo solutions"],
+          "hashtags": ["#TattooCoverup", "#BeforeAndAfter", "#TattooTransformation"],
+          "description": "Showcase of impressive tattoo cover-ups, demonstrating alternatives to complete removal."
+        },
+        {
+          "title": "Laser Removal: What to Expect",
+          "content_type": "Informational Video",
+          "platform": "YouTube",
+          "post_date": "2025-06-13",
+          "themes": ["laser removal", "procedure explanation", "client education"],
+          "hashtags": ["#LaserRemoval", "#TattooRemoval", "#RemovalProcess"],
+          "description": "Detailed video explaining the laser removal process, including preparation, the procedure itself, and aftercare."
+        },
+        {
+          "title": "Father's Day Tattoo Ideas",
+          "content_type": "Inspiration Gallery",
+          "platform": "Facebook",
+          "post_date": "2025-06-15",
+          "themes": ["father's day", "family tattoos", "tribute designs"],
+          "hashtags": ["#FathersDayTattoos", "#DadTattoos", "#FamilyInk"],
+          "description": "Gallery of father-themed tattoo ideas ahead of Father's Day, including dad tributes, father-child designs, and symbolic pieces."
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "dates": "June 17-23, 2025",
+      "blog_posts": [
+        {
+          "title": "Summer Tattoo Care: Protecting Your Ink from Sun and Water",
+          "platform": "Website Blog",
+          "post_date": "2025-06-19",
+          "themes": ["summer tattoo care", "sun protection", "swimming with tattoos"],
+          "hashtags": ["#SummerTattooCare", "#ProtectYourInk", "#TattooSPF"],
+          "description": "Comprehensive guide to caring for tattoos during summer activities, including sun protection strategies, swimming guidelines, and product recommendations."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Summer Tattoo Care Essentials",
+          "content_type": "Product Roundup",
+          "platform": "Instagram",
+          "post_date": "2025-06-17",
+          "themes": ["tattoo products", "summer care", "sun protection"],
+          "hashtags": ["#TattooCare", "#SummerInk", "#ProtectYourTattoos"],
+          "description": "Roundup of essential products for protecting tattoos during summer, including high-SPF sunscreens and after-sun care."
+        },
+        {
+          "title": "Beach Day Tattoo Protection Tips",
+          "content_type": "Quick Tips Video",
+          "platform": "TikTok",
+          "post_date": "2025-06-18",
+          "themes": ["beach tattoo care", "sun protection", "summer activities"],
+          "hashtags": ["#BeachTattoos", "#TattooProtection", "#SummerInkCare"],
+          "description": "Fast-paced video with practical tips for protecting tattoos during beach days."
+        },
+        {
+          "title": "Summer Tattoo Healing Timeline",
+          "content_type": "Infographic",
+          "platform": "Pinterest",
+          "post_date": "2025-06-20",
+          "themes": ["tattoo healing", "summer care", "aftercare timeline"],
+          "hashtags": ["#TattooHealing", "#SummerTattoo", "#AftercareTips"],
+          "description": "Visual guide to the tattoo healing process during summer months, with special considerations for heat and humidity."
+        },
+        {
+          "title": "First Day of Summer: Seasonal Tattoo Designs",
+          "content_type": "Themed Gallery",
+          "platform": "Instagram",
+          "post_date": "2025-06-21",
+          "themes": ["summer tattoos", "seasonal designs", "summer solstice"],
+          "hashtags": ["#SummerTattoos", "#SolsticeTattoo", "#SeasonalInk"],
+          "description": "Gallery celebrating summer-themed tattoos on the first day of summer, featuring sun, beach, tropical, and outdoor designs."
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "dates": "June 24-30, 2025",
+      "blog_posts": [
+        {
+          "title": "Body Modification Beyond Tattoos: A Guide to Contemporary Practices",
+          "platform": "Website Blog",
+          "post_date": "2025-06-26",
+          "themes": ["body modification", "piercings", "scarification", "implants"],
+          "hashtags": ["#BodyModification", "#BeyondTattoos", "#ModCulture"],
+          "description": "Comprehensive overview of contemporary body modification practices beyond tattooing, including piercings, scarification, implants, and more extreme modifications."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Body Mod History: Ancient to Modern",
+          "content_type": "Timeline Post",
+          "platform": "Instagram",
+          "post_date": "2025-06-24",
+          "themes": ["body modification history", "cultural practices", "evolution"],
+          "hashtags": ["#BodyModHistory", "#AncientModification", "#ModEvolution"],
+          "description": "Visual timeline showing the evolution of body modification practices from ancient civilizations to contemporary trends."
+        },
+        {
+          "title": "Piercing Placement Guide",
+          "content_type": "Anatomical Infographic",
+          "platform": "Pinterest",
+          "post_date": "2025-06-25",
+          "themes": ["piercings", "anatomy", "placement guide"],
+          "hashtags": ["#PiercingGuide", "#PiercingPlacement", "#BodyJewelry"],
+          "description": "Detailed anatomical guide to different piercing placements, with information on pain levels, healing times, and jewelry options."
+        },
+        {
+          "title": "Ask a Mod Artist: Scarification Q&A",
+          "content_type": "Expert Interview",
+          "platform": "YouTube",
+          "post_date": "2025-06-27",
+          "themes": ["scarification", "expert advice", "body modification"],
+          "hashtags": ["#Scarification", "#ModArtist", "#BodyModQA"],
+          "description": "Interview with a scarification artist answering common questions about the process, healing, and results."
+        },
+        {
+          "title": "Pride Month Finale: Modification as Self-Expression",
+          "content_type": "Community Stories",
+          "platform": "Facebook",
+          "post_date": "2025-06-30",
+          "themes": ["pride month", "self-expression", "identity", "body modification"],
+          "hashtags": ["#PrideMonth", "#ModifiedAndProud", "#SelfExpression"],
+          "description": "Collection of stories from community members about how body modifications have helped them express their identities, concluding Pride Month content."
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "dates": "July 1-7, 2025",
+      "blog_posts": [
+        {
+          "title": "Independence Day Special: Patriotic Tattoo Traditions and Symbolism",
+          "platform": "Website Blog",
+          "post_date": "2025-07-03",
+          "themes": ["patriotic tattoos", "American tattoo history", "Independence Day"],
+          "hashtags": ["#PatrioticTattoos", "#July4thInk", "#AmericanTattooHistory"],
+          "description": "Exploration of American patriotic tattoo traditions, from military tattoos to contemporary interpretations of national symbols, with historical context and modern examples."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "American Traditional: Patriotic Flash",
+          "content_type": "Historical Gallery",
+          "platform": "Instagram",
+          "post_date": "2025-07-01",
+          "themes": ["American traditional", "patriotic flash", "tattoo history"],
+          "hashtags": ["#AmericanTraditional", "#PatrioticFlash", "#TattooHistory"],
+          "description": "Gallery of vintage and contemporary patriotic American Traditional flash sheets, showing the evolution of this iconic style."
+        },
+        {
+          "title": "Military Tattoo Traditions",
+          "content_type": "Educational Series",
+          "platform": "Facebook",
+          "post_date": "2025-07-02",
+          "themes": ["military tattoos", "service branches", "tattoo traditions"],
+          "hashtags": ["#MilitaryTattoos", "#ServiceInk", "#TattooTraditions"],
+          "description": "Series exploring the tattoo traditions of different military branches, their meanings, and historical significance."
+        },
+        {
+          "title": "Independence Day Tattoo Flash Sale",
+          "content_type": "Promotional Post",
+          "platform": "Instagram Stories",
+          "post_date": "2025-07-04",
+          "themes": ["flash sale", "holiday promotion", "patriotic designs"],
+          "hashtags": ["#July4thFlash", "#TattooSale", "#IndependenceDay"],
+          "description": "Announcement of limited-time flash designs available for Independence Day, with booking information."
+        },
+        {
+          "title": "Show Us Your Patriotic Ink!",
+          "content_type": "User-Generated Content Campaign",
+          "platform": "Twitter",
+          "post_date": "2025-07-05",
+          "themes": ["patriotic tattoos", "community showcase", "holiday theme"],
+          "hashtags": ["#PatrioticInk", "#July4thTattoos", "#ShowYourInk"],
+          "description": "Call for followers to share their patriotic-themed tattoos, with selected submissions to be featured."
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "dates": "July 8-14, 2025",
+      "blog_posts": [
+        {
+          "title": "Tattoos in the Workplace: Changing Perceptions and Professional Environments",
+          "platform": "Website Blog",
+          "post_date": "2025-07-10",
+          "themes": ["workplace tattoos", "professional environments", "changing perceptions"],
+          "hashtags": ["#TattoosAtWork", "#ProfessionalInk", "#WorkplacePerceptions"],
+          "description": "Analysis of evolving attitudes toward visible tattoos in professional settings, including industry-specific acceptance, generational differences, and tips for navigating workplace policies."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Workplace Tattoo Policies: Then vs. Now",
+          "content_type": "Comparison Graphic",
+          "platform": "LinkedIn",
+          "post_date": "2025-07-08",
+          "themes": ["workplace policies", "changing attitudes", "professional environments"],
+          "hashtags": ["#WorkplaceTattoos", "#ChangingPolicies", "#ProfessionalImage"],
+          "description": "Visual comparison of typical workplace tattoo policies over time, showing the evolution toward greater acceptance."
+        },
+        {
+          "title": "Professional with Tattoos: Career Stories",
+          "content_type": "Interview Series",
+          "platform": "Instagram",
+          "post_date": "2025-07-09",
+          "themes": ["professional success", "career stories", "visible tattoos"],
+          "hashtags": ["#TattooedProfessionals", "#CareerSuccess", "#VisibleInk"],
+          "description": "Series featuring successful professionals from various industries discussing their experiences with visible tattoos in the workplace."
+        },
+        {
+          "title": "Covering Tattoos for Work: Product Reviews",
+          "content_type": "Product Review Video",
+          "platform": "YouTube",
+          "post_date": "2025-07-11",
+          "themes": ["tattoo coverage", "makeup products", "workplace solutions"],
+          "hashtags": ["#TattooCoverage", "#WorkplaceHacks", "#MakeupReview"],
+          "description": "Review of various products designed for temporarily covering tattoos in professional settings, with application demonstrations."
+        },
+        {
+          "title": "Workplace Tattoo Poll",
+          "content_type": "Interactive Poll",
+          "platform": "Twitter",
+          "post_date": "2025-07-13",
+          "themes": ["workplace attitudes", "public opinion", "tattoo acceptance"],
+          "hashtags": ["#TattooAtWork", "#WorkplaceAttitudes", "#TattooAcceptance"],
+          "description": "Poll asking followers about their experiences with tattoos in professional environments, with follow-up discussion."
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "dates": "July 15-21, 2025",
+      "blog_posts": [
+        {
+          "title": "Tattoo Conventions Guide: Making the Most of Industry Events",
+          "platform": "Website Blog",
+          "post_date": "2025-07-17",
+          "themes": ["tattoo conventions", "industry events", "artist networking"],
+          "hashtags": ["#TattooConventions", "#IndustryEvents", "#TattooExpo"],
+          "description": "Comprehensive guide to attending tattoo conventions, including how to prepare, what to expect, etiquette tips, and maximizing the experience as both an artist and a collector."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Convention Survival Kit",
+          "content_type": "Essentials List",
+          "platform": "Instagram",
+          "post_date": "2025-07-15",
+          "themes": ["convention preparation", "essentials", "practical advice"],
+          "hashtags": ["#ConventionEssentials", "#TattooExpo", "#PrepareRight"],
+          "description": "Visual guide to essential items to bring to a tattoo convention, for both artists and attendees."
+        },
+        {
+          "title": "Convention Etiquette: Do's and Don'ts",
+          "content_type": "Quick Tips Video",
+          "platform": "TikTok",
+          "post_date": "2025-07-16",
+          "themes": ["convention etiquette", "tattoo events", "social norms"],
+          "hashtags": ["#ConventionEtiquette", "#TattooExpo", "#TattooTips"],
+          "description": "Fast-paced video outlining proper etiquette when attending tattoo conventions, from artist interactions to photography rules."
+        },
+        {
+          "title": "Upcoming Convention Calendar",
+          "content_type": "Event Listing",
+          "platform": "Facebook",
+          "post_date": "2025-07-18",
+          "themes": ["upcoming events", "convention calendar", "industry networking"],
+          "hashtags": ["#TattooConventions", "#UpcomingEvents", "#TattooCalendar"],
+          "description": "Comprehensive list of upcoming tattoo conventions worldwide, with dates, locations, and notable participating artists."
+        },
+        {
+          "title": "Convention Portfolio Preparation",
+          "content_type": "Artist Advice Thread",
+          "platform": "Twitter",
+          "post_date": "2025-07-20",
+          "themes": ["portfolio preparation", "artist advice", "professional development"],
+          "hashtags": ["#PortfolioPrep", "#ArtistAdvice", "#ConventionReady"],
+          "description": "Thread offering advice to artists on preparing their portfolios and booth presentations for maximum impact at conventions."
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "dates": "July 22-28, 2025",
+      "blog_posts": [
+        {
+          "title": "The Future of Tattooing: Emerging Technologies and Trends",
+          "platform": "Website Blog",
+          "post_date": "2025-07-24",
+          "themes": ["tattoo technology", "future trends", "industry innovation"],
+          "hashtags": ["#FutureOfTattooing", "#TattooTech", "#IndustryTrends"],
+          "description": "Forward-looking exploration of emerging technologies and trends in tattooing, including new machines, ink innovations, digital design tools, and predictions for the industry's evolution."
+        }
+      ],
+      "social_media": [
+        {
+          "title": "Tech Spotlight: Digital Design Tools",
+          "content_type": "Product Review",
+          "platform": "Instagram",
+          "post_date": "2025-07-22",
+          "themes": ["digital design", "tattoo technology", "artist tools"],
+          "hashtags": ["#DigitalTattooDesign", "#TattooTech", "#ArtistTools"],
+          "description": "Review of cutting-edge digital design tools and software specifically for tattoo artists, with examples of their capabilities."
+        },
+        {
+          "title": "Innovative Ink Technologies",
+          "content_type": "Educational Video",
+          "platform": "YouTube",
+          "post_date": "2025-07-23",
+          "themes": ["tattoo ink", "innovation", "material science"],
+          "hashtags": ["#TattooInk", "#InkTech", "#InnovativeTattoo"],
+          "description": "Detailed video exploring new developments in tattoo inks, including safer formulations, UV reactive inks, and specialized properties."
+        },
+        {
+          "title": "Future Tattoo Trends Prediction",
+          "content_type": "Expert Roundup",
+          "platform": "LinkedIn",
+          "post_date": "2025-07-25",
+          "themes": ["industry trends", "future predictions", "style evolution"],
+          "hashtags": ["#TattooTrends", "#FuturePredictions", "#IndustryInsights"],
+          "description": "Collection of predictions from industry experts about upcoming trends in tattoo styles, techniques, and business practices."
+        },
+        {
+          "title": "Augmented Reality Tattoos: Try Before You Ink",
+          "content_type": "Interactive Demo",
+          "platform": "Instagram Stories",
+          "post_date": "2025-07-27",
+          "themes": ["augmented reality", "virtual tattoos", "technology preview"],
+          "hashtags": ["#ARTattoos", "#VirtualInk", "#TryBeforeYouInk"],
+          "description": "Demonstration of augmented reality tools that allow clients to preview tattoos on their bodies before committing to permanent ink."
+        }
+      ]
+    }
+  ]
+}

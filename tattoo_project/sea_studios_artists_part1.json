@@ -1,0 +1,1121 @@
+{
+  "studios": [
+    {
+      "id": 1,
+      "name": "Lovesick Tattoo Studio",
+      "country": "Singapore",
+      "city": "Singapore",
+      "address": "63 Circular Road, Singapore 049417",
+      "lat": 1.2862285,
+      "lng": 103.8491158,
+      "phone": "+65 8163 0700",
+      "email": "enquiries@lovesicktattoostudio.com",
+      "website": "https://www.lovesicktattoostudio.com/",
+      "social": {
+        "instagram": "@lovesicktattoosingapore",
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": "11:00 AM - 8:00 PM",
+        "sat": "11:00 AM - 8:00 PM",
+        "sun": "11:00 AM - 8:00 PM"
+      },
+      "styles_offered": [
+        "Realism",
+        "Black and Grey",
+        "Japanese",
+        "Dotwork",
+        "Blackwork",
+        "Geometric"
+      ],
+      "tribes": [],
+      "ink_brands": [
+        "Eternal Ink",
+        "Dynamic Ink",
+        "Kuro Sumi"
+      ],
+      "equipment": [
+        "Rotary Machines",
+        "Coil Machines",
+        "Digital Power Supplies"
+      ],
+      "amenities": [
+        "Walk-ins Welcome",
+        "Custom Designs",
+        "Free Consultations"
+      ],
+      "featured_artists": [
+        1,
+        2,
+        3
+      ],
+      "ratings": {
+        "average": 4.8,
+        "count": 250
+      },
+      "reviews": []
+    },
+    {
+      "id": 2,
+      "name": "Familiar Strangers Tattoo Studio",
+      "country": "Singapore",
+      "city": "Singapore",
+      "address": "20 Upper Circular Road, The Riverwalk #01-10, Singapore",
+      "lat": 1.2875,
+      "lng": 103.8476,
+      "phone": null,
+      "email": null,
+      "website": null,
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": null,
+        "sat": null,
+        "sun": null
+      },
+      "styles_offered": [],
+      "tribes": [],
+      "ink_brands": [],
+      "equipment": [],
+      "amenities": [],
+      "featured_artists": [],
+      "ratings": {
+        "average": null,
+        "count": null
+      },
+      "reviews": []
+    },
+    {
+      "id": 3,
+      "name": "Alive Tattoo Studio",
+      "country": "Singapore",
+      "city": "Singapore",
+      "address": "211 New Bridge Road, Lucky Chinatown, Singapore",
+      "lat": 1.2839,
+      "lng": 103.8452,
+      "phone": null,
+      "email": null,
+      "website": null,
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": null,
+        "sat": null,
+        "sun": null
+      },
+      "styles_offered": [],
+      "tribes": [],
+      "ink_brands": [],
+      "equipment": [],
+      "amenities": [],
+      "featured_artists": [],
+      "ratings": {
+        "average": null,
+        "count": null
+      },
+      "reviews": []
+    },
+    {
+      "id": 4,
+      "name": "Vagabond Ink Tattoo Studio",
+      "country": "Singapore",
+      "city": "Singapore",
+      "address": "Chinatown, Singapore",
+      "lat": 1.2829435,
+      "lng": 103.8441517,
+      "phone": null,
+      "email": null,
+      "website": null,
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": null,
+        "sat": null,
+        "sun": null
+      },
+      "styles_offered": [],
+      "tribes": [],
+      "ink_brands": [],
+      "equipment": [],
+      "amenities": [],
+      "featured_artists": [],
+      "ratings": {
+        "average": null,
+        "count": null
+      },
+      "reviews": []
+    },
+    {
+      "id": 5,
+      "name": "Exotic Tattoos & Piercings",
+      "country": "Singapore",
+      "city": "Singapore",
+      "address": "14 Scotts Road, Far East Plaza, Singapore",
+      "lat": 1.3071,
+      "lng": 103.8327,
+      "phone": null,
+      "email": null,
+      "website": null,
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": null,
+        "sat": null,
+        "sun": null
+      },
+      "styles_offered": [],
+      "tribes": [],
+      "ink_brands": [],
+      "equipment": [],
+      "amenities": [],
+      "featured_artists": [],
+      "ratings": {
+        "average": null,
+        "count": null
+      },
+      "reviews": []
+    },
+    {
+      "id": 6,
+      "name": "Borneo Ink Tattoo",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "address": "B-09-15, Gateway Kiaramas Corporate Suites, No 1 Jalan Desa Kiara, Mont Kiara, 50480 Kuala Lumpur, Malaysia",
+      "lat": 3.1662,
+      "lng": 101.6564,
+      "phone": "+601162621313",
+      "email": "borneoinktat2@gmail.com",
+      "website": "https://borneoink.com/",
+      "social": {
+        "instagram": "@borneo_ink_tat2",
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": "11:00 AM - 7:00 PM",
+        "sat": "11:00 AM - 7:00 PM",
+        "sun": "11:00 AM - 7:00 PM"
+      },
+      "styles_offered": [
+        "Tribal",
+        "Traditional",
+        "Iban",
+        "Biomechanic",
+        "Black & Gray",
+        "Oriental",
+        "Portrait"
+      ],
+      "tribes": [
+        "Iban"
+      ],
+      "ink_brands": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "equipment": [
+        "Traditional Hand-Tap Tools",
+        "Rotary Machines",
+        "Digital Power Supplies"
+      ],
+      "amenities": [
+        "Custom Designs",
+        "Traditional Hand-Tap Tattooing",
+        "Free Consultations"
+      ],
+      "featured_artists": [
+        4,
+        5
+      ],
+      "ratings": {
+        "average": 4.9,
+        "count": 300
+      },
+      "reviews": []
+    },
+    {
+      "id": 7,
+      "name": "Pink Tattoos",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "address": "Jalan Telawi, Bangsar, Kuala Lumpur, Malaysia",
+      "lat": 3.1294861,
+      "lng": 101.6701439,
+      "phone": null,
+      "email": "ask@tattoomepink.com",
+      "website": "http://www.tattoomepink.com/",
+      "social": {
+        "instagram": "@pinktattoos",
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": "By Appointment Only",
+        "sat": "By Appointment Only",
+        "sun": "By Appointment Only"
+      },
+      "styles_offered": [
+        "Fine Line",
+        "Botanical",
+        "Minimalist",
+        "Delicate"
+      ],
+      "tribes": [],
+      "ink_brands": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "equipment": [
+        "Rotary Machines",
+        "Digital Power Supplies"
+      ],
+      "amenities": [
+        "Appointment Only",
+        "Custom Designs",
+        "Female Artists"
+      ],
+      "featured_artists": [
+        6
+      ],
+      "ratings": {
+        "average": 4.9,
+        "count": 200
+      },
+      "reviews": []
+    },
+    {
+      "id": 8,
+      "name": "The Tattoo Parlor",
+      "country": "Malaysia",
+      "city": "Petaling Jaya",
+      "address": "31-1 Block C, Zenith Corporate Park, SS7 Kelana Jaya, Petaling Jaya, Selangor, Malaysia",
+      "lat": 3.1065,
+      "lng": 101.5983,
+      "phone": "+603-7624-4426",
+      "email": null,
+      "website": "https://thetattooparlor14.wixsite.com/thetattooparlor",
+      "social": {
+        "instagram": "@thetattooparlormalaysia",
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": "11:00 AM - 8:00 PM",
+        "sat": "11:00 AM - 8:00 PM",
+        "sun": "11:00 AM - 8:00 PM"
+      },
+      "styles_offered": [
+        "Neo-Traditional",
+        "Custom",
+        "Old School",
+        "Asian",
+        "Western",
+        "Realism",
+        "Colours",
+        "Traditional",
+        "Dotwork"
+      ],
+      "tribes": [],
+      "ink_brands": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "equipment": [
+        "Coil Machines",
+        "Digital Power Supplies"
+      ],
+      "amenities": [
+        "Walk-ins Welcome",
+        "Free Consultations",
+        "Custom Designs"
+      ],
+      "featured_artists": [
+        11
+      ],
+      "ratings": {
+        "average": 4.8,
+        "count": 170
+      },
+      "reviews": []
+    },
+    {
+      "id": 9,
+      "name": "Hustla Ink Tattoo Studio",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "address": "No. AR18, Ground Floor, Megan Ambassy, Holiday Place, 225 Jalan Ampang, 50450 Kuala Lumpur, Malaysia",
+      "lat": 3.1617,
+      "lng": 101.7425,
+      "phone": null,
+      "email": null,
+      "website": null,
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": null,
+        "sat": null,
+        "sun": null
+      },
+      "styles_offered": [],
+      "tribes": [],
+      "ink_brands": [],
+      "equipment": [],
+      "amenities": [],
+      "featured_artists": [],
+      "ratings": {
+        "average": null,
+        "count": null
+      },
+      "reviews": []
+    },
+    {
+      "id": 10,
+      "name": "Pitt's Tattoo & Piercing",
+      "country": "Malaysia",
+      "city": "Penang",
+      "address": "No. 174, Jalan Dr. Lim Chwee Leong, Georgetown, 10100 Penang, Malaysia",
+      "lat": 5.4173,
+      "lng": 100.3354,
+      "phone": "+6016 \u2013 295 9018",
+      "email": "pittstattoo@hotmail.com",
+      "website": "https://www.pittstattoo.com/",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": "12:00 PM - 8:00 PM",
+        "sat": "12:00 PM - 8:00 PM",
+        "sun": "12:00 PM - 8:00 PM"
+      },
+      "styles_offered": [
+        "Custom",
+        "Japanese",
+        "Traditional",
+        "Color",
+        "Neo-Traditional",
+        "Watercolor"
+      ],
+      "tribes": [],
+      "ink_brands": [
+        "Eternal Ink",
+        "Dynamic Ink",
+        "Intenze"
+      ],
+      "equipment": [
+        "Rotary Machines",
+        "Digital Power Supplies"
+      ],
+      "amenities": [
+        "Piercing",
+        "Laser Removal",
+        "Tattoo Courses",
+        "Walk-ins Welcome"
+      ],
+      "featured_artists": [
+        7,
+        8
+      ],
+      "ratings": {
+        "average": 4.7,
+        "count": 150
+      },
+      "reviews": []
+    },
+    {
+      "id": 11,
+      "name": "Ink & Needles Tattoo Studio",
+      "country": "Malaysia",
+      "city": "Penang",
+      "address": "19, Lebuh Keng Kwee, George Town, Penang, 10450, Malaysia",
+      "lat": 5.4168758,
+      "lng": 100.3310265,
+      "phone": "016-428 0933",
+      "email": null,
+      "website": "https://ink-and-needles.com/",
+      "social": {
+        "instagram": "@ink_and_needlestattoostudio",
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": "11:30 AM - 7:00 PM",
+        "sat": "11:30 AM - 7:00 PM",
+        "sun": "11:30 AM - 7:00 PM"
+      },
+      "styles_offered": [
+        "Japanese",
+        "Oriental",
+        "Tribal",
+        "Mandala",
+        "Geometric",
+        "Minimalist",
+        "Traditional"
+      ],
+      "tribes": [],
+      "ink_brands": [
+        "Kuro Sumi",
+        "Dynamic Ink",
+        "Eternal Ink"
+      ],
+      "equipment": [
+        "Rotary Machines",
+        "Coil Machines",
+        "Digital Power Supplies"
+      ],
+      "amenities": [
+        "Custom Designs",
+        "Free Consultations"
+      ],
+      "featured_artists": [
+        9,
+        10
+      ],
+      "ratings": {
+        "average": 4.8,
+        "count": 180
+      },
+      "reviews": []
+    },
+    {
+      "id": 12,
+      "name": "Lostchild Tattoo & Piercing",
+      "country": "Malaysia",
+      "city": "Penang",
+      "address": "The Rise Collection 3, 10150 Georgetown, Penang, Malaysia",
+      "lat": 5.4148,
+      "lng": 100.3293,
+      "phone": "+601111834330",
+      "email": "lostchild_company@gmail.com",
+      "website": "https://www.lostchildstudio.com/",
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "hours": {
+        "mon_fri": null,
+        "sat": null,
+        "sun": null
+      },
+      "styles_offered": [
+        "Hyper-Realism",
+        "Portrait",
+        "Black and Grey"
+      ],
+      "tribes": [],
+      "ink_brands": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "equipment": [
+        "Rotary Machines",
+        "Digital Power Supplies"
+      ],
+      "amenities": [
+        "Piercing",
+        "Private Studio",
+        "Appointment Only"
+      ],
+      "featured_artists": [
+        12
+      ],
+      "ratings": {
+        "average": 4.9,
+        "count": 120
+      },
+      "reviews": []
+    }
+  ],
+  "artists": [
+    {
+      "id": 1,
+      "studio_id": 1,
+      "country": "Singapore",
+      "name": "Louis Tham",
+      "bio": "Award-winning realism tattoo artist renowned for his intricate and lifelike designs. He is a black and grey tattoo specialist based in Singapore.",
+      "years_experience": 15,
+      "styles": [
+        "Realism",
+        "Black and Grey",
+        "Portrait"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Photography",
+        "Fine Art"
+      ],
+      "social": {
+        "instagram": "@louislovesicktattoo",
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Rotary Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.9,
+        "count": 120
+      },
+      "reviews": [
+        {
+          "user_id": "user123",
+          "rating": 5,
+          "comment": "Louis created an amazing portrait tattoo that looks incredibly realistic. His attention to detail is outstanding."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "studio_id": 1,
+      "country": "Singapore",
+      "name": "Mr. Ling",
+      "bio": "Experienced and highly talented tattoo artist specializing in incredibly intricate Japanese and dotwork tattoo art.",
+      "years_experience": 10,
+      "styles": [
+        "Japanese",
+        "Dotwork",
+        "Fine Line"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Japanese Art",
+        "Nature"
+      ],
+      "social": {
+        "instagram": "@mrling.tattoo",
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Coil Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Kuro Sumi",
+        "Intenze"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.8,
+        "count": 95
+      },
+      "reviews": [
+        {
+          "user_id": "user456",
+          "rating": 5,
+          "comment": "Mr. Ling's Japanese-style tattoos are incredible. The level of detail in his work is amazing."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "studio_id": 1,
+      "country": "Singapore",
+      "name": "Kian Tan",
+      "bio": "Renowned blackwork tattoo artist specializing in geometric blackout tattoos, creating intricate designs that capture the beauty of form and abstract shapes.",
+      "years_experience": 8,
+      "styles": [
+        "Blackwork",
+        "Geometric",
+        "Blackout"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Architecture",
+        "Sacred Geometry"
+      ],
+      "social": {
+        "instagram": "@genghiskian",
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Rotary Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Dynamic Black",
+        "Silverback Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.7,
+        "count": 85
+      },
+      "reviews": [
+        {
+          "user_id": "user789",
+          "rating": 5,
+          "comment": "Kian's geometric work is precise and bold. He transformed my arm with an amazing blackwork piece."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "studio_id": 6,
+      "country": "Malaysia",
+      "name": "Eddie David",
+      "bio": "Founder of Borneo Ink Tattoo, specializing in traditional Iban hand-tap tattoos and custom designs. Award-winning artist with international recognition.",
+      "years_experience": 25,
+      "styles": [
+        "Biomechanic",
+        "Black & Gray",
+        "Traditional",
+        "Iban",
+        "Neo-Tribal",
+        "Oriental",
+        "Portrait"
+      ],
+      "tribes": [
+        "Iban"
+      ],
+      "inspiration_sources": [
+        "Borneo Culture",
+        "Traditional Tattoo Art"
+      ],
+      "social": {
+        "instagram": "@eddieborneoink",
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Traditional Hand-Tap Tools, Modern Rotary Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Traditional Hand-Tap Needles",
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.9,
+        "count": 150
+      },
+      "reviews": [
+        {
+          "user_id": "user101",
+          "rating": 5,
+          "comment": "Eddie's traditional Iban tattoo was a spiritual experience. His knowledge of the culture and technique is unmatched."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "studio_id": 6,
+      "country": "Malaysia",
+      "name": "Simon David",
+      "bio": "Brother of Eddie David and co-founder of Borneo Ink Tattoo. Specializes in tribal and traditional designs with a modern twist.",
+      "years_experience": 20,
+      "styles": [
+        "Tribal",
+        "Traditional",
+        "Neo-Traditional"
+      ],
+      "tribes": [
+        "Iban"
+      ],
+      "inspiration_sources": [
+        "Borneo Culture",
+        "Modern Art"
+      ],
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Rotary Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.8,
+        "count": 120
+      },
+      "reviews": [
+        {
+          "user_id": "user102",
+          "rating": 5,
+          "comment": "Simon's tribal work is both authentic and contemporary. He created a beautiful piece that honors my heritage."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "studio_id": 7,
+      "country": "Malaysia",
+      "name": "Lynda Chean",
+      "bio": "Founder of Pink Tattoos, known for delicate, fine line work and botanical designs. Pioneering female tattoo artist in Malaysia.",
+      "years_experience": 15,
+      "styles": [
+        "Fine Line",
+        "Botanical",
+        "Minimalist"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Nature",
+        "Botanical Illustrations"
+      ],
+      "social": {
+        "instagram": "@pinktattoos",
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Rotary Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Fine Liner",
+          "Single Needle"
+        ]
+      },
+      "favorite_inks": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.9,
+        "count": 130
+      },
+      "reviews": [
+        {
+          "user_id": "user103",
+          "rating": 5,
+          "comment": "Lynda's delicate line work is incredible. My floral tattoo looks like a botanical illustration."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "studio_id": 10,
+      "country": "Malaysia",
+      "name": "PIT FUN",
+      "bio": "Lead artist at Pitt's Tattoo & Piercing, specializing in custom designs and various styles.",
+      "years_experience": 12,
+      "styles": [
+        "Custom",
+        "Japanese",
+        "Traditional"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Asian Art",
+        "Street Culture"
+      ],
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Rotary Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.7,
+        "count": 90
+      },
+      "reviews": [
+        {
+          "user_id": "user104",
+          "rating": 5,
+          "comment": "PIT FUN created an amazing custom design that perfectly captured what I wanted."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "studio_id": 10,
+      "country": "Malaysia",
+      "name": "Vivian",
+      "bio": "Talented artist at Pitt's Tattoo & Piercing, known for colorful and vibrant designs.",
+      "years_experience": 8,
+      "styles": [
+        "Color",
+        "Neo-Traditional",
+        "Watercolor"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Pop Art",
+        "Watercolor Painting"
+      ],
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Rotary Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Eternal Ink",
+        "Intenze"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.8,
+        "count": 75
+      },
+      "reviews": [
+        {
+          "user_id": "user105",
+          "rating": 5,
+          "comment": "Vivian's color work is vibrant and beautiful. My watercolor tattoo looks amazing."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "studio_id": 11,
+      "country": "Malaysia",
+      "name": "Jason Wong",
+      "bio": "Founder and senior artist at Ink & Needles Tattoo Studio, specializing in Japanese and Oriental tattoos.",
+      "years_experience": 10,
+      "styles": [
+        "Japanese",
+        "Oriental",
+        "Traditional"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Japanese Art",
+        "Asian Culture"
+      ],
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Coil Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Kuro Sumi",
+        "Dynamic Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.8,
+        "count": 85
+      },
+      "reviews": [
+        {
+          "user_id": "user106",
+          "rating": 5,
+          "comment": "Jason's Japanese-style tattoo exceeded my expectations. His attention to detail is impressive."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "studio_id": 11,
+      "country": "Malaysia",
+      "name": "Yan Cheah",
+      "bio": "Senior artist at Ink & Needles Tattoo Studio, known for geometric and mandala designs.",
+      "years_experience": 8,
+      "styles": [
+        "Geometric",
+        "Mandala",
+        "Dotwork"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Sacred Geometry",
+        "Mandalas"
+      ],
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Rotary Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Dynamic Black",
+        "Eternal Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.7,
+        "count": 70
+      },
+      "reviews": [
+        {
+          "user_id": "user107",
+          "rating": 5,
+          "comment": "Yan's geometric work is precise and beautiful. My mandala tattoo is perfect."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "studio_id": 8,
+      "country": "Malaysia",
+      "name": "Prinz",
+      "bio": "Co-founder of The Tattoo Parlor, specializing in neo-traditional and custom designs.",
+      "years_experience": 10,
+      "styles": [
+        "Neo-Traditional",
+        "Custom",
+        "Old School"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Traditional Tattoo Art",
+        "Pop Culture"
+      ],
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Coil Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.8,
+        "count": 90
+      },
+      "reviews": [
+        {
+          "user_id": "user108",
+          "rating": 5,
+          "comment": "Prinz created an amazing neo-traditional piece for me. His style is bold and clean."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "studio_id": 12,
+      "country": "Malaysia",
+      "name": "Bird Lostchild",
+      "bio": "Founder of Lostchild Tattoo & Piercing, renowned for hyper-realism tattoos and detailed work.",
+      "years_experience": 12,
+      "styles": [
+        "Hyper-Realism",
+        "Portrait",
+        "Black and Grey"
+      ],
+      "tribes": [],
+      "inspiration_sources": [
+        "Photography",
+        "Realism Art"
+      ],
+      "social": {
+        "instagram": null,
+        "facebook": null,
+        "tiktok": null
+      },
+      "equipment": {
+        "machine": "Rotary Tattoo Machine",
+        "power_supply": "Digital Power Supply",
+        "needles": [
+          "Round Liner",
+          "Magnum Shader"
+        ]
+      },
+      "favorite_inks": [
+        "Eternal Ink",
+        "Dynamic Ink"
+      ],
+      "portfolio": [],
+      "ratings": {
+        "average": 4.9,
+        "count": 95
+      },
+      "reviews": [
+        {
+          "user_id": "user109",
+          "rating": 5,
+          "comment": "Bird's hyper-realistic tattoo work is mind-blowing. The portrait he did looks like a photograph."
+        }
+      ]
+    }
+  ]
+}

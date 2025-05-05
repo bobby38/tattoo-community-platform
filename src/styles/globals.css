@@ -99,3 +99,85 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.8);
 }
+
+/* Map marker styles */
+.marker-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+}
+
+.marker-inner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.studio-marker {
+  background-color: rgba(59, 130, 246, 0.5);
+  border: 2px solid #3b82f6;
+}
+
+.studio-marker .marker-inner {
+  background-color: #3b82f6;
+}
+
+.artist-marker {
+  background-color: rgba(249, 115, 22, 0.5);
+  border: 2px solid #f97316;
+}
+
+.artist-marker .marker-inner {
+  background-color: #f97316;
+}
+
+.event-marker {
+  background-color: rgba(239, 68, 68, 0.5);
+  border: 2px solid #ef4444;
+}
+
+.event-marker .marker-inner {
+  background-color: #ef4444;
+}
+
+/* Add a pulse animation for markers */
+.marker-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.studio-marker::after {
+  border: 2px solid #3b82f6;
+}
+
+.artist-marker::after {
+  border: 2px solid #f97316;
+}
+
+.event-marker::after {
+  border: 2px solid #ef4444;
+}

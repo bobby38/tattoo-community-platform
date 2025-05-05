@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Pool } from 'pg';
+import { getHybridImageUrl } from '@/lib/hybrid-image';
 
 // Initialize a direct PostgreSQL connection using the DATABASE_URL from env
 const pool = new Pool({
@@ -69,36 +70,57 @@ function getProperImageUrl(url: string | null | undefined): string {
 const FALLBACK_GALLERY_ITEMS = [
   {
     id: 'fallback-1',
-    title: 'Japanese Dragon',
-    description: 'Traditional Japanese dragon tattoo design',
-    imageUrl: 'https://imagetat.getrezult.com/gallery/dragon-tattoo.jpg',
-    createdAt: new Date().toISOString(),
-    userId: 'system',
-    artist: 'Akira Tanaka',
-    style: 'Japanese',
-    tags: ['dragon', 'japanese', 'traditional']
+    image: '/images/sample/gallery-1.jpg',
+    title: 'Traditional Sleeve',
+    artist: 'Mike Ink',
+    style: 'Traditional',
+    likes: 124,
+    comments: 18
   },
   {
     id: 'fallback-2',
-    title: 'Floral Sleeve',
-    description: 'Beautiful floral sleeve design',
-    imageUrl: 'https://imagetat.getrezult.com/gallery/floral-sleeve.jpg',
-    createdAt: new Date().toISOString(),
-    userId: 'system',
-    artist: 'Sarah Chen',
-    style: 'Floral',
-    tags: ['floral', 'sleeve', 'color']
+    image: '/images/sample/gallery-2.jpg',
+    title: 'Japanese Back Piece',
+    artist: 'Yuki Tora',
+    style: 'Japanese',
+    likes: 98,
+    comments: 12
   },
   {
     id: 'fallback-3',
-    title: 'Geometric Wolf',
-    description: 'Modern geometric wolf design',
-    imageUrl: 'https://imagetat.getrezult.com/gallery/geometric-wolf.jpg',
-    createdAt: new Date().toISOString(),
-    userId: 'system',
-    artist: 'David Wilson',
+    image: '/images/sample/gallery-3.jpg',
+    title: 'Geometric Mandala',
+    artist: 'Lina Patterns',
     style: 'Geometric',
-    tags: ['wolf', 'geometric', 'blackwork']
+    likes: 156,
+    comments: 24
+  },
+  {
+    id: 'fallback-4',
+    image: '/images/sample/gallery-4.jpg',
+    title: 'Watercolor Bird',
+    artist: 'Sophia Colors',
+    style: 'Watercolor',
+    likes: 87,
+    comments: 9
+  },
+  {
+    id: 'fallback-5',
+    image: '/images/sample/gallery-5.jpg',
+    title: 'Blackwork Portrait',
+    artist: 'Dark Lines',
+    style: 'Blackwork',
+    likes: 112,
+    comments: 15
+  },
+  {
+    id: 'fallback-6',
+    image: '/images/sample/gallery-6.jpg',
+    title: 'Neo-Traditional Fox',
+    artist: 'Alex Modern',
+    style: 'Neo-Traditional',
+    likes: 143,
+    comments: 21
   }
 ];
 
@@ -144,7 +166,7 @@ export async function POST(request: Request) {
           `INSERT INTO posts (id, user_id, image_url, title, content, post_type, related_style_id) 
            VALUES ($1, $2, $3, $4, $5, 'gallery', $6) 
            RETURNING *`,
-          [postId, artistId, getProperImageUrl(data.imageUrl), title, content, data.styleId || null]
+          [postId, artistId, getHybridImageUrl(data.imageUrl, 'studio', postId), title, content, data.styleId || null]
         );
         
         console.log('Post created, complete result:', JSON.stringify(result.rows[0]));
@@ -176,132 +198,62 @@ export async function POST(request: Request) {
 }
 
 export async function GET(request: Request) {
-  console.log('🔍 [API Gallery] GET request received');
-  
   try {
-    // Validate database connection string
-    const connectionString = process.env.DATABASE_URL;
-    if (!connectionString) {
-      console.error('❌ [API Gallery] Database connection string is not set, using fallback data');
-      return NextResponse.json(FALLBACK_GALLERY_ITEMS);
-    }
-    
-    // Create a new database connection pool
-    console.log('🔍 [API Gallery] Creating database connection pool');
-    let pool;
+    // Connect to the database and fetch gallery items
+    const client = await pool.connect();
     
     try {
-      pool = new Pool({
-        connectionString,
-        // Add a short connection timeout to fail fast if the database is unreachable
-        connectionTimeoutMillis: 5000
-      });
-    } catch (poolError) {
-      console.error('❌ [API Gallery] Failed to create database pool:', poolError);
-      return NextResponse.json(FALLBACK_GALLERY_ITEMS);
-    }
-    
-    try {
-      // Test the database connection first
-      console.log('🔍 [API Gallery] Testing database connection');
-      try {
-        const testClient = await pool.connect();
-        testClient.release();
-        console.log('✅ [API Gallery] Database connection successful');
-      } catch (connectionError) {
-        console.error('❌ [API Gallery] Database connection failed:', connectionError);
-        return NextResponse.json(FALLBACK_GALLERY_ITEMS);
-      }
-      
-      // Query the database for gallery items
-      console.log('🔍 [API Gallery] Querying database for gallery items');
-      const result = await pool.query(`
+      // Query to get gallery items from the posts table
+      // We're looking for posts with type 'gallery'
+      const result = await client.query(`
         SELECT 
           p.id, 
           p.title, 
-          p.content as description, 
-          p.image_url as "imageUrl", 
-          p.created_at as "createdAt",
-          p.user_id as "userId",
-          u.name as artist,
-          COALESCE(s.name, 'Other') as style,
-          ARRAY_AGG(DISTINCT t.name) as tags
+          p.image_url as image, 
+          u.username as artist,
+          s.name as style,
+          (SELECT COUNT(*) FROM likes WHERE post_id = p.id) as likes,
+          (SELECT COUNT(*) FROM comments WHERE post_id = p.id) as comments
         FROM 
           posts p
         LEFT JOIN 
           users u ON p.user_id = u.id
         LEFT JOIN 
           styles s ON p.style_id = s.id
-        LEFT JOIN 
-          post_tags pt ON p.id = pt.post_id
-        LEFT JOIN 
-          tags t ON pt.tag_id = t.id
         WHERE 
           p.post_type = 'gallery'
-        GROUP BY 
-          p.id, u.name, s.name
         ORDER BY 
           p.created_at DESC
+        LIMIT 50
       `);
       
-      console.log('✅ [API Gallery] Database query successful, rows:', result.rows.length);
+      // Process the results
+      const galleryItems = result.rows.map(row => ({
+        id: row.id,
+        image: getHybridImageUrl(row.image, 'studio', row.id) || '',
+        title: sanitizeString(row.title),
+        artist: sanitizeString(row.artist) || 'Unknown Artist',
+        style: sanitizeString(row.style) || 'Mixed Style',
+        likes: parseInt(row.likes) || 0,
+        comments: parseInt(row.comments) || 0
+      }));
       
-      // If no results were found, use fallback data
-      if (!result.rows || result.rows.length === 0) {
-        console.log('⚠️ [API Gallery] No gallery items found in database, using fallback data');
-        return NextResponse.json(FALLBACK_GALLERY_ITEMS);
-      }
-      
-      // Process and sanitize the results
-      const galleryItems = result.rows.map(item => {
-        // Sanitize all string fields
-        const sanitizedItem = {
-          id: item.id,
-          title: sanitizeString(item.title) || 'Untitled',
-          description: sanitizeString(item.description) || '',
-          imageUrl: getProperImageUrl(item.imageUrl),
-          createdAt: item.createdAt,
-          userId: sanitizeString(item.userId) || '',
-          artist: sanitizeString(item.artist) || 'Unknown Artist',
-          style: sanitizeString(item.style) || 'Other',
-          tags: Array.isArray(item.tags) 
-            ? item.tags.filter(Boolean).map((tag: string) => sanitizeString(tag)) 
-            : []
-        };
-        
-        // Skip items with invalid image URLs
-        if (!sanitizedItem.imageUrl) {
-          console.log('⚠️ [API Gallery] Skipping item with invalid image URL:', item.id);
-          return null;
-        }
-        
-        return sanitizedItem;
-      }).filter(Boolean); // Remove null items
-      
-      // If all items were filtered out, use fallback data
+      // If we have no gallery items, use the fallback data
       if (galleryItems.length === 0) {
-        console.log('⚠️ [API Gallery] All gallery items were filtered out, using fallback data');
         return NextResponse.json(FALLBACK_GALLERY_ITEMS);
       }
       
-      console.log('✅ [API Gallery] Returning sanitized gallery items:', galleryItems.length);
-      
-      // Return the gallery items
       return NextResponse.json(galleryItems);
-    } catch (dbError: any) {
-      console.error('❌ [API Gallery] Database error:', dbError);
+    } catch (error) {
+      console.error('Database query error:', error);
+      // Return fallback data if the query fails
       return NextResponse.json(FALLBACK_GALLERY_ITEMS);
     } finally {
-      // Close the database connection pool
-      console.log('🔍 [API Gallery] Closing database connection pool');
-      try {
-        if (pool) await pool.end();
-      } catch (endError) {
-        console.error('❌ [API Gallery] Error closing database pool:', endError);
-      }
+      client.release();
     }
-  } catch (error: any) {
-    console.error('❌ [API Gallery] Server error:', error);
+  } catch (error) {
+    console.error('Database connection error:', error);
+    // Return fallback data if the connection fails
     return NextResponse.json(FALLBACK_GALLERY_ITEMS);
   }
 }

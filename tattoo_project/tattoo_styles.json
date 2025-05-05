@@ -1,0 +1,319 @@
+{
+  "styles": [
+    {
+      "id": 1,
+      "name": "American Traditional",
+      "origin": "United States, early 20th century",
+      "description": "American Traditional tattoos, also known as Old School, originated in the early 20th century among sailors and military personnel. Characterized by bold black outlines, limited but vibrant color palette, and simple designs, this style was popularized by artists like Norman 'Sailor Jerry' Collins. The imagery often includes nautical themes, pin-up girls, roses, eagles, and other patriotic symbols.",
+      "key_traits": [
+        "Bold black outlines",
+        "Limited but vibrant color palette (primarily red, green, yellow, blue)",
+        "Simple, two-dimensional designs",
+        "High contrast",
+        "Minimal shading",
+        "Classic iconography (anchors, roses, eagles, daggers, etc.)"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/95/42/77/954277abf2319033dbfd8583a42542d0.png",
+      "popularity_rank": 2,
+      "related_tribes": ["Sailors", "Military personnel", "Bikers"],
+      "example_images": [
+        "https://i.pinimg.com/originals/56/25/cd/5625cdd64eacd28a05ab7821879d0318.jpg",
+        "https://i.pinimg.com/originals/b0/05/12/b00512aed7443f015f015ed81306ffe5.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Japanese Irezumi",
+      "origin": "Japan, dating back to the Edo period (1603-1868)",
+      "description": "Irezumi is a traditional Japanese tattooing style with a rich history dating back centuries. Originally associated with criminals and outcasts, it evolved into a highly respected art form. Irezumi typically features mythological creatures, folklore heroes, and natural elements like waves and cherry blossoms. Traditional application involves hand-poking (tebori), though modern artists often use machines while maintaining traditional aesthetics.",
+      "key_traits": [
+        "Large, body-covering designs (often full back pieces or bodysuits)",
+        "Mythological subjects (dragons, koi fish, phoenixes, oni demons)",
+        "Natural elements (waves, wind bars, cherry blossoms)",
+        "Rich symbolism and storytelling",
+        "Flowing water motifs to connect elements",
+        "Background patterns (clouds, waves)"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/b7/dd/5a/b7dd5a8fe1821ec95847fb3af17d93f4.png",
+      "popularity_rank": 3,
+      "related_tribes": ["Yakuza", "Traditional Japanese artists", "Martial arts practitioners"],
+      "example_images": [
+        "https://i.pinimg.com/originals/81/8a/48/818a488fc0a405b22ce95bc1c4138e46.jpg",
+        "https://i.pinimg.com/originals/08/11/51/081151027f6147263e273ab7eb36d802.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Tribal",
+      "origin": "Various indigenous cultures worldwide, modernized in the 1990s",
+      "description": "Tribal tattoos have ancient roots in indigenous cultures across Polynesia, Africa, and the Americas, where they signified identity, status, and spiritual beliefs. The modern tribal style gained mainstream popularity in the 1990s, characterized by bold, black abstract patterns inspired by traditional designs but often disconnected from their cultural meanings. Contemporary tribal artists may focus on authentic cultural designs or modern interpretations.",
+      "key_traits": [
+        "Solid black ink",
+        "Bold, flowing patterns",
+        "Abstract, geometric designs",
+        "Sharp, angular elements",
+        "Negative space utilization",
+        "Symmetry and asymmetry in design"
+      ],
+      "icon_url": "https://tattooton.com/wp-content/uploads/2013/11/Tribal-Butterfly-Tattoos-for-Men.jpg",
+      "popularity_rank": 7,
+      "related_tribes": ["Indigenous cultures", "Surfers", "1990s alternative culture"],
+      "example_images": [
+        "http://www.shouldertattoos.org/wp-content/uploads/2016/06/Sweet-Tribal-Shoulder-Tattoo-Design-st46086.jpg",
+        "http://www.tattoosforyou.org/wp-content/uploads/2013/09/Tribal-Sleeve-Tattoos.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Polynesian",
+      "origin": "Pacific Islands (Samoa, Tonga, Hawaii, Tahiti, New Zealand)",
+      "description": "Polynesian tattoos originate from various Pacific Island cultures and have deep cultural significance. These tattoos traditionally marked identity, social status, and spiritual power. Each island group developed distinct patterns and meanings. Modern Polynesian tattoos maintain cultural elements while adapting to contemporary aesthetics. Unlike modern tribal, authentic Polynesian work respects cultural meanings and patterns specific to different island traditions.",
+      "key_traits": [
+        "Intricate geometric patterns",
+        "Cultural symbols (turtles, sharks, spearheads)",
+        "Black ink only",
+        "Repetitive motifs",
+        "Storytelling through symbolism",
+        "Region-specific design elements"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/1d/a5/c2/1da5c23ff6e91def4c2dce236c066bf4.jpg",
+      "popularity_rank": 8,
+      "related_tribes": ["Samoan", "Maori", "Hawaiian", "Tahitian", "Pacific Islanders"],
+      "example_images": [
+        "https://i.pinimg.com/originals/9e/c4/89/9ec4898a82351de0d71078589ecb8a0e.jpg",
+        "https://www.lookslikecandy.com/wp-content/uploads/2020/02/83986916_2710886975666705_965868336610796948_n.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Maori",
+      "origin": "New Zealand, indigenous Māori people",
+      "description": "Tā moko is the traditional tattooing art of New Zealand's indigenous Māori people. Unlike other tattoo styles, authentic tā moko was traditionally carved into the skin rather than punctured, creating grooved skin texture. Each moko design is unique to the wearer, representing their genealogy, knowledge, and social status. Facial moko (moko kauae for women, mataora for men) are particularly significant. Modern Māori tattoos may be applied with machines but maintain cultural patterns and meanings.",
+      "key_traits": [
+        "Spiral patterns (koru)",
+        "Facial designs (moko kauae, mataora)",
+        "Black ink",
+        "Personalized to individual's genealogy",
+        "Curved, flowing lines",
+        "Symmetrical designs"
+      ],
+      "icon_url": "https://i.pinimg.com/736x/41/fe/c3/41fec3075b77cbc5081155a5e3218e84--samoan-tattoo-maori-tattoos.jpg",
+      "popularity_rank": 10,
+      "related_tribes": ["Māori people", "New Zealand indigenous culture"],
+      "example_images": [
+        "http://tattoo-journal.com/wp-content/uploads/2015/08/maoti-tattoo-4.jpg",
+        "https://tattooblend.com/wp-content/uploads/2015/10/best-maori-tribal-tattoo1.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Watercolor",
+      "origin": "Modern style, emerged in the early 2000s",
+      "description": "Watercolor tattoos mimic the fluid, painterly aesthetic of watercolor paintings. This contemporary style emerged in the early 2000s and gained popularity through social media. Characterized by vibrant colors that appear to bleed and blend without defined outlines, watercolor tattoos create a dreamy, artistic effect. While visually striking, the style has sparked debates about longevity due to the minimal use of black outlines that traditionally help tattoos age well.",
+      "key_traits": [
+        "Paint splatter effects",
+        "Soft color blending",
+        "Minimal or no black outlines",
+        "Vibrant, translucent colors",
+        "Fluid, organic appearance",
+        "Abstract elements"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/6c/24/c5/6c24c58dc7d4433cc610113de95f5f98.jpg",
+      "popularity_rank": 5,
+      "related_tribes": ["Art enthusiasts", "Contemporary tattoo collectors"],
+      "example_images": [
+        "https://i.pinimg.com/originals/8c/1a/23/8c1a2386fa432a5e96a08a8404d06cda.jpg",
+        "https://www.topbeautymagazines.com/wp-content/uploads/2019/11/watercolor-tattoo-6.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Realism",
+      "origin": "Developed in the late 20th century with advancements in tattoo technology",
+      "description": "Realism tattoos aim to recreate photographs or realistic images on skin. This technically demanding style emerged as tattoo equipment and techniques advanced, allowing for fine detail, subtle shading, and depth. Realism artists often specialize in portraits, wildlife, or scenery, using techniques like smooth gradients and precise detailing to create three-dimensional effects. Black and grey realism uses only black ink in various dilutions, while color realism incorporates vibrant, true-to-life colors.",
+      "key_traits": [
+        "Photographic quality",
+        "Fine detail work",
+        "Smooth shading and gradients",
+        "Depth and dimension",
+        "Precise light and shadow play",
+        "Accurate proportions and perspective"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/14/7b/45/147b4591fb88170af5811108859be80c.jpg",
+      "popularity_rank": 1,
+      "related_tribes": ["Art collectors", "Portrait enthusiasts", "Memorial tattoo seekers"],
+      "example_images": [
+        "https://i.pinimg.com/originals/72/f4/05/72f4053505556d7f706ade20b619e9d3.jpg",
+        "https://i.pinimg.com/originals/c4/65/a6/c465a66d5dca8284aa289b0a2bb57311.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Blackwork",
+      "origin": "Contemporary style with roots in tribal and traditional tattooing",
+      "description": "Blackwork is a contemporary style characterized by solid black ink designs ranging from geometric patterns to illustrative work. While it has connections to tribal tattooing, modern blackwork encompasses diverse approaches including ornamental patterns, dotwork, and large solid black areas. The style emphasizes bold contrast, negative space, and strong visual impact. Blackwork has gained popularity for its striking aesthetic and versatility, from minimalist designs to elaborate full-body pieces.",
+      "key_traits": [
+        "Solid black ink only",
+        "Strong contrast with skin",
+        "Geometric patterns",
+        "Negative space utilization",
+        "Bold, graphic appearance",
+        "Various techniques (solid fills, line work, dotwork)"
+      ],
+      "icon_url": "https://thai.tattoo/wp-content/uploads/2023/02/2022-09-28-07.43.51-2936900391837507904_6868942738-1280x1600.jpg",
+      "popularity_rank": 4,
+      "related_tribes": ["Alternative fashion enthusiasts", "Minimalists", "Contemporary art lovers"],
+      "example_images": [
+        "http://tattoo-journal.com/wp-content/uploads/2017/01/Blackwork-Tattoo-86.jpg",
+        "https://www.dubuddha.org/wp-content/uploads/2018/05/Blackwork-Tattoo-Sleeve-with-Roses-by-Konrad-ibn-Kondrat.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Neo-Traditional",
+      "origin": "Evolved from American Traditional in the late 20th century",
+      "description": "Neo-Traditional tattoos evolved from American Traditional, maintaining bold outlines while incorporating more detail, dimension, and a broader color palette. This style blends the durability of traditional tattooing with more illustrative elements and artistic freedom. Neo-Traditional often features stylized animals, portraits, and nature motifs with decorative elements. While respecting traditional foundations, it allows for more creativity in composition, color theory, and subject matter.",
+      "key_traits": [
+        "Bold outlines like traditional",
+        "Expanded color palette",
+        "Increased detail and dimension",
+        "Decorative elements and ornaments",
+        "Stylized rather than realistic subjects",
+        "Illustrative quality"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/ea/da/23/eada23f2fe3a0d4bbd8fb1003cf8a80b.jpg",
+      "popularity_rank": 6,
+      "related_tribes": ["Traditional tattoo enthusiasts", "Illustrative art collectors"],
+      "example_images": [
+        "https://i.pinimg.com/originals/43/2e/70/432e7059ff04aea4be71889bc1cf2238.png",
+        "https://i.pinimg.com/originals/53/ca/ea/53caea19c30639fa12f72a19c0f3e542.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Geometric",
+      "origin": "Contemporary style with influences from sacred geometry and ancient patterns",
+      "description": "Geometric tattoos focus on precise shapes, patterns, and mathematical principles to create visually striking designs. Drawing inspiration from sacred geometry, optical illusions, and architectural elements, this style ranges from simple minimalist shapes to complex mandala patterns. Geometric work often emphasizes symmetry, proportion, and the relationship between forms. The style has gained popularity for its modern aesthetic that can be both abstract and meaningful, often incorporating spiritual or philosophical concepts through mathematical precision.",
+      "key_traits": [
+        "Precise lines and angles",
+        "Mathematical patterns",
+        "Symmetry and balance",
+        "Sacred geometry elements",
+        "Dotwork techniques often incorporated",
+        "Clean execution"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/ed/8d/ad/ed8dad31f7a08df786c359fa866ce023.jpg",
+      "popularity_rank": 9,
+      "related_tribes": ["Mathematicians", "Architects", "Spiritual seekers", "Minimalists"],
+      "example_images": [
+        "https://i.pinimg.com/originals/fb/b3/91/fbb391978be351bdcb0e9794813b4066.jpg",
+        "https://i.pinimg.com/originals/38/b3/c6/38b3c689646e6eebde60e81db2526d3a.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Dotwork",
+      "origin": "Contemporary style with roots in traditional hand-poked tattoos",
+      "description": "Dotwork tattoos create images through patterns of dots rather than solid lines or shading. This meticulous technique builds texture, depth, and gradients using only dots of varying density. While the style has connections to traditional hand-poked tattoos from various cultures, modern dotwork emerged as a distinct contemporary approach. Often combined with geometric designs or mandalas, dotwork requires precision and patience, resulting in distinctive textures and a unique aesthetic that can range from subtle to bold.",
+      "key_traits": [
+        "Images created entirely with dots",
+        "Texture through dot density",
+        "Gradients achieved by dot spacing",
+        "Often combined with geometric elements",
+        "Mandala and sacred geometry themes",
+        "Time-intensive technique"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/2b/d2/3f/2bd23fea83acb0f882cbdd829c7d2331.jpg",
+      "popularity_rank": 11,
+      "related_tribes": ["Meditation practitioners", "Sacred geometry enthusiasts", "Pattern lovers"],
+      "example_images": [
+        "https://i.pinimg.com/originals/a4/16/b5/a416b5a2e1ce0b3c773b0252c27bedcd.jpg",
+        "https://inkvasiontattoo.com/wp-content/uploads/2019/06/geometric-dotwork-tattoo-singapore.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Thai Sak Yant",
+      "origin": "Thailand, ancient Buddhist and animist traditions",
+      "description": "Sak Yant are traditional Thai tattoos with deep spiritual significance, traditionally hand-poked by Buddhist monks or ajarn (masters) using bamboo or metal rods. These sacred designs combine geometric patterns, animal imagery, and ancient Khmer script to create protective talismans. Each yant (design) has specific powers and blessings, such as protection, strength, or good fortune. Authentic Sak Yant involves spiritual ceremonies and sometimes requires followers to observe certain rules to maintain the tattoo's power.",
+      "key_traits": [
+        "Hand-poked technique (traditional)",
+        "Sacred Khmer script",
+        "Geometric patterns and grids",
+        "Animal imagery (tigers, snakes)",
+        "Buddhist and animist symbols",
+        "Protective and spiritual purposes"
+      ],
+      "icon_url": "https://i.pinimg.com/736x/a7/c8/8a/a7c88a5a606fb4152992ac266183f9b1--sak-yant-tattoo-ink-tattoo.jpg",
+      "popularity_rank": 13,
+      "related_tribes": ["Buddhist practitioners", "Thai cultural enthusiasts", "Spiritual seekers"],
+      "example_images": [
+        "https://farm9.staticflickr.com/8002/7431161576_5de7c34829_b.jpg",
+        "https://i.pinimg.com/originals/8c/38/46/8c3846ba929ea48d83e8b2199b65097f.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "New School",
+      "origin": "United States, 1970s-1980s",
+      "description": "New School emerged in the late 20th century as a vibrant, exaggerated style influenced by cartoons, graffiti, and pop culture. Characterized by bold colors, exaggerated proportions, and dynamic compositions, New School broke away from traditional tattooing constraints. The style often incorporates elements of caricature, with subjects that may include animated characters, stylized animals, or pop culture references. New School emphasizes creativity and personal expression, with a playful, sometimes humorous approach to tattooing.",
+      "key_traits": [
+        "Exaggerated proportions",
+        "Cartoon-like elements",
+        "Vibrant, bold colors",
+        "Thick outlines",
+        "Dynamic, energetic compositions",
+        "Pop culture references"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/dc/96/e3/dc96e36d207b4066b60fb3e5c75941d7.jpg",
+      "popularity_rank": 12,
+      "related_tribes": ["Comic book fans", "Animation enthusiasts", "Pop culture collectors"],
+      "example_images": [
+        "http://tattoo-journal.com/wp-content/uploads/2015/07/new-school-tattoo-7.jpg",
+        "https://inkppl.com/en/assets/php/files/082018/36995178_286966378720617_3436760734938169344_n.jpg"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Trash Polka",
+      "origin": "Germany, developed in the late 20th century by Buena Vista Tattoo Club",
+      "description": "Trash Polka is a distinctive contemporary style created by German tattoo artists Simone Pfaff and Volko Merschky at Buena Vista Tattoo Club. This chaotic yet controlled style combines realistic elements with abstract splashes, typography, and graphic design elements. The color palette is strictly limited to black and red. Trash Polka compositions often appear collage-like, with contrasting elements creating dynamic, sometimes surreal imagery. The style is known for its artistic freedom and emotional impact.",
+      "key_traits": [
+        "Black and red color palette only",
+        "Chaotic, collage-like compositions",
+        "Realistic elements mixed with abstract",
+        "Typography and graphic design elements",
+        "Smudges, splashes, and brushstrokes",
+        "Contrasting imagery"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/ba/1f/89/ba1f8929b8ac16a3d58b4dd60b41d8c6.jpg",
+      "popularity_rank": 14,
+      "related_tribes": ["Abstract art enthusiasts", "Graphic designers", "Contemporary art collectors"],
+      "example_images": [
+        "https://i.pinimg.com/originals/63/3c/6c/633c6c7d41159da477709bb0a0ce76a8.jpg",
+        "https://i.pinimg.com/originals/15/a9/08/15a908bf29ea1c17e8ab5cbe70639ffe.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Biomechanical",
+      "origin": "Emerged in the 1980s, influenced by H.R. Giger's artwork",
+      "description": "Biomechanical tattoos blend organic and mechanical elements to create the illusion of machinery beneath the skin. Heavily influenced by Swiss artist H.R. Giger (known for the Alien movie designs), this style creates the impression that the wearer has cybernetic or mechanical parts underneath their skin. Biomechanical designs often follow the body's natural contours and muscle structures, replacing them with pistons, gears, wires, and other mechanical components. The style ranges from monochromatic to colorful interpretations.",
+      "key_traits": [
+        "Fusion of organic and mechanical elements",
+        "Follows body contours and anatomy",
+        "Illusion of machinery beneath skin",
+        "Depth and dimensional effects",
+        "Giger-inspired aesthetic",
+        "Futuristic, sci-fi themes"
+      ],
+      "icon_url": "https://i.pinimg.com/originals/68/ef/da/68efda8c66132be3af9e3e6d1a36baaf.jpg",
+      "popularity_rank": 15,
+      "related_tribes": ["Sci-fi enthusiasts", "Cyberpunk fans", "Industrial music scene"],
+      "example_images": [
+        "https://i.pinimg.com/originals/8b/f5/dc/8bf5dc64853cba43e033bdd171790b3d.jpg",
+        "https://i.pinimg.com/originals/f9/0e/11/f90e116861dc353bcc474cbf9880d93f.jpg"
+      ]
+    }
+  ]
+}

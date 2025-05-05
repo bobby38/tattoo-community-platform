@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Lovesick Tattoo Studio",
+    "country": "Singapore",
+    "city": "Singapore",
+    "address": "63 Circular Road, Singapore 049417",
+    "lat": 1.2862285,
+    "lng": 103.8491158
+  },
+  {
+    "name": "Familiar Strangers Tattoo Studio",
+    "country": "Singapore",
+    "city": "Singapore",
+    "address": "20 Upper Circular Road, The Riverwalk #01-10, Singapore",
+    "lat": 1.2875,
+    "lng": 103.8476
+  },
+  {
+    "name": "Alive Tattoo Studio",
+    "country": "Singapore",
+    "city": "Singapore",
+    "address": "211 New Bridge Road, Lucky Chinatown, Singapore",
+    "lat": 1.2839,
+    "lng": 103.8452
+  },
+  {
+    "name": "Vagabond Ink Tattoo Studio",
+    "country": "Singapore",
+    "city": "Singapore",
+    "address": "Chinatown, Singapore",
+    "lat": 1.2829435,
+    "lng": 103.8441517
+  },
+  {
+    "name": "Exotic Tattoos & Piercings",
+    "country": "Singapore",
+    "city": "Singapore",
+    "address": "14 Scotts Road, Far East Plaza, Singapore",
+    "lat": 1.3071,
+    "lng": 103.8327
+  },
+  {
+    "name": "Borneo Ink Tattoo",
+    "country": "Malaysia",
+    "city": "Kuala Lumpur",
+    "address": "B-09-15, Gateway Kiaramas Corporate Suites, No 1 Jalan Desa Kiara, Mont Kiara, 50480 Kuala Lumpur, Malaysia",
+    "lat": 3.1662,
+    "lng": 101.6564
+  },
+  {
+    "name": "Pink Tattoos",
+    "country": "Malaysia",
+    "city": "Kuala Lumpur",
+    "address": "Jalan Telawi, Bangsar, Kuala Lumpur, Malaysia",
+    "lat": 3.1294861,
+    "lng": 101.6701439
+  },
+  {
+    "name": "The Tattoo Parlor",
+    "country": "Malaysia",
+    "city": "Petaling Jaya",
+    "address": "31-1 Block C, Zenith Corporate Park, SS7 Kelana Jaya, Petaling Jaya, Selangor, Malaysia",
+    "lat": 3.1065,
+    "lng": 101.5983
+  },
+  {
+    "name": "Hustla Ink Tattoo Studio",
+    "country": "Malaysia",
+    "city": "Kuala Lumpur",
+    "address": "No. AR18, Ground Floor, Megan Ambassy, Holiday Place, 225 Jalan Ampang, 50450 Kuala Lumpur, Malaysia",
+    "lat": 3.1617,
+    "lng": 101.7425
+  },
+  {
+    "name": "Pitt's Tattoo & Piercing",
+    "country": "Malaysia",
+    "city": "Penang",
+    "address": "No. 174, Jalan Dr. Lim Chwee Leong, Georgetown, 10100 Penang, Malaysia",
+    "lat": 5.4173,
+    "lng": 100.3354
+  },
+  {
+    "name": "Ink & Needles Tattoo Studio",
+    "country": "Malaysia",
+    "city": "Penang",
+    "address": "19, Lebuh Keng Kwee, George Town, Penang, 10450, Malaysia",
+    "lat": 5.4168758,
+    "lng": 100.3310265
+  },
+  {
+    "name": "Lostchild Tattoo & Piercing",
+    "country": "Malaysia",
+    "city": "Penang",
+    "address": "The Rise Collection 3, 10150 Georgetown, Penang, Malaysia",
+    "lat": 5.4148,
+    "lng": 100.3293
+  }
+]

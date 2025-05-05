@@ -1,0 +1,132 @@
+{
+  "youtube_channels": [
+    {
+      "name": "Inked",
+      "url": "https://www.youtube.com/c/inked",
+      "subscribers": 1310000,
+      "focus": "Tattoo artist reactions, interviews, educational content",
+      "notable_features": "Popular 'Tattoo Artist React' series where professional artists react to tattoos submitted by fans or online creators"
+    },
+    {
+      "name": "Sullen TV",
+      "url": "https://www.youtube.com/@SullenTV",
+      "subscribers": 350000,
+      "focus": "Tattoo timelapses, artist portfolios, live tattoo sessions",
+      "notable_features": "High-quality content showcasing top-tier tattoo art and beginner-friendly guides"
+    },
+    {
+      "name": "Romeo Lacoste",
+      "url": "https://www.youtube.com/c/romeolacoste",
+      "subscribers": 888000,
+      "focus": "Celebrity tattoos, tattoo advice, lifestyle content",
+      "notable_features": "Has tattooed celebrities like Justin Bieber, Ariana Grande, and Kendrick Lamar"
+    },
+    {
+      "name": "Alex Konti",
+      "url": "https://www.youtube.com/c/alexkonti",
+      "subscribers": 635000,
+      "focus": "Tattoo tutorials, artistic processes",
+      "notable_features": "Detailed tattoo tutorials from a craftsman with over 10 years of experience"
+    },
+    {
+      "name": "Jasmine Chan",
+      "url": "https://www.youtube.com/c/jasminechan",
+      "subscribers": 539000,
+      "focus": "Tattoo designs, artistic journey, lifestyle vlogs",
+      "notable_features": "Young NYC-based artist who combines personal vlogs with tattoo content"
+    },
+    {
+      "name": "Tattoo Media Ink",
+      "url": "https://www.youtube.com/c/tattoomediaink",
+      "subscribers": 320000,
+      "focus": "Latest trends, techniques, and technological advancements in tattooing",
+      "notable_features": "Features videos on tattoo history, reviews of new products, and showcases of impressive tattoos"
+    },
+    {
+      "name": "Ink Master",
+      "url": "https://www.youtube.com/c/inkmaster",
+      "subscribers": 750000,
+      "focus": "Challenge videos, artist interviews, behind-the-scenes content",
+      "notable_features": "Based on the popular TV show, featuring competitive tattooing and industry standards"
+    },
+    {
+      "name": "Tattooing 101",
+      "url": "https://www.youtube.com/@Tattooing101",
+      "subscribers": 280000,
+      "focus": "Educational content for aspiring tattoo artists",
+      "notable_features": "Provides foundational knowledge and industry tips to help beginners succeed without lengthy apprenticeships"
+    },
+    {
+      "name": "Jon Harris",
+      "url": "https://www.youtube.com/c/jonharris",
+      "subscribers": 420000,
+      "focus": "Drawing, design, and optical illusions for tattoo design",
+      "notable_features": "Specializes in creative tattoo concepts and artistic techniques"
+    },
+    {
+      "name": "Daniel Silva",
+      "url": "https://www.youtube.com/c/danielsilva",
+      "subscribers": 480000,
+      "focus": "Celebrity tattoos, custom designs, artistic process",
+      "notable_features": "Showcases high-profile portfolio and advanced tattooing skills"
+    }
+  ],
+  "spotify_playlists": [
+    {
+      "name": "Tattoo Radio",
+      "url": "https://open.spotify.com/playlist/37i9dQZF1E8H4AFyIZ1VlX",
+      "creator": "Spotify",
+      "tracks": 50,
+      "theme": "Latin pop, reggaeton, and contemporary urban music",
+      "popularity": "1,920 saves and 1.9K likes"
+    },
+    {
+      "name": "Tattoo Radio by Tchey Rocha",
+      "url": "https://open.spotify.com/playlist/0vDyEYwqEtojC1noB6XRzr",
+      "creator": "Tchey Rocha",
+      "tracks": "Over 2 days of music (approximately 58 hours)",
+      "theme": "Mixed mood with varied style, from 1990s to recent releases",
+      "popularity": "46 followers"
+    },
+    {
+      "name": "Best Tattoo Music | Tattoo Shop Vibes | Tattoo Songs",
+      "url": "https://open.spotify.com/playlist/7iJV4OOSkS7Dusx0DEfzlj",
+      "creator": "Spotify user",
+      "tracks": 550,
+      "theme": "Curated for tattoo shop atmosphere",
+      "popularity": "268 likes"
+    },
+    {
+      "name": "Tattoo Music by Pedro Cortez Tattoos",
+      "url": "https://open.spotify.com/playlist/3hCvUKEkoeat8akJLAizix",
+      "creator": "Pedro Cortez Tattoos",
+      "tracks": 361,
+      "theme": "Music selected by a tattoo artist for tattooing sessions",
+      "popularity": "12 likes"
+    },
+    {
+      "name": "Tattoo Music (Large Collection)",
+      "url": "https://open.spotify.com/playlist/4U9tPuYmme3AZQBaBXVGbB",
+      "creator": "Spotify user",
+      "tracks": 1148,
+      "theme": "Extensive collection of tracks suitable for tattoo sessions",
+      "popularity": "3 likes"
+    },
+    {
+      "name": "Ink for the Tattoo Lovers",
+      "url": "https://open.spotify.com/playlist/37i9dQZF1E4yl5T8RI5P5q",
+      "creator": "Reddit community curated",
+      "tracks": "Unknown",
+      "theme": "Community-curated tracks for tattoo enthusiasts",
+      "popularity": "Popular on Reddit's r/SpotifyPlaylists"
+    },
+    {
+      "name": "Classical Tattoo Sessions",
+      "url": "https://open.spotify.com/playlist/37i9dQZF1DWWEJlAGA9gs0",
+      "creator": "Spotify",
+      "tracks": "Unknown",
+      "theme": "Classical and instrumental music for a sophisticated tattoo experience",
+      "popularity": "Recommended for calming tattoo sessions"
+    }
+  ]
+}

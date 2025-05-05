@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Heart, MessageCircle, Filter } from 'lucide-react';
+import { getHybridImageUrl } from '@/lib/hybrid-image';
 
 // Define the GalleryItem type
 interface GalleryItem {
@@ -131,22 +132,40 @@ export default function GalleryPage() {
       ) : (
         /* Gallery Grid */
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {filteredItems.map((item) => (
-            <motion.div key={item.id} variants={itemVariants}>
-              <div className="group relative overflow-hidden rounded-lg">
+          {filteredItems.map(item => (
+            <motion.div 
+              key={item.id}
+              variants={itemVariants}
+              className="bg-gray-800 rounded-lg overflow-hidden"
+            >
+              <div className="relative aspect-square bg-gray-900 group">
+                {/* Placeholder that's always visible underneath */}
+                <div className="w-full h-full flex items-center justify-center bg-gray-900 absolute">
+                  <div className="text-gray-600 text-center p-4">
+                    <div className="text-3xl mb-2">✨</div>
+                    <div>{item.title}</div>
+                  </div>
+                </div>
+                
+                {/* Hybrid image approach */}
                 <img 
-                  src={item.image} 
+                  src={getHybridImageUrl(item.image, 'studio', item.id)}
                   alt={item.title}
-                  className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover absolute z-10 transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.onerror = null;
+                    target.style.display = 'none'; // Hide the image on error
+                  }}
                 />
                 
                 {/* Overlay with info */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 z-20">
                   <h3 className="text-white text-xl font-bold mb-1">{item.title}</h3>
                   <p className="text-white/80 mb-2">Artist: {item.artist}</p>
                   <p className="text-white/80 mb-4">Style: {item.style}</p>
