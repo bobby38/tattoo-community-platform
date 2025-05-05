@@ -25,6 +25,11 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+.env.docker
+.env.new
+# Keep only template files that don't contain real credentials
+# .env.template
+# .env.example
 
 # vercel
 .vercel
@@ -35,3 +40,8 @@ next-env.d.ts
 
 # uploads directory - exclude binary files
 /public/uploads/
+
+# R2 test files that might contain sensitive information
+test-r2*.js
+test-*-r2-*.js
+test-*-credentials*.js
