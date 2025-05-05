@@ -1,0 +1,242 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "name": "Bangkok Tattoo Expo",
+      "description": "The largest tattoo convention in Southeast Asia featuring traditional Sak Yant and modern techniques.",
+      "start_date": "2025-06-15",
+      "end_date": "2025-06-17",
+      "location": "Impact Exhibition Center",
+      "city": "Bangkok",
+      "country": "Thailand",
+      "venue": "Impact Exhibition Center",
+      "address": "Impact Exhibition Center, Bangkok",
+      "lat": 13.9123,
+      "lng": 100.5469,
+      "image_url": "/images/events/bangkok-expo.jpg",
+      "website_url": "https://bangkoktattoexpo.com",
+      "ticket_url": "https://bangkoktattoexpo.com/tickets",
+      "organizer": "Thailand Tattoo Association",
+      "artists": [
+        {
+          "id": "a1",
+          "name": "Ajarn Noo",
+          "slug": "ajarn-noo",
+          "avatar_url": "/images/artists/ajarn-noo.jpg"
+        },
+        {
+          "id": "a2",
+          "name": "Matthieu Duquenois",
+          "slug": "matthieu-duquenois",
+          "avatar_url": "/images/artists/matthieu-duquenois.jpg"
+        }
+      ],
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Singapore Ink Show",
+      "description": "A premier tattoo event showcasing the best artists from Singapore and around the world.",
+      "start_date": "2025-07-01",
+      "end_date": "2025-07-03",
+      "location": "Marina Bay Sands",
+      "city": "Singapore",
+      "country": "Singapore",
+      "venue": "Marina Bay Sands",
+      "address": "Marina Bay Sands, Singapore",
+      "lat": 1.2834,
+      "lng": 103.8607,
+      "image_url": "/images/events/singapore-ink.jpg",
+      "website_url": "https://singaporeinkshow.com",
+      "ticket_url": "https://singaporeinkshow.com/tickets",
+      "organizer": "Singapore Tattoo Artists Guild",
+      "artists": [
+        {
+          "id": "a3",
+          "name": "Elvin Yong",
+          "slug": "elvin-yong",
+          "avatar_url": "/images/artists/elvin-yong.jpg"
+        },
+        {
+          "id": "a4",
+          "name": "Jared Asalli",
+          "slug": "jared-asalli",
+          "avatar_url": "/images/artists/jared-asalli.jpg"
+        }
+      ],
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Kuala Lumpur Tattoo Expo",
+      "description": "Malaysia's biggest international tattoo convention featuring traditional and contemporary styles.",
+      "start_date": "2025-08-20",
+      "end_date": "2025-08-22",
+      "location": "Kuala Lumpur Convention Centre",
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "venue": "Kuala Lumpur Convention Centre",
+      "address": "Kuala Lumpur Convention Centre, Kuala Lumpur",
+      "lat": 3.1537,
+      "lng": 101.7132,
+      "image_url": "/images/events/kl-expo.jpg",
+      "website_url": "https://kltattoexpo.com",
+      "ticket_url": "https://kltattoexpo.com/tickets",
+      "organizer": "Malaysian Tattoo Association",
+      "artists": [
+        {
+          "id": "a5",
+          "name": "Lynda Black",
+          "slug": "lynda-black",
+          "avatar_url": "/images/artists/lynda-black.jpg"
+        },
+        {
+          "id": "a6",
+          "name": "Eddie Lim",
+          "slug": "eddie-lim",
+          "avatar_url": "/images/artists/eddie-lim.jpg"
+        }
+      ],
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": "4",
+      "name": "Manila Tattoo Arts Festival",
+      "description": "Celebrating the rich tattoo heritage of the Philippines, from traditional tribal to contemporary styles.",
+      "start_date": "2025-09-10",
+      "end_date": "2025-09-12",
+      "location": "SMX Convention Center",
+      "city": "Manila",
+      "country": "Philippines",
+      "venue": "SMX Convention Center",
+      "address": "SMX Convention Center, Manila",
+      "lat": 14.5329,
+      "lng": 120.9805,
+      "image_url": "/images/events/manila-festival.jpg",
+      "website_url": "https://manilatattooarts.com",
+      "ticket_url": "https://manilatattooarts.com/tickets",
+      "organizer": "Philippine Tattoo Artists Association",
+      "artists": [
+        {
+          "id": "a7",
+          "name": "Whang-Od",
+          "slug": "whang-od",
+          "avatar_url": "/images/artists/whang-od.jpg"
+        },
+        {
+          "id": "a8",
+          "name": "Dyani Lao",
+          "slug": "dyani-lao",
+          "avatar_url": "/images/artists/dyani-lao.jpg"
+        }
+      ],
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Jakarta Ink Festival",
+      "description": "Indonesia's premier tattoo event showcasing the country's diverse tattoo traditions and modern innovations.",
+      "start_date": "2025-10-15",
+      "end_date": "2025-10-17",
+      "location": "Jakarta Convention Center",
+      "city": "Jakarta",
+      "country": "Indonesia",
+      "venue": "Jakarta Convention Center",
+      "address": "Jakarta Convention Center, Jakarta",
+      "lat": -6.1944,
+      "lng": 106.8229,
+      "image_url": "/images/events/jakarta-ink.jpg",
+      "website_url": "https://jakartainkfestival.com",
+      "ticket_url": "https://jakartainkfestival.com/tickets",
+      "organizer": "Indonesian Tattoo Artists Association",
+      "artists": [
+        {
+          "id": "a9",
+          "name": "Durga Sipatiti",
+          "slug": "durga-sipatiti",
+          "avatar_url": "/images/artists/durga-sipatiti.jpg"
+        },
+        {
+          "id": "a10",
+          "name": "Herthayati",
+          "slug": "herthayati",
+          "avatar_url": "/images/artists/herthayati.jpg"
+        }
+      ],
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Hanoi Tattoo Convention",
+      "description": "Vietnam's largest tattoo convention bringing together traditional and modern Vietnamese tattoo artists.",
+      "start_date": "2025-11-05",
+      "end_date": "2025-11-07",
+      "location": "Hanoi International Exhibition Center",
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "venue": "Hanoi International Exhibition Center",
+      "address": "Hanoi International Exhibition Center, Hanoi",
+      "lat": 21.0245,
+      "lng": 105.8412,
+      "image_url": "/images/events/hanoi-convention.jpg",
+      "website_url": "https://hanoitattoocon.com",
+      "ticket_url": "https://hanoitattoocon.com/tickets",
+      "organizer": "Vietnam Tattoo Artists Guild",
+      "artists": [
+        {
+          "id": "a11",
+          "name": "Tran Huy",
+          "slug": "tran-huy",
+          "avatar_url": "/images/artists/tran-huy.jpg"
+        },
+        {
+          "id": "a12",
+          "name": "Ngoc Mai",
+          "slug": "ngoc-mai",
+          "avatar_url": "/images/artists/ngoc-mai.jpg"
+        }
+      ],
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": "7",
+      "name": "Taipei Tattoo Show",
+      "description": "Taiwan's most prestigious tattoo event featuring the best artists from across Asia.",
+      "start_date": "2025-12-20",
+      "end_date": "2025-12-22",
+      "location": "Taipei World Trade Center",
+      "city": "Taipei",
+      "country": "Taiwan",
+      "venue": "Taipei World Trade Center",
+      "address": "Taipei World Trade Center, Taipei",
+      "lat": 25.0330,
+      "lng": 121.5654,
+      "image_url": "/images/events/taipei-show.jpg",
+      "website_url": "https://taipeitattooshow.com",
+      "ticket_url": "https://taipeitattooshow.com/tickets",
+      "organizer": "Taiwan Tattoo Artists Association",
+      "artists": [
+        {
+          "id": "a13",
+          "name": "Wei Chen",
+          "slug": "wei-chen",
+          "avatar_url": "/images/artists/wei-chen.jpg"
+        },
+        {
+          "id": "a14",
+          "name": "Cindy Chang",
+          "slug": "cindy-chang",
+          "avatar_url": "/images/artists/cindy-chang.jpg"
+        }
+      ],
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  ]
+}

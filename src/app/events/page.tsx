@@ -217,13 +217,18 @@ export default function EventsPage() {
     >
       <div className="relative">
         <img 
-          src={event.image_url || '/images/event-placeholder.jpg'} 
+          src={event.image_url || '/images/events/event-placeholder.jpg'} 
           alt={event.name}
           className="w-full h-48 object-cover"
         />
         <div className="absolute top-2 right-2">
           <div className="bg-black/70 text-white px-3 py-1 rounded-full text-xs">
             {formatDateRange(event)}
+          </div>
+        </div>
+        <div className="absolute top-2 left-2">
+          <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs">
+            {event.country}
           </div>
         </div>
       </div>
