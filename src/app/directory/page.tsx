@@ -49,19 +49,57 @@ const MapSection = dynamic(() => Promise.resolve(({
   return (
     <div className="space-y-4">
       <div className="flex flex-col lg:flex-row gap-4">
-        {/* Map component */}
-        <div className="lg:w-2/3">
-          <MapView 
-            locations={filteredLocations}
-            selectedCity={selectedCity}
-            selectedLocation={selectedLocation}
-            onMarkerClick={(location) => setSelectedLocation(location)}
-          />
+        {/* Left column with map and selected location details */}
+        <div className="lg:w-2/3 space-y-4">
+          {/* Map component */}
+          <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+            <MapView 
+              locations={filteredLocations}
+              selectedCity={selectedCity}
+              selectedLocation={selectedLocation}
+              onMarkerClick={(location) => setSelectedLocation(location)}
+            />
+          </div>
+          
+          {/* Selected location details below map */}
+          {selectedLocation && (
+            <div className="p-4 bg-gray-900 border border-gray-800 rounded-lg">
+              <div className="flex items-start gap-4">
+                <div className="hidden sm:block relative w-20 h-20 bg-gray-800 rounded-md overflow-hidden flex-shrink-0">
+                  <img 
+                    src={getHybridImageUrl(selectedLocation.imageUrl || '', selectedLocation.type, selectedLocation.id)}
+                    alt={selectedLocation.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-bold mb-2">{selectedLocation.name}</h3>
+                  <p className="text-sm text-gray-400 mb-3">
+                    <MapPin className="inline-block mr-1" size={14} />
+                    {selectedLocation.address || `${selectedLocation.city}, ${selectedLocation.country}`}
+                  </p>
+                  <Link 
+                    href={`/directory/${selectedLocation.type}/${selectedLocation.slug || selectedLocation.id}`}
+                    passHref
+                  >
+                    <Button size="sm" className="mt-2">
+                      View Profile
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         
         {/* Scrollable list of locations */}
         <div className="lg:w-1/3 bg-gray-900 rounded-lg p-4">
-          <div className="mb-4">
+          <div>
             <h3 className="font-medium text-lg mb-2">
               {activeTab === 'studios' ? 'All Studios' : 'All Artists'}
             </h3>
@@ -70,7 +108,7 @@ const MapSection = dynamic(() => Promise.resolve(({
             </p>
             
             {/* List container with fixed height and scrolling */}
-            <div className="h-[450px] overflow-y-auto pr-2 space-y-2">
+            <div className="h-[600px] overflow-y-auto pr-2 space-y-2">
               {filteredLocations
                 .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                 .map((location) => (
@@ -152,25 +190,6 @@ const MapSection = dynamic(() => Promise.resolve(({
               </div>
             )}
           </div>
-          
-          {/* Selected location details */}
-          {selectedLocation && (
-            <div className="mt-4 pt-4 border-t border-gray-800">
-              <h3 className="font-medium text-lg mb-2">{selectedLocation.name}</h3>
-              <p className="text-sm text-gray-400 mb-2">
-                <MapPin className="inline-block mr-1" size={14} />
-                {selectedLocation.address || `${selectedLocation.city}, ${selectedLocation.country}`}
-              </p>
-              <Link 
-                href={`/directory/${selectedLocation.type}/${selectedLocation.slug || selectedLocation.id}`}
-                passHref
-              >
-                <Button size="sm" className="w-full mt-2">
-                  View Profile
-                </Button>
-              </Link>
-            </div>
-          )}
         </div>
       </div>
       
@@ -245,7 +264,6 @@ const DirectoryPage = () => {
         const studiosResponse = await fetch('/api/studios');
         if (studiosResponse.ok) {
           const studiosData = await studiosResponse.json();
-          console.log('Fetched studios:', studiosData);
           setStudios(studiosData);
           setStoreStudios(studiosData);
         } else {
@@ -256,7 +274,6 @@ const DirectoryPage = () => {
         const artistsResponse = await fetch('/api/artists');
         if (artistsResponse.ok) {
           const artistsData = await artistsResponse.json();
-          console.log('Fetched artists:', artistsData);
           setArtists(artistsData);
         } else {
           console.error('Failed to fetch artists:', artistsResponse.status);
